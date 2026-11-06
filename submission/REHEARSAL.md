@@ -1,12 +1,12 @@
 # Presenter guide and rehearsal
 
-The deck has **eight main slides and 7 evidence appendix slides**. Use the appendix for judging questions or a separate evidence review. Detailed country
+The deck has **eight main slides and 10 evidence appendix slides**. Use the appendix for judging questions or a separate evidence review. Detailed country
 research remains in the dashboard and COUNTRY_REVIEW.md. Present the investment
 argument; use the repository for follow-up questions.
 
 ## Timing and handoffs
 
-The eight-slide main script has **805 spoken words** and a **6:15** plan. Appendix narration for slides 9–15 is included separately in PRESENTATION_SCRIPT.md and adds time. The main pitch runs at about 129
+The eight-slide main script has **805 spoken words** and a **6:15** plan. Appendix narration for slides 9–18 is included separately in PRESENTATION_SCRIPT.md and adds time. The main pitch runs at about 129
 words per minute. Reserve 10–15 seconds for speaker handoffs. Rehearse aloud and
 measure the actual recording; keep it below the seven-minute cap.
 

@@ -29,6 +29,7 @@ analysis/output/research_c_us_coal.md
 analysis/output/research_d_cross_country.md
 analysis/package_submission.py
 analysis/pitch_appendix.py
+analysis/pitch_color_guide.py
 analysis/pitch_design.py
 analysis/pitch_methods.py
 analysis/research_a_global_electricity.py
@@ -113,6 +114,7 @@ dashboard/src/viz/countryDirectory.test.ts
 dashboard/src/viz/countryDirectory.ts
 dashboard/src/viz/format.test.ts
 dashboard/src/viz/format.ts
+dashboard/src/viz/globeColors.ts
 dashboard/src/viz/layerValue.test.ts
 dashboard/src/viz/layerValue.ts
 dashboard/src/viz/palette.test.ts

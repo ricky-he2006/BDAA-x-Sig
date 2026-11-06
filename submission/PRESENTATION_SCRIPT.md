@@ -1,6 +1,6 @@
 # Presentation script
 
-Eight main slides plus 7 evidence appendix slides · 805 main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
+Eight main slides plus 10 evidence appendix slides · 805 main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
 
 ## 1. Invest in clean growth. Stay selective on coal.
 
@@ -84,9 +84,9 @@ We would track generation additions, U.S. coal consumption and the economics of 
 
 *Delivery cue: Finish with the allocation and horizon. Pause after the final sentence.*
 
-# Evidence appendix narration — slides 9–15
+# Evidence appendix narration — slides 9–18
 
-Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 15-slide presentation, rehearse and measure the combined runtime.
+Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 18-slide presentation, rehearse and measure the combined runtime.
 
 ## 9. Three sources, three distinct measurement roles
 
@@ -141,6 +141,30 @@ The accounting identity is demand equals clean generation plus fossil generation
 **Appendix A07 · additional narration · suggested speaker D**
 
 Use the dashboard during questions or as a separate demonstration so the timed main pitch stays focused. The year slider changes map/snapshot values; charts retain their historical series. Research's six-year matched sample differs from the main 196-country historical panel. State maps describe consumption locations, not mines. Downloads make observations inspectable; they do not settle causality or prove stock outperformance. The detailed walkthrough explains how each view supports, qualifies or challenges the recommendation.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 16. Blue fill means a higher selected value.
+
+**Appendix A08 · additional narration · suggested speaker A**
+
+The blue color is a magnitude scale, not an investment rating. Under clean share, darker blue means a higher percentage of clean electricity. Under renewable generation or demand, it means more TWh, which also reflects market size. Under carbon intensity, darker blue instead means higher emissions per kilowatt-hour. Start by reading the selected filter and units. To investigate clean-generation exposure, open the country’s clean, fossil and demand histories, then examine relevant company or project economics. A dark-blue clean-share fill together with a red outline can occur because a high clean share and rising annual coal generation can coexist. Neither color establishes a buy recommendation.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 17. Orange fill shows coal scale or dependence.
+
+**Appendix A09 · additional narration · suggested speaker A**
+
+All four orange filters show levels in the selected year. Generation measures coal electricity in TWh; share measures coal dependence as a percentage; production measures coal mined in million metric tonnes; total energy supply measures energy in exajoules. The world outline remains annual coal-generation change in TWh under every filter. A red outline does not mean coal producers are profitable or undervalued, and a blue outline does not establish an attractive short. Check the size and persistence of the change, the company’s domestic versus export exposure, realized prices, costs, contracts and valuation. Production-versus-generation divergence alone does not measure exports. Neutral outlines can indicate little or no change; missing comparisons must be checked in the tooltip.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 18. Select the coal user, then inspect its history.
+
+**Appendix A10 · additional narration · suggested speaker B**
+
+In the U.S. map the sector filter changes which coal users are included. Darker orange means more coal consumed in short tons. Red outlines mean consumption rose from the prior year; blue outlines mean it fell, for the selected scope. This differs from the world map, whose outlines measure coal generation in TWh. Start with Electric power for the domestic thermal thesis, then inspect states and their sector histories. Electric power includes utilities and two independent-power-producer categories. Coke plants are a steelmaking exposure that our thermal-power underweight does not automatically cover. The national chart separately uses EIA sector 98; do not add it to the base sectors. States identify consumption locations, not mines or producer revenue exposure. The large U.S. legend is hidden; read the scope note and hover values. Zoom in for smaller states, then reset the map.
 
 *Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
 

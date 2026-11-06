@@ -66,4 +66,5 @@ def add_appendix(p, m):
         rect(s, .6, 6.98, 12.13, .012, GRID)
         text(s, source, .65, 7.11, 12, .23, 9, MUTED)
         s.notes_slide.notes_text_frame.text = notes
-    return len(slides)
+    from analysis.pitch_color_guide import add_color_guide
+    return len(slides) + add_color_guide(p)

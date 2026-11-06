@@ -45,6 +45,27 @@ Use a separate demonstration or questions if the main recording limit leaves no 
 
 China and Germany are research priorities, not country buy ratings. The dashboard supplies operational context; valuation and company financials are still required before selecting investments.
 
+## Reading filter colors — slides 16–18
+
+Use the three dashboard reading-guide slides before the live demonstration. Explain the filter, read fill and outline separately, then open the supporting history.
+
+| World filter | Darker fill means | Next investigation |
+|---|---|---|
+| Clean electricity share | Higher clean percentage; blue | Clean/fossil TWh and demand history; a high share does not establish growth or returns. |
+| Renewable generation | Higher renewable TWh; blue | Absolute additions and growth; distinguish a large market from fast expansion. |
+| Electricity demand | Higher demand TWh; blue | Which sources met demand additions? |
+| Carbon intensity | Higher emissions per kWh; blue | Mix and total emissions; dark blue here means more carbon-intensive power. |
+| Coal-fired generation | Higher coal TWh; orange | Coal history and demand; distinguish level from change. |
+| Coal share of generation | Higher coal percentage; orange | Absolute coal output and clean share. |
+| Coal production | More coal produced in Mt; orange | Producer exposure and trade evidence; production is not domestic electricity demand. |
+| Coal energy supply (TES) | More coal energy supply in EJ; orange | Whole-system exposure including non-power uses. |
+
+**World outlines:** red = coal generation rose versus the prior year; blue = fell. This metric stays the same when the fill filter changes. A red outline is a prompt to investigate coal-demand persistence, not an automatic coal long. A blue outline is not an automatic short. High clean share and increasing coal can coexist.
+
+**U.S. filters:** All sectors uses reported base sectors 1+2+3+8+9+10; Electric power uses 1+2+3. Electric utility (1), IPP non-CHP (2), IPP CHP (3), Commercial & inst. (8), Coke plants (9) and Other industrial (10) isolate different users. Darker orange means more short tons consumed. U.S. outlines measure consumption change within the selected scope, rather than world-map generation change. Use Electric power first for the domestic thermal thesis; steelmaking requires separate evidence. Read the scope note and hover values; the large U.S. legend is hidden.
+
+**Before an allocation:** verify the numerical value and multiple-year history, identify the relevant sector and business model, and examine valuation, contracts, realized prices, costs and financing. Colors show operational conditions, not expected investment returns. Missing values remain missing; scales change with the selected year and filter.
+
 ## Before presenting
 
 - Load the dashboard and check that the data appears.

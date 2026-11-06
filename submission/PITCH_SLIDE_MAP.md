@@ -18,3 +18,6 @@
 - **Slide 13 / A05: Measure growth, scale and the electricity mix** — see slide source footer and PRESENTATION_SCRIPT.md.
 - **Slide 14 / A06: Check the explanation against the energy balance** — see slide source footer and PRESENTATION_SCRIPT.md.
 - **Slide 15 / A07: Trace the recommendation back to the observations** — see slide source footer and PRESENTATION_SCRIPT.md.
+- **Slide 16 / A08: Blue fill means a higher selected value.** — see slide source footer and PRESENTATION_SCRIPT.md.
+- **Slide 17 / A09: Orange fill shows coal scale or dependence.** — see slide source footer and PRESENTATION_SCRIPT.md.
+- **Slide 18 / A10: Select the coal user, then inspect its history.** — see slide source footer and PRESENTATION_SCRIPT.md.

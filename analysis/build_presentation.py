@@ -20,7 +20,7 @@ This is the single submission folder. START_HERE.md lists the presentation, scri
 Start with **energy_transition_pitch.pptx** (editable deck) or its PDF export,
 then EXECUTIVE_SUMMARY.md, INVESTMENT_THESIS.md and PRESENTER_GUIDE.md.
 PRESENTATION_SCRIPT.md and SPEAKER_CUE_CARDS.md support delivery.
-The deck contains eight main slides plus seven evidence appendix slides, with a 6:15 main-pitch speaking plan. Detailed country
+The deck contains eight main slides plus ten evidence appendix slides, with a 6:15 main-pitch speaking plan. Detailed country
 research stays in separate reference materials.
 
 - COUNTRY_REVIEW.md links all 213 country profiles. `figures/country_*.png`

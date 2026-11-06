@@ -37,6 +37,14 @@ Use a separate demonstration or questions if the main recording limit leaves no 
 - State observations identify consumption locations, not mines. National sector 98 and reported state base sectors have separate scopes.
 - For each expanded chart, name the question, point to endpoints, state the result, then explain whether it supports or challenges the recommendation.
 
+## Country and sector guidance — presentation slide 6
+
+- **United States / domestic thermal coal:** demonstrate national EIA consumption and the 2025 rebound. The conditional underweight applies to producers exposed to domestic power demand; state consumption does not identify mines or producer revenues.
+- **China / low-carbon generation owners:** open China’s clean/fossil history and separate coal chart. Clean and coal both expanded through 2024. This supports investigating clean-generation exposure without assuming immediate coal displacement; examine contracts, cash flow and financing.
+- **Germany / utilities and generation owners:** show demand, clean generation, coal and electricity trade. Falling clean output alongside falling coal means the investment question needs demand and revenue-exposure analysis.
+
+China and Germany are research priorities, not country buy ratings. The dashboard supplies operational context; valuation and company financials are still required before selecting investments.
+
 ## Before presenting
 
 - Load the dashboard and check that the data appears.

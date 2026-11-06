@@ -38,7 +38,7 @@ libreoffice --headless --convert-to pdf --outdir submission submission/energy_tr
 Start with [the investment committee brief](submission/EXECUTIVE_SUMMARY.md)
 or [the full investment thesis](submission/INVESTMENT_THESIS.md).
 
-The deck contains eight main slides with a 6:15 speaking plan, plus five evidence appendix slides. The full script and dashboard walkthrough are in submission/. Detailed
+The deck contains eight main slides with a 6:15 speaking plan, plus seven evidence appendix slides. The full script and dashboard walkthrough are in submission/. Detailed
 country research remains separate. The presenter guide and cue cards support rehearsal. [Submission checklist](submission/SUBMISSION_CHECKLIST.md)
 lists the remaining team recording, YouTube upload, source-provenance and
 repository-publication steps. The group video remains to be recorded and published.

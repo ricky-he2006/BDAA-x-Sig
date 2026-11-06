@@ -2,7 +2,7 @@
 
 ## Prepared locally
 
-- Eight-slide main pitch plus five evidence appendix slides, editable PPTX/PDF, notes and full script.
+- Eight-slide main pitch plus seven evidence appendix slides, editable PPTX/PDF, notes and full script.
 - Global 2025 comparison, allocation cards, decision rules and separate country research.
 - Data dashboard, country directory, per-country CSV downloads and source-field audit.
 - energy_transition_submission.zip: code and deliverables, excluding raw source CSVs and machine-local files.

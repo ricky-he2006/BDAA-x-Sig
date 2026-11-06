@@ -5,6 +5,9 @@ from pptx.util import Inches
 
 def add_appendix(p, m):
     from analysis.pitch_design import text, rect, label, NAVY, PAPER, WHITE, BLUE, MUTED, GRID
+    from analysis.pitch_methods import method_examples
+    from pathlib import Path
+    v = method_examples(Path(__file__).resolve().parents[1] / "submission")
     slides = [
         ("DATA & INTEGRATION", "Three sources, three distinct measurement roles", [
             ("CORE 1 · EMBER", "1,138 country-year rows · 2020–2025\nDemand, clean and all-fossil electricity in TWh.\nClean includes renewables and nuclear."),
@@ -30,6 +33,18 @@ def add_appendix(p, m):
             ("TURN THE FINDING INTO AN ACTION", "Favor diversified low-carbon generation exposure. Focus the coal underweight on U.S. domestic thermal producers. Review persistence of the U.S. rebound before extending the call.")],
          "Source: tables/material_country_pathways.csv; tables/country_review_all.csv · E07–E09",
          "The contribution is a decision framework that separates clean expansion from coal displacement, uses both core sources, and treats the strongest counterexample as a monitoring rule. The sixteen markets are a selected material population, not worldwide frequencies. Threshold sensitivity has not been established; do not call the labels universal. Generation and consumption support an industry outlook, while valuation and project economics are still needed before choosing securities."),
+        ("METHODS · DESCRIPTIVE STATISTICS", "Measure growth, scale and the electricity mix", [
+            ("1 · GROWTH RATES & CAGR", f"2020–2024 CAGR: clean {v['clean_cagr_pct']:.1f}%; fossil {v['fossil_cagr_pct']:.1f}%.\nWhy: annualize endpoint growth for comparison. Pair rates with TWh to avoid small-base exaggeration."),
+            ("2 · GENERATION-WEIGHTED SHARE", f"Clean share: {v['share_start_pct']:.1f}% → {v['share_end_pct']:.1f}%\nChange: +{v['share_change_pp']:.2f} percentage points.\nWhy: sum clean TWh / sum total TWh measures the mix of electricity produced."),
+            ("3 · FIXED-PANEL COMPARISONS", "Use the same countries and required metrics in every compared year.\nWhy: changing coverage can create false trends. Keep the 196-country history and 91-country update separate.")],
+         "Source: tables/method_examples.csv; tables/matched_2020_2024.csv; matched-panel membership tables",
+         f"We use descriptive statistics to distinguish growth, scale and mix. CAGR equals the endpoint-to-baseline ratio raised to one over four years, minus one. Clean CAGR is {v['clean_cagr_pct']:.2f} percent and fossil CAGR is {v['fossil_cagr_pct']:.2f} percent over 2020–2024. These are historical summaries, not fitted forecasts. Clean share rises by {v['share_change_pp']:.2f} percentage points. Generation weighting answers how the observed electricity mix changed; an equal-country mean would answer a different question. Fixed panels control changes in membership, but they do not remove coverage bias or establish causal effects."),
+        ("METHODS · ACCOUNTING & TRIANGULATION", "Check the explanation against the energy balance", [
+            ("4 · DEMAND-CHANGE ACCOUNTING", f"2024–2025 · 91 fixed countries\nDemand {v['demand_delta_twh']:+.1f} TWh\nClean {v['clean_delta_twh']:+.1f}; fossil {v['fossil_delta_twh']:+.1f}; net imports {v['imports_delta_twh']:+.1f} TWh.\nWhy: reconcile changes before interpreting them."),
+            ("5 · BASELINE SENSITIVITY", "Recompute growth from 2021 on the same 196-country panel. Clean still grows faster: +18.8% vs +4.2%.\nWhy: test whether the conclusion relies on pandemic-affected 2020."),
+            ("6 · CROSS-SOURCE TRIANGULATION", "Ember tests clean/fossil growth; EI isolates coal; EIA tests U.S. coal consumption.\nWhy: inspect the recommendation from distinct measures. Keep tons and TWh separate.")],
+         "Source: tables/method_examples.csv; baseline_sensitivity.csv; 2025_watch_evidence.csv; SOURCES.md",
+         f"The accounting identity is demand equals clean generation plus fossil generation plus net imports, subject to source rounding. In the fixed 91-country update, demand changes by {v['demand_delta_twh']:.2f} TWh, clean by {v['clean_delta_twh']:.2f}, fossil by {v['fossil_delta_twh']:.2f}, and net imports by {v['imports_delta_twh']:.2f}. The residual is {v['accounting_residual_twh']:.3f} TWh. This checks arithmetic and shows why clean additions can exceed demand additions; it does not estimate what would have happened without clean generation. Baseline sensitivity tests one important choice. Triangulation compares different measures without forcing equivalence; EI and Ember also have a source relationship. With only six annual observations in the core files and no validated financial outcome series, we do not fit a predictive investment model. Our allocation remains a conditional industry judgment."),
         ("DASHBOARD EVIDENCE TOUR", "Trace the recommendation back to the observations", [
             ("1 · VERIFY THE HEADLINE", "Data & evidence → Numbers supporting the presentation. Match E01/E02/E04/E05 to slides 2 and 5. Check source, units and fixed-panel scope before comparing."),
             ("2 · TEST THE INTERPRETATION", "World → China, then Germany → expand demand/mix and coal charts. Compare 2020 and 2024. Research → Coal shows EI's world total separately from matched samples."),

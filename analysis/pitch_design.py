@@ -118,11 +118,13 @@ def charts():
 
 
 def narrative(m):
+    us = pd.read_csv(OUT / "tables/us_electric_power_coal.csv").set_index("year")
+    remaining_gap = (us.at[2025, "consumption_million_short_tons"] / us.at[2020, "consumption_million_short_tons"] - 1) * 100
     return [
         dict(section="THE CALL", title="Invest in clean growth.\nStay selective on coal.", seconds=35,
              cue="State both calls and the U.S. thermal-coal scope before explaining the evidence.",
              takeaway="", source="Industry allocation judgment · November 2026–November 2029 · Evidence E01–E05",
-             script="Our recommendation is to overweight clean energy and underweight coal over the next three years. We would focus the clean position on diversified low-carbon electricity generation, and the coal underweight on U.S. domestic thermal producers.\n\nThe reason is simple: clean electricity is expanding, while coal follows very different paths across markets. We’ll show how the generation mix changed, why geography matters, and how the U.S. rebound challenges our view. The recommendation comes with clear conditions for reconsideration."),
+             script="Our thesis is that clean electricity can grow without coal disappearing worldwide. Clean generation rose 25.4 percent through 2024, while fossil generation also increased. We therefore favor diversified low-carbon generation over three years. Our coal underweight focuses on U.S. domestic thermal producers: consumption declined through 2024, but the 2025 rebound lowers conviction. We will use the dashboard to test each claim and monitor whether that rebound persists. Security selection still requires valuation and financing evidence."),
         dict(section="THE EVIDENCE", title="Clean grew faster.\nFossil output still increased.", seconds=50,
              cue="Point to the two endpoints. Explain that the lines are generation indices, not investment returns.",
              takeaway="Clean and fossil generation expanded together.", source="Ember · fixed 196-country panel, 2020–2024 · E01–E02 · Clean = renewables + nuclear",
@@ -135,14 +137,16 @@ def narrative(m):
              cue="Explain the left panel, then the right. Keep the two sources and fuel definitions separate.",
              takeaway="The latest year supports clean growth and regional divergence.", source="2024–2025 changes, TWh · Left: Ember, 91 fixed countries · Right: EI coal generation · E06/E11",
              script=f"In 2025, clean-generation additions were about {m['matched_2025_clean_vs_demand_additions_pct']:.0f} percent of additional electricity demand in our 91-country Ember panel. All-fossil output fell in that sample. This is a consistent comparison, not a full-world estimate: the panel represents 93.5 percent of generation observed in the 2024 extract.\n\nThe right panel asks a separate question using EI coal generation. China and India declined, while the United States increased. That supports the case for clean expansion, while showing that coal can move against the broader pattern in individual markets. One annual decline does not establish a lasting global peak. The U.S. increase is the strongest counterargument to our coal underweight."),
-        dict(section="THE COUNTERARGUMENT", title="The coal rebound is real.\nPersistence is the risk.", seconds=55,
-             cue="Distinguish EIA consumption in short tons from the previous slide’s generation in TWh.",
-             takeaway="A sustained rebound would challenge the U.S. coal underweight.", source="EIA · national electric-power sector 98 · E04–E05 · Delivered prices are nominal fuel costs, not mine margins",
-             script=f"EIA confirms the rebound in a different measure: coal consumed by the U.S. electric-power sector. Consumption fell {abs(m['us_coal_2020_2024_pct']):.1f} percent from 2020 to 2024, then rose {m['us_coal_2025_yoy_pct']:.1f} percent in 2025. The orange bar makes that recovery clear.\n\nDelivered prices were slightly lower, moving from 46 dollars and 45 cents to 45 dollars and 56 cents per short ton. Those are fuel costs, so they do not tell us producer margins. The supplied files also do not establish the cause of the rebound. Our judgment is that the historical decline still warrants caution, but the recovery lowers our conviction. If it persists, we would reconsider the underweight."),
-        dict(section="THE ALLOCATION", title="Allocate to clean growth.\nFocus the coal underweight.", seconds=55,
-             cue="Name the exposure, explain the logic, then distinguish industry direction from security selection.",
-             takeaway="Industry growth guides the allocation; financial evidence must guide security selection.", source="Interpretation of E01–E05 · Relative to neutral policy weights in an energy allocation · Three-year horizon",
-             script="Those findings lead to two industry positions. First, overweight diversified low-carbon generation exposure. Clean output expanded across different market conditions, including markets where coal remained important. Diversification avoids making the whole position depend on one technology or developer.\n\nSecond, underweight coal with the clearest emphasis on U.S. domestic thermal producers. We would not automatically extend that conclusion to Asian exporters or metallurgical coal, whose exposures need separate evidence. The horizon is three years, relative to neutral energy-allocation weights. Utilities must manage fuel mix, while developers must finance profitable projects. Before selecting securities, we still need valuations, project returns and financing data. Generation growth alone cannot establish attractive investment returns."),
+        dict(section="THE COUNTERARGUMENT", title="U.S. coal recovered in 2025.\nOur underweight depends on persistence.", seconds=55,
+             cue="Show the decline, rebound and remaining gap; distinguish EIA short tons from EI TWh. Point to the persistence rule and dashboard route.",
+             takeaway="Historical decline supports caution; the rebound lowers conviction.",
+             source="EIA national electric-power sector 98 · E04/E05; EI U.S. coal generation · E11 · Analyst monitoring rule",
+             script=f"Our U.S. coal position is conditional. EIA power-sector coal consumption fell {abs(m['us_coal_2020_2024_pct']):.1f} percent from 2020 to 2024, then rebounded {m['us_coal_2025_yoy_pct']:.1f} percent in 2025. It remained {abs(remaining_gap):.1f} percent below 2020. The historical decline supports caution on domestic thermal exposure, but the rebound lowers our conviction.\n\nA second measure supports the direction: EI reports higher U.S. coal-fired generation in 2025. Consumption is measured in short tons; generation is in terawatt-hours. We compare their direction, without treating them as equivalent or identifying the cause.\n\nOur monitoring rule is to reconsider the underweight if consumption stays above its 2024 level for two further annual releases. In the dashboard, open United States and the national consumption history to inspect this risk."),
+        dict(section="THE ALLOCATION", title="Match the country to the sector.\nThen test the investment economics.", seconds=55,
+             cue="Distinguish the U.S. underweight from China and Germany research priorities. Link each sector to its observed country pathway.",
+             takeaway="Favor clean growth; use country evidence to guide sector diligence.",
+             source="2020–2024 country evidence · E04/E05/E08/E09 · Sector priorities are analyst interpretations, not security ratings",
+             script="Our broad preference is diversified low-carbon generation. Country evidence then guides which sector exposures deserve closer attention. In the United States, the coal underweight focuses on domestic thermal producers serving power demand. Consumption declined through 2024, but the rebound makes that view conditional.\n\nIn China, clean generation rose 50.9 percent while coal rose 18.4 percent. Prioritize diligence on low-carbon generation owners without assuming coal demand immediately disappears. In Germany, clean generation, coal and demand all fell. For utilities and generation owners, investigate demand exposure, electricity trade and revenue contracts before making an allocation.\n\nChina and Germany are research priorities, not country buy ratings. Across all three, check valuation, cash flow, financing and the company’s actual revenue exposure before selecting securities."),
         dict(section="THE DECISION RULES", title="What would change our view?", seconds=45,
              cue="Explain the monitoring rules as judgment calls, not forecasts or estimated probabilities.",
              takeaway="Use observable reversal conditions, and keep the data limits explicit.", source="Analyst monitoring rules · SOURCES.md and PROJECT_AUDIT.md document source and coverage limitations",
@@ -173,18 +177,20 @@ def build_pitch(m, submission):
         text(s, f"{i:02d} / 08", 11.85, .32, .9, .24, 11, "B6C7D9" if dark else MUTED)
         text(s, d["title"], .6, .87 if dark else .82, 12.1, 1.5 if dark else 1.12, 40 if dark else 32, WHITE if dark else NAVY, True)
         if i == 1:
-            text(s, "An industry investment outlook grounded in electricity and coal data.", .65, 2.55, 11.8, .5, 21, "D8E5F2")
-            for x, call, exposure, scope, color in [
-                (.65, "OVERWEIGHT", "Clean energy", "Diversified low-carbon generation", BRIGHT_BLUE),
-                (6.85, "UNDERWEIGHT", "Coal", "U.S. domestic thermal focus", BRIGHT_ORANGE),
+            text(s, "OUR THESIS: Clean expansion can coexist with fossil resilience.", .65, 2.48, 12, .45, 23, WHITE, True)
+            text(s, "Clean +25.4% vs all fossil +10.3% · 196 fixed countries · 2020–2024", .65, 3.03, 12, .38, 18, "D8E5F2")
+            for x, call, exposure, scope, rationale, color in [
+                (.65, "OVERWEIGHT", "CLEAN ENERGY", "Diversified low-carbon generation", "Participate in growing clean output; assess valuation and financing before security selection.", BRIGHT_BLUE),
+                (6.85, "UNDERWEIGHT", "COAL", "U.S. domestic thermal focus", "Consumption fell 14.4% through 2024; the 11.3% rebound in 2025 makes the call conditional.", BRIGHT_ORANGE),
             ]:
-                rect(s, x, 3.4, 5.85, 2.0, "213C54", True)
-                label(s, exposure.upper(), x + .25, 3.65, 5.3, "D8E5F2")
-                text(s, call, x + .25, 4.06, 5.3, .5, 27, color, True)
-                text(s, scope, x + .25, 4.78, 5.3, .4, 18, WHITE)
-            text(s, "NOVEMBER 2026 → NOVEMBER 2029", .65, 5.91, 11, .35, 15, "D8E5F2", True)
+                rect(s, x, 3.65, 5.85, 2.22, "213C54", True)
+                label(s, exposure, x + .25, 3.85, 5.3, "D8E5F2")
+                text(s, call, x + .25, 4.2, 5.3, .42, 26, color, True)
+                text(s, scope, x + .25, 4.75, 5.3, .35, 18, WHITE)
+                text(s, rationale, x + .25, 5.22, 5.3, .55, 14, "D8E5F2")
+            text(s, "3-YEAR HORIZON · NOV 2026–NOV 2029  |  DASHBOARD: VERIFY → COMPARE → MONITOR", .65, 6.12, 12, .32, 13, "D8E5F2", True)
             attribution = team + (" · " + ", ".join(submission["members"]) if submission.get("members") else "")
-            text(s, attribution, .65, 6.44, 12, .3, 12, "B6C7D9")
+            text(s, attribution, .65, 6.61, 12, .24, 11, "B6C7D9")
         elif i == 2:
             text(s, "2020–2024 · the same 196 countries in every year", .62, 2.08, 11.7, .35, 17, MUTED)
             for y, value, caption, color in [(2.8, m["clean_growth_2020_2024_pct"], "Clean generation", BLUE), (4.3, m["fossil_growth_2020_2024_pct"], "All-fossil generation", ORANGE)]:
@@ -214,21 +220,36 @@ def build_pitch(m, submission):
             s.shapes.add_picture(str(images["coal_watch"]), Inches(7.05), Inches(2.88), width=Inches(5.35))
             text(s, "Changes in TWh. The Ember sample represents 93.5% of observed 2024 extract generation, not the entire world.", .65, 6.08, 12.0, .28, 11.5, MUTED)
         elif i == 5:
-            s.shapes.add_picture(str(images["us"]), Inches(.64), Inches(2.58), width=Inches(8.0))
-            for y, value, caption in [(2.45, m["us_coal_2020_2024_pct"], "2020–2024 consumption"), (4.0, m["us_coal_2025_yoy_pct"], "2025 rebound")]:
-                text(s, f"{value:+.1f}%", 9.05, y, 3.65, .8, 39, ORANGE, True)
-                text(s, caption, 9.1, y + .85, 3.5, .6, 18, MUTED)
-            text(s, "Delivered price: $46.45 → $45.56 per short ton, 2024–2025.", .75, 5.88, 11.7, .3, 16, MUTED)
+            us = pd.read_csv(OUT / "tables/us_electric_power_coal.csv").set_index("year")
+            gap = (us.at[2025, "consumption_million_short_tons"] / us.at[2020, "consumption_million_short_tons"] - 1) * 100
+            watch = pd.read_csv(OUT / "tables/2025_watch_evidence.csv")
+            ei = watch[watch.source.eq("EI") & watch.geography.eq("USA")].iloc[0]
+            s.shapes.add_picture(str(images["us"]), Inches(.64), Inches(2.3), width=Inches(6.8))
+            rect(s, 8.15, 2.3, 4.58, 3.05, WHITE, True)
+            for y, value, caption in [(2.52, m["us_coal_2020_2024_pct"], "2020–2024 decline"),
+                                      (3.42, m["us_coal_2025_yoy_pct"], "2025 rebound"),
+                                      (4.32, gap, "2025 vs 2020")]:
+                text(s, f"{value:+.1f}%", 8.4, y, 1.85, .5, 29, ORANGE, True)
+                text(s, caption, 10.28, y + .08, 2.2, .5, 16, MUTED)
+            text(s, f"Second measure: EI U.S. coal generation +{ei.change_twh:.1f} TWh in 2025.", .75, 5.28, 11.8, .3, 15, NAVY, True)
+            text(s, "Same upward direction; generation and consumption have different units.", .75, 5.64, 11.8, .24, 13, MUTED)
+            text(s, "RECONSIDER if consumption stays above 2024 for two further annual releases.", .75, 5.98, 11.8, .28, 16, BLUE, True)
+            text(s, "Dashboard: United States → US electric power coal, 2020–2025", .75, 6.31, 11.8, .15, 10, MUTED)
         elif i == 6:
-            for x, call, title, thesis, color, fill in [
-                (.6, "OVERWEIGHT", "Diversified low-carbon\ngeneration owners", "Clean output expanded across different market conditions.", BLUE, "EAF2FB"),
-                (6.85, "UNDERWEIGHT", "U.S. domestic thermal-\ncoal producers", "Historical consumption declined; the rebound limits conviction.", ORANGE, "FCF0E5"),
-            ]:
-                rect(s, x, 2.35, 5.88, 3.12, fill, True)
-                label(s, call, x + .25, 2.65, 5.3, color)
-                text(s, title, x + .25, 3.15, 5.3, 1.0, 25, NAVY, True)
-                text(s, thesis, x + .25, 4.45, 5.3, .72, 19, MUTED)
-            text(s, "Before selecting securities: valuation · project returns · financing", .72, 5.8, 12, .4, 19, MUTED)
+            examples = [
+                ("USA", "UNITED STATES", "Domestic thermal coal", "CONDITIONAL UNDERWEIGHT", "Power coal consumption −14.4% through 2024; +11.3% in 2025.", "Check exposure to domestic power demand; monitor rebound persistence.", ORANGE, "FCF0E5"),
+                ("CHN", "CHINA", "Low-carbon generation", "RESEARCH PRIORITY", "Clean +50.9%; coal +18.4% through 2024: both expanded.", "Diligence on generation owners: contracts, cash flow and financing.", BLUE, "EAF2FB"),
+                ("DEU", "GERMANY", "Utilities & generation", "RESEARCH PRIORITY", "Clean −7.9%; coal −21.4%; demand −4.6% through 2024.", "Check demand, electricity trade and revenue exposure before allocation.", BLUE, "EAF2FB"),
+            ]
+            for j, (iso, country, sector, action, evidence, diligence, color, fill) in enumerate(examples):
+                x = .6 + j * 4.13
+                rect(s, x, 2.24, 3.88, 3.72, fill, True)
+                label(s, country, x + .23, 2.48, 3.42, color)
+                text(s, sector, x + .23, 2.95, 3.42, .8, 23, NAVY, True)
+                text(s, action, x + .23, 3.88, 3.42, .35, 12, color, True)
+                text(s, evidence, x + .23, 4.34, 3.42, .65, 16, MUTED)
+                text(s, diligence, x + .23, 5.17, 3.42, .65, 14, NAVY)
+            text(s, "China / Germany: diligence priorities, not buy ratings. All exposures need valuation and financial checks.", .72, 6.13, 12, .27, 13, MUTED)
         elif i == 7:
             headers = [("MONITOR", .82, 2.6), ("RECONSIDER WHEN…", 3.55, 5.5), ("RESPONSE", 9.45, 3.0)]
             for value, x, w in headers: label(s, value, x, 1.92, w, BLUE)
@@ -268,36 +289,36 @@ def build_pitch(m, submission):
     words = sum(len(re.findall(r"\b[\w’'-]+\b", d["script"])) for d in story)
     manifest = {"main_slides": 8, "appendix_slides": appendix_count, "planned_seconds": elapsed,
                 "spoken_words": words, "team_names_configured": bool(submission.get("members")),
-                "design": "eight-slide pitch with five judge-facing evidence appendix slides"}
+                "design": f"eight-slide pitch with {appendix_count} judge-facing evidence appendix slides"}
     (OUT / "presentation_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    script = ["# Presentation script", "", f"Eight main slides plus five evidence appendix slides · {words} main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.", ""]
+    script = ["# Presentation script", "", f"Eight main slides plus {appendix_count} evidence appendix slides · {words} main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.", ""]
     for i, d in enumerate(story, 1):
         script += [f"## {i}. {d['title'].replace(chr(10), ' ')}", "", f"**Speaker {d['speaker']} · {d['time']} · {d['seconds']} seconds**", "",
                    d["script"], "", f"*Delivery cue: {d['cue']}*", ""]
-    script += ["# Evidence appendix narration — slides 9–13", "",
-               "Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 13-slide presentation, rehearse and measure the combined runtime.", ""]
+    script += [f"# Evidence appendix narration — slides 9–{len(p.slides)}", "",
+               f"Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full {len(p.slides)}-slide presentation, rehearse and measure the combined runtime.", ""]
     for j, slide in enumerate(list(p.slides)[8:], 9):
         title = slide.shapes[2].text
         narration = slide.notes_slide.notes_text_frame.text
         script += [f"## {j}. {title.replace(chr(10), ' ')}", "",
-                   f"**Appendix A{j - 8:02d} · additional narration · suggested speaker {['A', 'A', 'B', 'C', 'D'][j - 9]}**", "",
+                   f"**Appendix A{j - 8:02d} · additional narration · suggested speaker {['A', 'A', 'B', 'C', 'B', 'C', 'D'][(j - 9) % 7]}**", "",
                    narration, "", "*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*", ""]
     script += ["## Transition to the live dashboard", "",
                "We’ve shown the recommendation and the methods behind it. Now we’ll use the dashboard to trace those claims to the observations, compare country pathways, and examine the U.S. rebound that challenges our coal view. The detailed demonstration is in DASHBOARD_WALKTHROUGH.md.", ""]
     (OUT / "PRESENTATION_SCRIPT.md").write_text("\n".join(script))
     cues = ["# Speaker cue cards", "", "Use these after rehearsing the full script. Explain the argument; do not read the slide text aloud.", ""]
     for i, d in enumerate(story, 1):
-        cues += [f"## {i} · {d['time']} · Speaker {d['speaker']}", "", d["cue"], "", f"Close on: {d['takeaway'] or ('Overweight clean energy; underweight coal with a U.S. thermal focus.')} ", ""]
+        cues += [f"## {i} · {d['time']} · Speaker {d['speaker']}", "", d["cue"], "", f"Close on: {d['takeaway'] or ('Overweight clean energy; underweight coal with a U.S. thermal focus.')}", ""]
     (OUT / "SPEAKER_CUE_CARDS.md").write_text("\n".join(cues))
     guide = f"""# Presenter guide and rehearsal
 
-The deck has **eight main slides and five evidence appendix slides**. Use the appendix for judging questions or a separate evidence review. Detailed country
+The deck has **eight main slides and {appendix_count} evidence appendix slides**. Use the appendix for judging questions or a separate evidence review. Detailed country
 research remains in the dashboard and COUNTRY_REVIEW.md. Present the investment
 argument; use the repository for follow-up questions.
 
 ## Timing and handoffs
 
-The eight-slide main script has **{words} spoken words** and a **6:15** plan. Appendix narration for slides 9–13 is included separately in PRESENTATION_SCRIPT.md and adds time. The main pitch runs at about {words / 6.25:.0f}
+The eight-slide main script has **{words} spoken words** and a **6:15** plan. Appendix narration for slides 9–{len(p.slides)} is included separately in PRESENTATION_SCRIPT.md and adds time. The main pitch runs at about {words / 6.25:.0f}
 words per minute. Reserve 10–15 seconds for speaker handoffs. Rehearse aloud and
 measure the actual recording; keep it below the seven-minute cap.
 
@@ -385,5 +406,9 @@ is performed by the deck generator.
     (OUT / "REHEARSAL.md").write_text(guide)
     (OUT / "PITCH_SLIDE_MAP.md").write_text("# Slide evidence map\n\n" + "\n".join(
         f"- **Slide {i}: {d['title'].replace(chr(10), ' ')}** — {d['source']}" for i, d in enumerate(story, 1)) + "\n")
+    with (OUT / "PITCH_SLIDE_MAP.md").open("a") as evidence_map:
+        evidence_map.write("\n## Evidence appendix\n\n")
+        for j, slide in enumerate(list(p.slides)[8:], 9):
+            evidence_map.write(f"- **Slide {j} / A{j - 8:02d}: {slide.shapes[2].text}** — see slide source footer and PRESENTATION_SCRIPT.md.\n")
     print(f"Designed {len(p.slides)} slides; {words} spoken words; {elapsed}s main-pitch plan; {appendix_count} appendix slides")
     return manifest

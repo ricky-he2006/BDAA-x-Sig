@@ -30,6 +30,7 @@ analysis/output/research_d_cross_country.md
 analysis/package_submission.py
 analysis/pitch_appendix.py
 analysis/pitch_design.py
+analysis/pitch_methods.py
 analysis/research_a_global_electricity.py
 analysis/research_b_coal_market.py
 analysis/research_c_us_coal.py
@@ -453,6 +454,7 @@ submission/tables/matched_2020_2024_membership.csv
 submission/tables/matched_2020_2025.csv
 submission/tables/matched_2020_2025_membership.csv
 submission/tables/material_country_pathways.csv
+submission/tables/method_examples.csv
 submission/tables/us_electric_power_coal.csv
 submission/tables/us_matched_state_changes.csv
 submission/tables/us_matched_state_sector_changes.csv

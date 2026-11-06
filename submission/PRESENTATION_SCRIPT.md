@@ -1,14 +1,12 @@
 # Presentation script
 
-Eight main slides plus five evidence appendix slides · 782 main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
+Eight main slides plus 7 evidence appendix slides · 805 main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
 
 ## 1. Invest in clean growth. Stay selective on coal.
 
 **Speaker A · 0:00–0:35 · 35 seconds**
 
-Our recommendation is to overweight clean energy and underweight coal over the next three years. We would focus the clean position on diversified low-carbon electricity generation, and the coal underweight on U.S. domestic thermal producers.
-
-The reason is simple: clean electricity is expanding, while coal follows very different paths across markets. We’ll show how the generation mix changed, why geography matters, and how the U.S. rebound challenges our view. The recommendation comes with clear conditions for reconsideration.
+Our thesis is that clean electricity can grow without coal disappearing worldwide. Clean generation rose 25.4 percent through 2024, while fossil generation also increased. We therefore favor diversified low-carbon generation over three years. Our coal underweight focuses on U.S. domestic thermal producers: consumption declined through 2024, but the 2025 rebound lowers conviction. We will use the dashboard to test each claim and monitor whether that rebound persists. Security selection still requires valuation and financing evidence.
 
 *Delivery cue: State both calls and the U.S. thermal-coal scope before explaining the evidence.*
 
@@ -42,25 +40,29 @@ The right panel asks a separate question using EI coal generation. China and Ind
 
 *Delivery cue: Explain the left panel, then the right. Keep the two sources and fuel definitions separate.*
 
-## 5. The coal rebound is real. Persistence is the risk.
+## 5. U.S. coal recovered in 2025. Our underweight depends on persistence.
 
 **Speaker C · 3:05–4:00 · 55 seconds**
 
-EIA confirms the rebound in a different measure: coal consumed by the U.S. electric-power sector. Consumption fell 14.4 percent from 2020 to 2024, then rose 11.3 percent in 2025. The orange bar makes that recovery clear.
+Our U.S. coal position is conditional. EIA power-sector coal consumption fell 14.4 percent from 2020 to 2024, then rebounded 11.3 percent in 2025. It remained 4.7 percent below 2020. The historical decline supports caution on domestic thermal exposure, but the rebound lowers our conviction.
 
-Delivered prices were slightly lower, moving from 46 dollars and 45 cents to 45 dollars and 56 cents per short ton. Those are fuel costs, so they do not tell us producer margins. The supplied files also do not establish the cause of the rebound. Our judgment is that the historical decline still warrants caution, but the recovery lowers our conviction. If it persists, we would reconsider the underweight.
+A second measure supports the direction: EI reports higher U.S. coal-fired generation in 2025. Consumption is measured in short tons; generation is in terawatt-hours. We compare their direction, without treating them as equivalent or identifying the cause.
 
-*Delivery cue: Distinguish EIA consumption in short tons from the previous slide’s generation in TWh.*
+Our monitoring rule is to reconsider the underweight if consumption stays above its 2024 level for two further annual releases. In the dashboard, open United States and the national consumption history to inspect this risk.
 
-## 6. Allocate to clean growth. Focus the coal underweight.
+*Delivery cue: Show the decline, rebound and remaining gap; distinguish EIA short tons from EI TWh. Point to the persistence rule and dashboard route.*
+
+## 6. Match the country to the sector. Then test the investment economics.
 
 **Speaker C · 4:00–4:55 · 55 seconds**
 
-Those findings lead to two industry positions. First, overweight diversified low-carbon generation exposure. Clean output expanded across different market conditions, including markets where coal remained important. Diversification avoids making the whole position depend on one technology or developer.
+Our broad preference is diversified low-carbon generation. Country evidence then guides which sector exposures deserve closer attention. In the United States, the coal underweight focuses on domestic thermal producers serving power demand. Consumption declined through 2024, but the rebound makes that view conditional.
 
-Second, underweight coal with the clearest emphasis on U.S. domestic thermal producers. We would not automatically extend that conclusion to Asian exporters or metallurgical coal, whose exposures need separate evidence. The horizon is three years, relative to neutral energy-allocation weights. Utilities must manage fuel mix, while developers must finance profitable projects. Before selecting securities, we still need valuations, project returns and financing data. Generation growth alone cannot establish attractive investment returns.
+In China, clean generation rose 50.9 percent while coal rose 18.4 percent. Prioritize diligence on low-carbon generation owners without assuming coal demand immediately disappears. In Germany, clean generation, coal and demand all fell. For utilities and generation owners, investigate demand exposure, electricity trade and revenue contracts before making an allocation.
 
-*Delivery cue: Name the exposure, explain the logic, then distinguish industry direction from security selection.*
+China and Germany are research priorities, not country buy ratings. Across all three, check valuation, cash flow, financing and the company’s actual revenue exposure before selecting securities.
+
+*Delivery cue: Distinguish the U.S. underweight from China and Germany research priorities. Link each sector to its observed country pathway.*
 
 ## 7. What would change our view?
 
@@ -82,9 +84,9 @@ We would track generation additions, U.S. coal consumption and the economics of 
 
 *Delivery cue: Finish with the allocation and horizon. Pause after the final sentence.*
 
-# Evidence appendix narration — slides 9–13
+# Evidence appendix narration — slides 9–15
 
-Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 13-slide presentation, rehearse and measure the combined runtime.
+Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 15-slide presentation, rehearse and measure the combined runtime.
 
 ## 9. Three sources, three distinct measurement roles
 
@@ -118,9 +120,25 @@ The contribution is a decision framework that separates clean expansion from coa
 
 *Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
 
-## 13. Trace the recommendation back to the observations
+## 13. Measure growth, scale and the electricity mix
 
-**Appendix A05 · additional narration · suggested speaker D**
+**Appendix A05 · additional narration · suggested speaker B**
+
+We use descriptive statistics to distinguish growth, scale and mix. CAGR equals the endpoint-to-baseline ratio raised to one over four years, minus one. Clean CAGR is 5.82 percent and fossil CAGR is 2.48 percent over 2020–2024. These are historical summaries, not fitted forecasts. Clean share rises by 3.06 percentage points. Generation weighting answers how the observed electricity mix changed; an equal-country mean would answer a different question. Fixed panels control changes in membership, but they do not remove coverage bias or establish causal effects.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 14. Check the explanation against the energy balance
+
+**Appendix A06 · additional narration · suggested speaker C**
+
+The accounting identity is demand equals clean generation plus fossil generation plus net imports, subject to source rounding. In the fixed 91-country update, demand changes by 791.83 TWh, clean by 870.36, fossil by -95.96, and net imports by 17.43. The residual is 0.000 TWh. This checks arithmetic and shows why clean additions can exceed demand additions; it does not estimate what would have happened without clean generation. Baseline sensitivity tests one important choice. Triangulation compares different measures without forcing equivalence; EI and Ember also have a source relationship. With only six annual observations in the core files and no validated financial outcome series, we do not fit a predictive investment model. Our allocation remains a conditional industry judgment.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 15. Trace the recommendation back to the observations
+
+**Appendix A07 · additional narration · suggested speaker D**
 
 Use the dashboard during questions or as a separate demonstration so the timed main pitch stays focused. The year slider changes map/snapshot values; charts retain their historical series. Research's six-year matched sample differs from the main 196-country historical panel. State maps describe consumption locations, not mines. Downloads make observations inspectable; they do not settle causality or prove stock outperformance. The detailed walkthrough explains how each view supports, qualifies or challenges the recommendation.
 

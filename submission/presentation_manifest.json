@@ -1,8 +1,8 @@
 {
   "main_slides": 8,
-  "appendix_slides": 5,
+  "appendix_slides": 7,
   "planned_seconds": 375,
-  "spoken_words": 782,
+  "spoken_words": 805,
   "team_names_configured": false,
-  "design": "eight-slide pitch with five judge-facing evidence appendix slides"
+  "design": "eight-slide pitch with 7 judge-facing evidence appendix slides"
 }

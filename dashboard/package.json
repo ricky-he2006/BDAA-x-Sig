@@ -39,6 +39,6 @@
     "three": "$three"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "22.x"
   }
 }

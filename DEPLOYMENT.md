@@ -8,7 +8,13 @@ No API key, database, Python runtime or backend is needed to host it.
 
 Import this GitHub repository into Vercel. Keep the project root at the
 repository root. The committed vercel.json configures installation, build
-and output. Deploy the main branch; later pushes trigger rebuilds.
+and output (dist/). Deploy the main branch; later pushes trigger rebuilds.
+
+If the existing Vercel project uses dashboard as its Root Directory,
+dashboard/vercel.json supplies npm ci, npm run build and dist as the output.
+Clear any old install/build/output overrides in Vercel Project Settings so
+the selected directory’s configuration applies. Both root configurations
+are supported. Node is pinned to the 22.x major version.
 
 ## Netlify
 

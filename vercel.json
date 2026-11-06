@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "npm ci --prefix dashboard",
-  "buildCommand": "npm run build --prefix dashboard",
-  "outputDirectory": "dashboard/dist"
+  "installCommand": "if [ -f dashboard/package.json ]; then cd dashboard; fi; npm ci",
+  "buildCommand": "if [ -f dashboard/package.json ]; then cd dashboard; npm run build -- --outDir ../dist --emptyOutDir; else npm run build; fi",
+  "outputDirectory": "dist"
 }

@@ -62,7 +62,7 @@ Use the three dashboard reading-guide slides before the live demonstration. Expl
 
 **World outlines:** red = coal generation rose versus the prior year; blue = fell. This metric stays the same when the fill filter changes. A red outline is a prompt to investigate coal-demand persistence, not an automatic coal long. A blue outline is not an automatic short. High clean share and increasing coal can coexist.
 
-**U.S. filters:** **Generation · TWh** and **Share · %** compare U.S. clean electricity (blue, Ember) with coal electricity (red, EI). Below, **Priority coal-demand markets** ranks reported EIA power consumption from sectors 1+2+3 and shows annual change. Open **Explore the state coal-demand map** for orange consumption fill, red/blue annual consumption outlines, zoom and the expandable Map key. State clean-generation observations are unavailable in the supplied files. The optional national EIA consumption chart uses sector 98 separately.
+**U.S. filters:** **Generation · TWh** and **Share · %** compare U.S. clean electricity (blue, Ember) with coal electricity (red, EI). Below, **Priority coal-demand markets** ranks reported EIA power consumption from sectors 1+2+3 and shows annual change. Open **Explore the state coal-demand map** for one orange consumption scale, zoom and the expandable Map key. State clean-generation observations are unavailable in the supplied files. The optional national EIA consumption chart uses sector 98 separately.
 
 **Before an allocation:** verify the numerical value and multiple-year history, identify the relevant sector and business model, and examine valuation, contracts, realized prices, costs and financing. Colors show operational conditions, not expected investment returns. Missing values remain missing; scales change with the selected year and filter.
 
@@ -226,7 +226,7 @@ Click **1. Texas** to open its consumption and history. Explain the selected-yea
 
 ## 9. Optional state map and key — 30–45 seconds
 
-Open **Explore the state coal-demand map**. Use +/− and drag to inspect states. Expand **Map key**: darker orange means more coal consumed, while red outlines show rising annual power-sector consumption and blue outlines show falling consumption. Collapse it to clear the map. The map is fixed to electric-power sectors 1+2+3; industrial, quality and price controls have been removed.
+Open **Explore the state coal-demand map**. Use +/− and drag to inspect states. Expand **Map key**: darker orange means more coal consumed, and gray means no reported data. Annual changes remain in the tooltip, rankings and state history. Collapse it to clear the map. The map is fixed to electric-power sectors 1+2+3; industrial, quality and price controls have been removed.
 
 Say:
 

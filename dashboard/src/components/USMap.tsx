@@ -1,11 +1,11 @@
-import { useMemo, useRef, useState, type CSSProperties } from "react";
+import { useMemo, useRef, useState } from "react";
 import { geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import type { FeatureCollection, GeometryCollection } from "geojson";
 import statesTopo from "us-atlas/states-albers-10m.json";
 import { useApp } from "../state/AppState";
 import { FIPS_TO_STATE } from "../data/geo";
-import { ORANGE_SEQUENTIAL, divergingScale, sequentialScale } from "../viz/palette";
+import { ORANGE_SEQUENTIAL, sequentialScale } from "../viz/palette";
 import { stateValue, stateDelta, stateScaleStats } from "../viz/stateValue";
 import { fmt, fmtSigned } from "../viz/format";
 
@@ -48,12 +48,11 @@ export function USMap() {
   }, []);
 
   const scaleStats = useMemo(() => data ? stateScaleStats(data, year, usSector) : { domain: null, bound: 0 }, [data, year, usSector]);
-  const { domain, bound } = scaleStats;
+  const { domain } = scaleStats;
 
   if (!data) return null;
 
   const fill = domain ? sequentialScale(ORANGE_SEQUENTIAL, domain[0], domain[1]) : null;
-  const stroke = divergingScale(dark ? "dark" : "light", bound || 1);
   const nodata = dark ? "#212120" : "#e7e6e1";
 
   const hoverVal = hover?.code ? stateValue(data, hover.code, year, usSector) : null;
@@ -71,7 +70,7 @@ export function USMap() {
           {Object.values(FIPS_TO_STATE).map(code => ({ code, name: data.stateNames.get(code) ?? STATE_DATA.find(s => s.code === code)?.name ?? code }))
             .sort((a, b) => a.name.localeCompare(b.name)).map(s => <option key={s.code} value={s.code}>{s.name}</option>)}
         </select>
-        <div className="note">Coal consumption · {year} · {sectorLabel}. Fill: consumption (short tons). Outline: change vs {year - 1}; blue decreases, red increases.</div>
+        <div className="note">Coal used for electricity · {year} · Darker orange = more consumed.</div>
       </div>
       <div className="pillrow" role="group" aria-label="U.S. map zoom controls" style={{ padding: "0 14px 8px" }}>
         <button className="pill" aria-label="Zoom out U.S. map" disabled={zoom <= 0.75} onClick={() => changeZoom(1 / 1.25)}>−</button>
@@ -112,7 +111,6 @@ export function USMap() {
           {paths.map((p) => {
             if (!p.code) return null; // territories not in EIA data
             const v = stateValue(data, p.code, year, usSector);
-            const delta = stateDelta(data, p.code, year, usSector);
             return (
               <path
                 key={p.code}
@@ -120,10 +118,6 @@ export function USMap() {
                 data-state={p.code}
                 className={`state${v == null ? " nodata" : ""}${selectedState === p.code ? " selected" : ""}`}
                 fill={v == null ? nodata : fill?.color(v) ?? nodata}
-                stroke={delta == null ? undefined : stroke.color(delta)}
-                style={{ "--state-outline": delta == null ? undefined : stroke.color(delta), "--state-outline-width": delta == null ? undefined : "1.6px" } as CSSProperties}
-                strokeOpacity={delta == null ? undefined : 0.95}
-                strokeWidth={delta == null ? undefined : 1.6}
                 onMouseMove={(ev) =>
                   setHover({ x: ev.clientX, y: ev.clientY, code: p.code })
                 }
@@ -138,7 +132,7 @@ export function USMap() {
         <div className="tooltip" style={{ left: hover.x + 14, top: hover.y + 10 }}>
           <div className="t">{hoverName ?? hover.code}</div>
           <div>
-            Consumption {year}: {hoverVal == null ? "not reported" : `${fmt(hoverVal)} short tons (≈${fmt(hoverVal * 0.907185 / 1e6, 2)} Mt)`}
+            Consumption {year}: {hoverVal == null ? "not reported" : `${fmt(hoverVal)} short tons`}
           </div>
           <div>
             Δ vs {year - 1}: {hoverDelta == null ? "—" : `${fmtSigned(hoverDelta)} st`}

@@ -9,22 +9,24 @@ function ChangeYear() { const { setYear } = useApp(); return <button onClick={()
 describe("U.S. power-sector map key", () => {
   it("uses only power-sector consumption, matching the simplified map", async () => {
     render(<AppProvider><USLegend /></AppProvider>);
-    await screen.findByText("Coal consumption (short tons)");
-    expect(screen.getByText("45,000,000")).toBeInTheDocument();
-    expect(screen.queryByText("48,000,000")).not.toBeInTheDocument();
-    expect(screen.getByText(/EIA · Electric power/)).toBeInTheDocument();
+    await screen.findByText("Coal used for electricity");
+    expect(screen.getByText("45M")).toBeInTheDocument();
+    expect(screen.queryByText("48M")).not.toBeInTheDocument();
+    expect(screen.getByText(/EIA · 2024 · million short tons/)).toBeInTheDocument();
+    expect(screen.queryByText(/Outline|annual change unavailable|multi-sector/)).not.toBeInTheDocument();
+    expect(document.querySelectorAll(".us-map-key .legend-bar")).toHaveLength(1);
   });
   it("expands, updates its year and scale, and collapses", async () => {
     render(<AppProvider><ChangeYear /><USLegend /></AppProvider>);
     const summary = await screen.findByText("Map key");
     const details = summary.closest("details")!;
-    const content = screen.getByText("Coal consumption (short tons)");
+    const content = screen.getByText("Coal used for electricity");
     expect(content).not.toBeVisible();
     fireEvent.click(summary);
     expect(content).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Use 2025" }));
     expect(details).toHaveTextContent("2025");
-    expect(details).toHaveTextContent("42,000,000");
+    expect(details).toHaveTextContent("42M");
     fireEvent.click(summary);
     expect(content).not.toBeVisible();
   });

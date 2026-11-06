@@ -78,7 +78,7 @@ describe("USMap", () => {
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/^TX\|all/));
   });
 
-  it("uses power sectors only and draws changes only when both years exist", async () => {
+  it("uses one consumption color scale and keeps annual changes in the tooltip", async () => {
     const { container } = render(
       <AppProvider>
         <Probe>
@@ -91,13 +91,11 @@ describe("USMap", () => {
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/none\|all/));
     expect(screen.queryByRole("button", { name: "All sectors" })).not.toBeInTheDocument();
     expect(screen.getByLabelText("US coal consumption, 2024, Electric power (1+2+3)")).toBeInTheDocument();
-    // Outline (Δ vs previous year) is drawn only where BOTH years are reported:
-    // TX has 2023 and 2024; OH and AK do not. Exactly one state gets a stroke.
-    const strokes = container.querySelectorAll("path.state[stroke]");
-    expect(strokes).toHaveLength(1);
-    expect((strokes[0] as SVGPathElement).dataset.state).toBe("TX");
-    expect((strokes[0] as SVGPathElement).style.getPropertyValue("--state-outline")).toBe(strokes[0].getAttribute("stroke"));
-    expect((strokes[0] as SVGPathElement).style.getPropertyValue("--state-outline-width")).toBe("1.6px");
+    expect(container.querySelectorAll("path.state[stroke]")).toHaveLength(0);
+    const tx = container.querySelector("path[data-state='TX']")!;
+    fireEvent.mouseMove(tx, { clientX: 100, clientY: 100 });
+    expect(screen.getByText("Δ vs 2023:", { exact: false })).toHaveTextContent("+15,000,000 st");
+
   });
 
   it("renders the HUD with the current year and sector scope", async () => {
@@ -109,7 +107,7 @@ describe("USMap", () => {
       </AppProvider>,
     );
     await waitFor(() =>
-      expect(screen.getByText(/Coal consumption · 2024 · Electric power/)).toBeTruthy(),
+      expect(screen.getByText(/Coal used for electricity · 2024/)).toBeTruthy(),
     );
   });
   it("zooms within bounds and resets the national view without selecting a state", async () => {

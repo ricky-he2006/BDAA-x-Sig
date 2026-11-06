@@ -470,8 +470,8 @@ table.tbl tr.clickable {
 }
 
 .usmap path.state {
-  stroke: var(--state-outline, var(--panel-border));
-  stroke-width: var(--state-outline-width, 0.6);
+  stroke: var(--panel-border);
+  stroke-width: 0.6;
   cursor: pointer;
   transition: filter 0.12s;
 }
@@ -688,15 +688,12 @@ table.tbl tr.clickable {
 .us-key-preview { display: flex; gap: 5px; align-items: center; }
 .us-key-preview i { width: 14px; height: 14px; border-radius: 3px; box-sizing: border-box; }
 .us-key-fill { background: linear-gradient(90deg, #fdeee2, #832e07); }
-.us-key-outline { border: 2px solid #e34948; background: var(--panel); }
 .us-key-action { margin-left: auto; color: var(--ink-2); font-size: 11px; }
 .us-key-collapse, .us-map-key[open] .us-key-expand { display: none; }
 .us-map-key[open] .us-key-collapse { display: inline; }
 .us-key-content { padding: 0 14px 14px; max-height: min(50vh, 390px); overflow-y: auto; }
 .us-key-intro, .us-key-tip { font-size: 12px; line-height: 1.5; color: var(--ink-2); margin: 0 0 10px; }
 .us-key-tip { margin: 10px 0 0; padding-top: 8px; border-top: 1px solid var(--panel-border); }
-.us-key-heading { font-size: 12px; font-weight: 700; margin-top: 10px; }
-.us-key-line { flex-shrink: 0; width: 18px; border-top: 1px solid var(--panel-border); }
 .us-map-key .legend-nodata { margin-bottom: 8px; }
 @media (max-width: 600px) {
   .us-map-key { z-index: 7; }

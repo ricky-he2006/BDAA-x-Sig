@@ -10,6 +10,8 @@ import { prevYear } from "../state/AppState";
 export function layerValue(layer: LayerKey, cy: CountryYear | undefined): number | null {
   if (!cy) return null;
   switch (layer) {
+    case "clean_gen":
+      return cy.ember.clean;
     case "clean_share":
       return cy.ember.clean_share;
     case "renewable":

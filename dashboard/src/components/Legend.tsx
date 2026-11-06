@@ -1,34 +1,17 @@
 import { useMemo } from "react";
 import { useApp } from "../state/AppState";
 import { LAYERS } from "../data/types";
-import {
-  BLUE_SEQUENTIAL,
-  ORANGE_SEQUENTIAL,
-  divergingScale,
-  sequentialScale,
-} from "../viz/palette";
-import { layerDomain, coalChangeBound } from "../viz/layerValue";
+import { globeColors, MISSING_OUTLINE } from "../viz/globeColors";
 import { fmt } from "../viz/format";
 
 export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) {
   const { data, layer, dark } = useApp();
 
-  const isoList = useMemo(() => (data ? Array.from(data.countryByIso.keys()) : []), [data]);
-  const domain = useMemo(
-    () => (data ? layerDomain(data, layer, isoList, year) : null),
-    [data, layer, isoList, year],
-  );
-  const bound = useMemo(
-    () => (data ? coalChangeBound(data, isoList, year) : 0),
-    [data, isoList, year],
-  );
-
-  if (!data) return null;
-
+  const colors = useMemo(() => data ? globeColors(data, year, layer, dark) : null,
+    [data, year, layer, dark]);
+  if (!colors) return null;
+  const { domain, bound, fill, stroke } = colors;
   const meta = LAYERS[layer];
-  const ramp = meta.sequential === "orange" ? ORANGE_SEQUENTIAL : BLUE_SEQUENTIAL;
-  const fill = domain ? sequentialScale(ramp, domain[0], domain[1]) : null;
-  const stroke = divergingScale(dark ? "dark" : "light", bound || 1);
 
   return (
     <div>
@@ -50,7 +33,7 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
       {bound > 0 && (
         <>
           <div className="lsub" style={{ marginTop: 8 }}>
-            Coal generation change, outline color (Δ TWh vs {year - 1})
+            Coal generation change, outline color (Δ TWh vs {year - 1}) · Energy Institute
           </div>
           <div className="legend-bar" style={{ background: stroke.cssGradient }} />
           <div className="legend-scale">
@@ -60,6 +43,11 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
           </div>
         </>
       )}
+      {bound > 0 && <div className="lsub">Blue = decrease · red = increase · near-neutral = little or no change.</div>}
+      <div className="legend-nodata">
+        <span style={{ width: 18, borderTop: `3px solid ${MISSING_OUTLINE}`, display: "inline-block" }} />
+        <span>Gray outline = coal change unavailable; both years are required.</span>
+      </div>
       {yearLast && (
         <div className="lsub" style={{ marginTop: 8 }}>
           2025 coverage differs by source. Outlines require coal data in both years; no missing year is treated as zero.
@@ -68,9 +56,17 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
 
       <div className="legend-nodata">
         <span className="sw" />
-        <span>Not reported / no data — never rendered as 0</span>
+        <span>Fill: not reported / no data — never rendered as 0</span>
       </div>
       <div className="lsub">Scale follows this year/layer; use values for comparisons across years.</div>
+      <details style={{ marginTop: 8 }}>
+        <summary>How to explain the investment theme</summary>
+        <p className="lsub">{LAYERS[layer].sequential === "blue"
+          ? "Blue fill highlights clean-energy markets. Darker blue means more clean electricity or a higher clean share, depending on the selected measure. Explore growing clean output as evidence for a clean-energy investment case."
+          : "Red fill highlights coal markets. Darker red means more coal activity for the selected measure. Compare coal production and energy use to find countries with large coal industries, then check growth trends to support the investment case."}</p>
+        <p className="lsub">Fill shows industry activity, not an investment return forecast. A country can have large clean and coal industries at the same time.</p>
+        <p className="lsub">Outlines are separate: blue means coal generation fell and red means it rose versus the previous year. Gray means the change is unavailable.</p>
+      </details>
     </div>
   );
 }

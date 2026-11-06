@@ -115,6 +115,7 @@ export interface UsAggregatesFile {
 }
 
 export type LayerKey =
+  | "clean_gen"
   | "clean_share"
   | "renewable"
   | "demand"
@@ -133,14 +134,18 @@ export const YEARS: number[] = [2020, 2021, 2022, 2023, 2024, 2025];
 
 export const LAYERS: Record<
   LayerKey,
-  { label: string; unit: string; source: string; sequential: "blue" | "orange" }
+  { label: string; unit: string; source: string; sequential: "blue" | "orange" | "red" }
 > = {
+  clean_gen: { label: "Clean electricity generation", unit: "TWh", source: "Ember", sequential: "blue" },
   clean_share: { label: "Clean electricity share", unit: "%", source: "Ember", sequential: "blue" },
   renewable: { label: "Renewable generation", unit: "TWh", source: "Ember", sequential: "blue" },
   demand: { label: "Electricity demand", unit: "TWh", source: "Ember", sequential: "blue" },
-  coal_gen: { label: "Coal-fired generation", unit: "TWh", source: "Energy Institute", sequential: "orange" },
-  coal_share: { label: "Coal share of generation", unit: "%", source: "Energy Institute", sequential: "orange" },
-  coal_prod: { label: "Coal production", unit: "Mt", source: "Energy Institute", sequential: "orange" },
-  coal_tes: { label: "Coal energy supply (TES)", unit: "EJ", source: "Energy Institute", sequential: "orange" },
+  coal_gen: { label: "Coal-fired generation", unit: "TWh", source: "Energy Institute", sequential: "red" },
+  coal_share: { label: "Coal share of generation", unit: "%", source: "Energy Institute", sequential: "red" },
+  coal_prod: { label: "Coal production", unit: "Mt", source: "Energy Institute", sequential: "red" },
+  coal_tes: { label: "Coal energy supply (TES)", unit: "EJ", source: "Energy Institute", sequential: "red" },
   ci: { label: "Carbon intensity", unit: "gCO2e/kWh", source: "Ember", sequential: "blue" },
 };
+
+/** The coal and clean presentation metrics; raw source fields remain available for audit. */
+export const PRESENTATION_LAYERS: LayerKey[] = ["clean_share", "clean_gen", "coal_share", "coal_gen", "coal_prod", "coal_tes"];

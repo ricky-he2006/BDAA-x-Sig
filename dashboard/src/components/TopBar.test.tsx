@@ -35,9 +35,11 @@ describe("TopBar", () => {
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/world\|2024/));
     expect(screen.getByRole("tab", { name: "World" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "United States" })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: "Research" })).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "Coal & clean" })).toBeInTheDocument();
     expect(screen.getByLabelText("Year")).toBeInTheDocument();
     expect(screen.getByLabelText("Map layer")).toBeInTheDocument();
+    const options = Array.from(screen.getByLabelText("Map layer").querySelectorAll("option")).map(o => o.value);
+    expect(options).toEqual(["clean_share", "clean_gen", "coal_share", "coal_gen", "coal_prod", "coal_tes"]);
     expect(screen.getByLabelText("Search country")).toBeInTheDocument();
   });
 
@@ -52,7 +54,7 @@ describe("TopBar", () => {
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/^world\|/));
     fireEvent.click(screen.getByRole("tab", { name: "United States" }));
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/^us\|/));
-    fireEvent.click(screen.getByRole("tab", { name: "Research" }));
+    fireEvent.click(screen.getByRole("tab", { name: "Coal & clean" }));
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/^research\|/));
   });
 

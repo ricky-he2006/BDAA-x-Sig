@@ -14,7 +14,7 @@ describe("data and evidence view uses real shipped data", () => {
     render(<AppProvider><DataPanel /></AppProvider>);
     await waitFor(() => expect(screen.getByText("Data coverage & evidence")).toBeInTheDocument());
     expect(screen.getByText("+25.4%")).toBeInTheDocument();
-    expect(screen.getByText("+10.3%")).toBeInTheDocument();
+    expect(screen.queryByText("All-fossil generation, 2020–2024")).not.toBeInTheDocument();
     expect(screen.getByText("+11.2%")).toBeInTheDocument();
     expect(screen.getByText("−14.4%")).toBeInTheDocument();
     expect(screen.getByText("+11.3%")).toBeInTheDocument();

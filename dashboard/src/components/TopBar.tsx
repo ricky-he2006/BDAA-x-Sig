@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useApp } from "../state/AppState";
-import { LAYERS, YEARS, type LayerKey, type ViewKey } from "../data/types";
+import { LAYERS, PRESENTATION_LAYERS, YEARS, type LayerKey, type ViewKey } from "../data/types";
 
 const VIEW_LABELS: Record<ViewKey, string> = {
   world: "World",
   us: "United States",
-  research: "Research",
+  research: "Coal & clean",
   data: "Data & evidence",
 };
 
@@ -43,7 +43,7 @@ export function TopBar() {
     <header className="topbar">
       <div className="brand">
         <h1>Energy Atlas</h1>
-        <span className="sub">The energy transition paradox · 2020–{lastYear}</span>
+        <span className="sub">Coal & clean investment themes · 2020–{lastYear}</span>
       </div>
 
       <nav className="viewtabs" role="tablist" aria-label="View">
@@ -77,16 +77,17 @@ export function TopBar() {
         </label>}
 
         {view === "world" && <label className="yearctl">
-          <span className="k muted">Layer</span>
+          <span className="k muted">Explore</span>
           <select
             value={layer}
             onChange={(e) => setLayer(e.target.value as LayerKey)}
             aria-label="Map layer"
           >
-            {(Object.keys(LAYERS) as LayerKey[]).map((k) => (
-              <option key={k} value={k}>
-                {LAYERS[k].label}
-              </option>
+            {[{ label: "Blue · clean energy", keys: PRESENTATION_LAYERS.filter(k => k.startsWith("clean")) },
+              { label: "Red · coal", keys: PRESENTATION_LAYERS.filter(k => k.startsWith("coal")) }].map(group => (
+              <optgroup key={group.label} label={group.label}>{group.keys.map(k => (
+                <option key={k} value={k}>{LAYERS[k].label}</option>
+              ))}</optgroup>
             ))}
           </select>
         </label>}

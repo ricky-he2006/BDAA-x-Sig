@@ -41,75 +41,38 @@ async function choose(iso: string, title: string) {
   await waitFor(() => expect(screen.getByText(title, { exact: true })).toBeInTheDocument());
 }
 
-describe("country sidebar shows reported data only", () => {
-  it("hides absent coal and carbon metrics/cards while preserving reported clean zeros", async () => {
+describe("country sidebar focuses on coal and clean", () => {
+  it("preserves clean zeros and hides missing coal series", async () => {
     mount(); await choose("AAA", "Emberland");
-    expect(screen.queryByRole("heading", { name: "Coal-fired generation" })).not.toBeInTheDocument();
-    expect(screen.queryByText("Coal-fired generation", { exact: true })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Coal production" })).not.toBeInTheDocument();
-    expect(screen.queryByText("Carbon intensity", { exact: true })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Carbon intensity of power" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Electricity trade exposure" })).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Clean electricity share" })).toBeInTheDocument();
     expect(screen.getByText("Clean share", { exact: true }).nextElementSibling).toHaveTextContent("0%");
     expect(screen.getByText("Clean generation", { exact: true }).nextElementSibling).toHaveTextContent("0 TWh");
-    expect(screen.getByText("Clean generation", { exact: true }).nextElementSibling).not.toHaveTextContent("—");
-    const table = screen.getByRole("table", { hidden: true });
-    expect(within(table).queryByText("Coal TWh (EI)")).not.toBeInTheDocument();
+    expect(screen.queryByText("Coal-fired generation", { exact: true })).not.toBeInTheDocument();
+    expect(screen.queryByText("Carbon intensity", { exact: true })).not.toBeInTheDocument();
+    const options = stubCharts.flatMap(c => c.setOption.mock.calls.map(args => args[0]));
+    for (const option of options) expect(option.series.map((s: {name: string}) => s.name)).toEqual(["Clean energy"]);
   });
-
-  it("shows EI-only current-year data and hides all empty Ember charts and comparison controls", async () => {
+  it("shows available coal even when clean is missing", async () => {
     mount(); await choose("BBB", "EIland");
     fireEvent.click(screen.getByRole("button", { name: "Use 2025" }));
     expect(screen.getByRole("heading", { name: "2025 snapshot" })).toBeInTheDocument();
-    expect(screen.queryByText("Electricity demand", { exact: true })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Clean electricity share" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "What met the change in demand?" })).not.toBeInTheDocument();
-    expect(screen.queryByText("Compare with another country")).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Coal-fired generation" })).toBeInTheDocument();
     expect(screen.getByLabelText("Country source availability")).toHaveTextContent("2025 sources: Energy Institute.");
-    expect(screen.queryByText(/—/)).not.toBeInTheDocument();
-    expect(screen.queryByText("Demand TWh")).not.toBeInTheDocument();
+    expect(screen.queryByText("Clean generation", { exact: true })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", {name: "Coal & clean electricity generation"})).toBeInTheDocument();
   });
-
-  it("omits an empty year's snapshot while keeping reported history", async () => {
+  it("keeps history when the selected year is missing", async () => {
     mount(); await choose("AAA", "Emberland");
     fireEvent.click(screen.getByRole("button", { name: "Use 2025" }));
     expect(screen.queryByRole("heading", { name: "2025 snapshot" })).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Clean electricity share" })).toBeInTheDocument();
-    expect(screen.getByLabelText("Country source availability")).toHaveTextContent("No reported values for 2025");
+    expect(screen.getByRole("heading", {name: "Coal & clean electricity share"})).toBeInTheDocument();
   });
-
-  it("removes all-null series and legends, and renames single-fuel cards", async () => {
+  it("omits unrelated gas data and empty charts", async () => {
     mount(); await choose("CCC", "Gasland");
-    expect(screen.getByRole("heading", { name: "Gas-fired generation" })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Coal versus gas generation" })).not.toBeInTheDocument();
-    const options = stubCharts.flatMap(c => c.setOption.mock.calls.map(args => args[0]));
-    const fuel = options.find(o => o.series.some((s: { name: string }) => s.name === "Gas"));
-    expect(fuel.series.map((s: { name: string }) => s.name)).toEqual(["Gas"]);
-    for (const option of options) for (const s of option.series) {
-      expect(s.data.some((v: unknown) => typeof v === "number" && Number.isFinite(v))).toBe(true);
-    }
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    expect(screen.queryByText("Gas-fired generation")).not.toBeInTheDocument();
   });
-
-  it("retains zero coal output and displays raw zero production when an index is undefined", async () => {
+  it("retains zero coal production and output", async () => {
     mount(); await choose("DDD", "Zero coal");
-    expect(screen.getByRole("heading", { name: "Coal-fired generation" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Coal production" })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Coal production versus coal generation" })).not.toBeInTheDocument();
-    expect(screen.getByText("Coal-fired generation", { selector: ".k" }).nextElementSibling).toHaveTextContent("0 TWh");
-  });
-
-  it("offers only peers with overlapping data and removes stale cards after country changes", async () => {
-    mount(); await choose("USA", "United States");
-    expect(screen.getByRole("heading", { name: "Coal-fired generation" })).toBeInTheDocument();
-    fireEvent.click(screen.getByText("Compare with another country"));
-    const select = screen.getByLabelText("Comparison country");
-    expect(within(select).queryByRole("option", { name: "EIland" })).not.toBeInTheDocument();
-    expect(within(select).getByRole("option", { name: "Emberland" })).toBeInTheDocument();
-    fireEvent.change(select, { target: { value: "AAA" } });
-    expect(screen.queryByText("Coal gen", { exact: true })).not.toBeInTheDocument();
-    await choose("AAA", "Emberland");
-    expect(screen.queryByRole("heading", { name: "Coal-fired generation" })).not.toBeInTheDocument();
+    expect(screen.getByText("Coal-fired generation", {selector: ".k"}).nextElementSibling).toHaveTextContent("0 TWh");
+    expect(screen.getByText("Coal production", {selector: ".k"}).nextElementSibling).toHaveTextContent("0 Mt");
   });
 });

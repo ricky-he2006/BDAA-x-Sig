@@ -97,6 +97,8 @@ describe("USMap", () => {
     const strokes = container.querySelectorAll("path.state[stroke]");
     expect(strokes).toHaveLength(1);
     expect((strokes[0] as SVGPathElement).dataset.state).toBe("TX");
+    expect((strokes[0] as SVGPathElement).style.getPropertyValue("--state-outline")).toBe(strokes[0].getAttribute("stroke"));
+    expect((strokes[0] as SVGPathElement).style.getPropertyValue("--state-outline-width")).toBe("1.6px");
   });
 
   it("renders the HUD with the current year and sector scope", async () => {

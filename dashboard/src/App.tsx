@@ -3,6 +3,7 @@ import { AppProvider, useApp } from "./state/AppState";
 import { TopBar } from "./components/TopBar";
 import { Globe } from "./components/Globe";
 import { USMap } from "./components/USMap";
+import { USLegend } from "./components/USLegend";
 import { Legend } from "./components/Legend";
 import { CountryPanel } from "./components/CountryPanel";
 import { StatePanel } from "./components/StatePanel";
@@ -38,6 +39,7 @@ function Shell() {
         <div className={`stage${view === "research" || view === "data" ? " stage-full" : ""}`}>
           {view === "world" && <Globe />}
           {view === "us" && <USMap />}
+          {view === "us" && <USLegend />}
           {view === "research" && <div className="side full">
             <ResearchPanel />
           </div>}

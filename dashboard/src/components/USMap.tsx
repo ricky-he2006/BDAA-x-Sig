@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, type CSSProperties } from "react";
 import { geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import type { FeatureCollection, GeometryCollection } from "geojson";
@@ -147,6 +147,7 @@ export function USMap() {
                 className={`state${v == null ? " nodata" : ""}${selectedState === p.code ? " selected" : ""}`}
                 fill={v == null ? nodata : fill?.color(v) ?? nodata}
                 stroke={delta == null ? undefined : stroke.color(delta)}
+                style={{ "--state-outline": delta == null ? undefined : stroke.color(delta), "--state-outline-width": delta == null ? undefined : "1.6px" } as CSSProperties}
                 strokeOpacity={delta == null ? undefined : 0.95}
                 strokeWidth={delta == null ? undefined : 1.6}
                 onMouseMove={(ev) =>

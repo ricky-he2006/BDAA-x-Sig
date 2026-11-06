@@ -14,7 +14,7 @@ it does not estimate security valuations or investment returns.
 | Tab | What it shows |
 |---|---|
 | **World** | 3D globe (globe.gl / three.js). Country fill = the selected layer (2020–2025 year selector); country outline = year-over-year change in coal-fired generation (diverging blue↓/red↑). Click a country → right-hand explorer panel with snapshot stats, clean-share / mix / coal / carbon-intensity charts, and a country-vs-country comparison. Click the US → drill into the US view. |
-| **United States** | 50-state + DC map (pre-projected Albers, us-atlas); Puerto Rico is accessible through the state/territory selector. Fill = coal consumption (short tons); outline = prior-year change. Sector pills use nonoverlapping base sectors. The legend shares the map's scale calculation. National volume and delivered-price charts use EIA sector 98 separately. |
+| **United States** | 50-state + DC map (pre-projected Albers, us-atlas); Puerto Rico is accessible through the state/territory selector. Fill = coal consumption (short tons); outline = prior-year change. Sector pills use nonoverlapping base sectors. The legend shares the map's scale calculation. The collapsible **Map key** starts closed and explains live fill/outline scales, missing values and selected-sector coverage. National volume and delivered-price charts use EIA sector 98 separately. |
 | **Research** | Five industry tabs, tagged observations/interpretations/hypotheses. World coal uses EI's WLD row separately from labelled matched samples. Final scope and limitations: `submission/INVESTMENT_THESIS.md`. |
 | **Data & evidence** | Source/year coverage, live calculations backing the main pitch, downloadable plotted observations and claim tables, source portals and snapshot hashes. |
 

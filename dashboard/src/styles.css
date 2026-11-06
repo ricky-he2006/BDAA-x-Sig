@@ -470,8 +470,8 @@ table.tbl tr.clickable {
 }
 
 .usmap path.state {
-  stroke: var(--panel-border);
-  stroke-width: 0.6;
+  stroke: var(--state-outline, var(--panel-border));
+  stroke-width: var(--state-outline-width, 0.6);
   cursor: pointer;
   transition: filter 0.12s;
 }
@@ -664,3 +664,41 @@ table.tbl tr.clickable {
 .card-head > .chart-expand { flex-shrink: 0; margin-left: 8px; }
 
 .chart-takeaway { margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--text); }
+
+/* Compact disclosure keeps the U.S. map clear until a reader needs the key. */
+.us-map-key {
+  width: min(340px, calc(100% - 28px));
+  max-width: none;
+  box-sizing: border-box;
+  padding: 0;
+}
+.us-map-key summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  border-radius: var(--radius);
+}
+.us-map-key summary::-webkit-details-marker { display: none; }
+.us-map-key summary:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 3px; }
+.us-key-title { font-weight: 700; }
+.us-key-preview { display: flex; gap: 5px; align-items: center; }
+.us-key-preview i { width: 14px; height: 14px; border-radius: 3px; box-sizing: border-box; }
+.us-key-fill { background: linear-gradient(90deg, #fdeee2, #832e07); }
+.us-key-outline { border: 2px solid #e34948; background: var(--panel); }
+.us-key-action { margin-left: auto; color: var(--ink-2); font-size: 11px; }
+.us-key-collapse, .us-map-key[open] .us-key-expand { display: none; }
+.us-map-key[open] .us-key-collapse { display: inline; }
+.us-key-content { padding: 0 14px 14px; max-height: min(50vh, 390px); overflow-y: auto; }
+.us-key-intro, .us-key-tip { font-size: 12px; line-height: 1.5; color: var(--ink-2); margin: 0 0 10px; }
+.us-key-tip { margin: 10px 0 0; padding-top: 8px; border-top: 1px solid var(--panel-border); }
+.us-key-heading { font-size: 12px; font-weight: 700; margin-top: 10px; }
+.us-key-line { flex-shrink: 0; width: 18px; border-top: 1px solid var(--panel-border); }
+.us-map-key .legend-nodata { margin-bottom: 8px; }
+@media (max-width: 600px) {
+  .us-map-key { z-index: 7; }
+  .us-key-content { max-height: min(20vh, 160px); }
+}

@@ -10,13 +10,8 @@ import type {
 } from "geojson";
 import { useApp, prevYear } from "../state/AppState";
 import { LAYERS } from "../data/types";
-import {
-  BLUE_SEQUENTIAL,
-  ORANGE_SEQUENTIAL,
-  divergingScale,
-  sequentialScale,
-} from "../viz/palette";
-import { layerValue, layerDomain, coalChangeTWh, coalChangeBound } from "../viz/layerValue";
+import { globeColors } from "../viz/globeColors";
+import { layerValue, coalChangeTWh } from "../viz/layerValue";
 import { fmt, fmtSigned, NA } from "../viz/format";
 
 // Topology is static: resolve feature ids to dataset iso3 once data loads.
@@ -103,43 +98,17 @@ export function Globe() {
     return m;
   }, [data, layer, year, isoList]);
 
-  const domain = useMemo(
-    () => (data ? layerDomain(data, layer, isoList, year) : null),
-    [data, layer, isoList, year],
-  );
+  const scales = useMemo(() => data ? globeColors(data, year, layer, dark) : null,
+    [data, year, layer, dark]);
 
-  const bound = useMemo(
-    () => (data ? coalChangeBound(data, isoList, year) : 0),
-    [data, isoList, year],
-  );
-
-  const scales = useMemo(() => {
-    const ramp = LAYERS[layer].sequential === "orange" ? ORANGE_SEQUENTIAL : BLUE_SEQUENTIAL;
-    const fill = domain ? sequentialScale(ramp, domain[0], domain[1]) : null;
-    const stroke = divergingScale(dark ? "dark" : "light", bound || 1);
-    return { fill, stroke };
-  }, [layer, domain, bound, dark]);
-
-  const nodata = dark ? "#212120" : "#e7e6e1";
-  const strokeNone = "#85847f";
-
-  // Accessor callbacks must accept `object` (three-globe's ObjAccessor) under
-  // strictFunctionTypes; the datum is narrowed back to PolyDatum after the cast.
   const capColor = (obj: object) => {
     const d = obj as PolyDatum;
-    if (!d.iso3) return nodata;
-    const s = stats.get(d.iso3);
-    if (!s || s.v == null) return nodata;
-    if (!scales.fill) return nodata;
-    return scales.fill.color(s.v);
+    return scales?.fillColor(d.iso3 ? stats.get(d.iso3)?.v : null) ?? "#e7e6e1";
   };
 
   const strokeColor = (obj: object) => {
     const d = obj as PolyDatum;
-    if (!d.iso3) return strokeNone;
-    const s = stats.get(d.iso3);
-    if (!s || s.d == null) return strokeNone;
-    return scales.stroke.color(s.d);
+    return scales?.outlineColor(d.iso3 ? stats.get(d.iso3)?.d : null) ?? "#85847f";
   };
 
   const altitude = (obj: object) => {

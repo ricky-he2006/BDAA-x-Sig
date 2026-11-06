@@ -138,6 +138,9 @@ export function ramp(fromHex: string, toHex: string, steps: number): string[] {
  */
 export const ORANGE_SEQUENTIAL: string[] = ramp("#fdeee2", "#832e07", 13);
 
+/** Coal activity: light red to dark red, higher values are darker. */
+export const RED_SEQUENTIAL: string[] = ramp("#fde5e5", "#991b1b", 13);
+
 /* ---------------- Diverging (coal direction) ---------------- */
 
 const DIVERGING_MID: Record<Mode, string> = {

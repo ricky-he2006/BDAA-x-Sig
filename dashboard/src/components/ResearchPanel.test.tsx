@@ -20,58 +20,15 @@ beforeAll(() => {
 });
 afterAll(() => vi.unstubAllGlobals());
 
-describe("ResearchPanel", () => {
-  it("lists all five industry tabs and defaults to Coal", async () => {
-    render(
-      <AppProvider>
-        <ResearchPanel />
-      </AppProvider>,
-    );
-    await waitFor(() => expect(screen.getByText("Coal")).toBeInTheDocument());
-    for (const t of ["Coal", "Clean & renewables", "Utilities & retail", "Gas & grid", "Cross-country"]) {
-      expect(screen.getByRole("button", { name: t })).toBeInTheDocument();
-    }
-    // Default coal tab evidence renders with live numbers
-    expect(screen.getByText("Matched-sample coal-fired generation")).toBeInTheDocument();
-  });
-
-  it("excludes incomplete countries from comparable totals and concentration", async () => {
-    render(
-      <AppProvider>
-        <ResearchPanel />
-      </AppProvider>,
-    );
-    await waitFor(() => expect(screen.getByText("Matched-sample coal-fired generation")).toBeInTheDocument());
-    // 980 + 5500 = 6480; Germany's 80 must not enter the comparison.
-    expect(screen.getByText(/6,480 TWh in 2024/)).toBeInTheDocument();
-    expect(screen.queryByText(/6,560/)).not.toBeInTheDocument();
-    expect(screen.getByText(/Fixed 2-country sample/)).toBeInTheDocument();
-  });
-
-  it("switches tabs and shows cross-country pathway counts", async () => {
-    render(
-      <AppProvider>
-        <ResearchPanel />
-      </AppProvider>,
-    );
-    await waitFor(() => expect(screen.getByText("Coal")).toBeInTheDocument());
-    fireEvent.click(screen.getByRole("button", { name: "Cross-country" }));
-    await waitFor(() =>
-      expect(screen.getByText("Focus markets, 2024")).toBeInTheDocument(),
-    );
-    // Pathway mix card renders (all fixture countries are small, so the material
-    // set may be empty — the card must still exist and explain its thresholds).
-    expect(screen.getByText(/material countries/)).toBeInTheDocument();
-  });
-
-  it("links the scoped industry judgment and discloses the comparison window", async () => {
-    render(
-      <AppProvider>
-        <ResearchPanel />
-      </AppProvider>,
-    );
-    await waitFor(() => expect(screen.getByText("Coal")).toBeInTheDocument());
-    expect(screen.getByText(/deliverables\/INVESTMENT_THESIS.md/)).toBeInTheDocument();
-    expect(screen.getByText(/not full-world totals/)).toBeInTheDocument();
+describe("ResearchPanel investment themes", () => {
+  it("compares coal and clean using the same complete countries", async () => {
+    render(<AppProvider><ResearchPanel /></AppProvider>);
+    await waitFor(() => expect(screen.getByText(/Fixed 2-country sample/)).toBeInTheDocument());
+    expect(screen.getAllByText("6,480")).toHaveLength(2);
+    expect(screen.queryByText("6,560")).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Blue: explore clean-energy investment" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Red: explore coal investment" })).toBeInTheDocument();
+    expect(screen.getByText(/Coal energy use is total energy supply/)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Gas & grid" })).not.toBeInTheDocument();
   });
 });

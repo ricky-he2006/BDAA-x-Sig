@@ -27,6 +27,8 @@ import { FIPS_TO_STATE } from "./geo";
 import { buildBundle } from "./loader";
 import type { DataBundle } from "./loader";
 import { coalChangeTWh, layerDomain, layerValue } from "../viz/layerValue";
+import { globeColors, MISSING_OUTLINE } from "../viz/globeColors";
+import { DIVERGING } from "../viz/palette";
 import { stateValue } from "../viz/stateValue";
 import {
   BLUE_SEQUENTIAL, ORANGE_SEQUENTIAL, divergingScale, sequentialScale,
@@ -318,5 +320,56 @@ describe("globe geometry sanity", () => {
       for (const y of byYear.keys()) dataYears.add(y);
     }
     for (const y of dataYears) expect(YEARS).toContain(y);
+  });
+});
+
+
+describe("globe and legend share actual country color mappings", () => {
+  it("checks every country/year in both themes against reported source values", () => {
+    let checked = 0;
+    for (const dark of [false, true]) for (const year of YEARS) {
+      const colors = globeColors(bundle, year, "clean_share", dark);
+      const palette = DIVERGING[dark ? "dark" : "light"];
+      const deltas: number[] = [];
+      for (const [iso, rows] of bundle.countryByIso) {
+        const now = rows.get(year)?.ei.coal_gen;
+        const before = year > YEARS[0] ? rows.get(year - 1)?.ei.coal_gen : null;
+        const expected = now == null || before == null ? null : now - before;
+        expect(coalChangeTWh(bundle, iso, year), `${iso} ${year}`).toBe(expected);
+        const color = colors.outlineColor(expected);
+        if (expected == null) expect(color).toBe(MISSING_OUTLINE);
+        else {
+          deltas.push(expected);
+          const index = palette.indexOf(color);
+          expect(index).toBeGreaterThanOrEqual(0);
+          if (expected < 0) expect(index).toBeLessThanOrEqual(6);
+          if (expected > 0) expect(index).toBeGreaterThanOrEqual(6);
+          if (expected === 0) expect(index).toBe(6);
+          expect(color).toBe(colors.stroke.color(expected));
+        }
+        const share = rows.get(year)?.ember.clean_share;
+        expect(colors.fillColor(share)).toBe(share == null ? dark ? "#212120" : "#e7e6e1" : colors.fill!.color(share));
+        checked++;
+      }
+      expect(colors.bound).toBe(Math.max(0, ...deltas.map(Math.abs)));
+      if (colors.bound > 0) {
+        expect(colors.outlineColor(-colors.bound)).toBe(palette[0]);
+        expect(colors.outlineColor(colors.bound)).toBe(palette[12]);
+      }
+      expect(colors.outlineColor(0)).toBe(palette[6]);
+      expect(colors.outlineColor(null)).not.toBe(colors.outlineColor(0));
+    }
+    expect(checked).toBeGreaterThan(2000);
+  });
+  it("shows the observed U.S. increase and China decrease on opposite arms in 2025", () => {
+    for (const dark of [false, true]) {
+      const colors = globeColors(bundle, 2025, "clean_share", dark);
+      const us = coalChangeTWh(bundle, "USA", 2025)!;
+      const china = coalChangeTWh(bundle, "CHN", 2025)!;
+      expect(us).toBeGreaterThan(0);
+      expect(china).toBeLessThan(0);
+      expect(colors.stroke.steps.indexOf(colors.outlineColor(us))).toBeGreaterThan(6);
+      expect(colors.stroke.steps.indexOf(colors.outlineColor(china))).toBeLessThan(6);
+    }
   });
 });

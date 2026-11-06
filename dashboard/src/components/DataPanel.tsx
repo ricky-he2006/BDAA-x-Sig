@@ -31,7 +31,6 @@ export function DataPanel() {
   const power = (y: number) => data.usAggregates.find(r => r.location === "US" && r.year === y && r.sector === 98)?.consumption;
   const claims = [
     ["E01", "Clean generation, 2020–2024", percentChange(first?.clean, last?.clean), `Ember; ${first?.countries ?? 0} fixed countries`],
-    ["E02", "All-fossil generation, 2020–2024", percentChange(first?.fossil, last?.fossil), "Same fixed Ember panel; all fossil is not coal"],
     ["E03", "World coal generation, 2020–2024", percentChange(world20?.coal_generation_twh, world24?.coal_generation_twh), "EI Total World row only"],
     ["E04", "U.S. power coal consumption, 2020–2024", percentChange(power(2020), power(2024)), "EIA national sector 98; short tons"],
     ["E05", "U.S. power coal consumption, 2024–2025", percentChange(power(2024), power(2025)), "Same national EIA scope"],
@@ -49,13 +48,12 @@ export function DataPanel() {
       </div>
     </div>
     <div className="card">
-      <div className="card-head"><h3>Numbers supporting the presentation</h3></div>
+      <div className="card-head"><h3>Coal & clean: key numbers</h3></div>
       <div className="card-body">
         <table className="tbl"><thead><tr><th>Claim</th><th>Measure</th><th>Change</th><th>Scope</th></tr></thead>
           <tbody>{claims.map(([id, label, value, scope]) => <tr key={id}><td>{id}</td><td>{label}</td><td>{fmtSignedPct(value)}</td><td>{scope}</td></tr>)}</tbody>
         </table>
         <p className="note">The main historical panel holds countries fixed through 2024. The Research tab’s six-year trend charts use their labelled matched samples instead. Ratios use generation-weighted totals. A single annual decline does not prove a durable world peak.</p>
-        <p><strong>Industry judgment:</strong> overweight clean energy; underweight coal, focused on U.S. domestic thermal exposure, over November 2026–November 2029. Generation growth does not establish valuation, profitability or equity returns. See the downloadable thesis for risks and reversal conditions.</p>
       </div>
     </div>
     <CountryDirectory />

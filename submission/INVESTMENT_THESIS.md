@@ -86,15 +86,15 @@ These are analyst monitoring rules, not statistical thresholds, fitted probabili
 
 ## Evidence map and supporting materials
 
-All paths below are relative to this deliverables folder. Claim IDs refer to [claim_evidence.csv](../deliverables/tables/claim_evidence.csv).
+All paths below are relative to this deliverables folder. Claim IDs refer to [claim_evidence.csv](tables/claim_evidence.csv).
 
 | Question | Reproducible source |
 |---|---|
-| Historical clean versus fossil growth | [Fixed 2020–2024 panel](../deliverables/tables/matched_2020_2024.csv), E01–E02 |
-| World coal context | [EI world totals](../deliverables/tables/ei_world_totals.csv), E03 |
-| U.S. consumption decline and rebound | [EIA national power-sector series](../deliverables/tables/us_electric_power_coal.csv), E04–E05 |
-| Latest clean and coal signals | [2025 matched panel](../deliverables/tables/matched_2020_2025.csv), E06; [coal watch](../deliverables/tables/2025_watch_evidence.csv), E11 |
-| Geographic examples | [Country review table](../deliverables/tables/country_review_all.csv), E08–E09 |
-| Alternative baseline | [2021 baseline sensitivity](../deliverables/tables/baseline_sensitivity.csv), E10 |
+| Historical clean versus fossil growth | [Fixed 2020–2024 panel](tables/matched_2020_2024.csv), E01–E02 |
+| World coal context | [EI world totals](tables/ei_world_totals.csv), E03 |
+| U.S. consumption decline and rebound | [EIA national power-sector series](tables/us_electric_power_coal.csv), E04–E05 |
+| Latest clean and coal signals | [2025 matched panel](tables/matched_2020_2025.csv), E06; [coal watch](tables/2025_watch_evidence.csv), E11 |
+| Geographic examples | [Country review table](tables/country_review_all.csv), E08–E09 |
+| Alternative baseline | [2021 baseline sensitivity](tables/baseline_sensitivity.csv), E10 |
 
-[Executive summary](EXECUTIVE_SUMMARY.md) · [Source limitations](../deliverables/SOURCES.md) · [Project audit](../deliverables/PROJECT_AUDIT.md) · [Country research](../deliverables/COUNTRY_REVIEW.md) · [Slide evidence map](../deliverables/PITCH_SLIDE_MAP.md)
+[Executive summary](EXECUTIVE_SUMMARY.md) · [Source limitations](SOURCES.md) · [Project audit](PROJECT_AUDIT.md) · [Country research](COUNTRY_REVIEW.md) · [Slide evidence map](PITCH_SLIDE_MAP.md)

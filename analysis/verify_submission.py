@@ -9,7 +9,7 @@ import pandas as pd
 from pptx import Presentation
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "deliverables"
+OUT = ROOT / "submission"
 
 
 def verify():

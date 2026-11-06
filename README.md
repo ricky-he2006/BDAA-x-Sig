@@ -6,19 +6,19 @@ both coexist?*
 
 ## Completed submission package
 
-Start with [the editable slide deck](deliverables/energy_transition_pitch.pptx),
-[PDF deck](deliverables/energy_transition_pitch.pdf),
-[presentation script](deliverables/PRESENTATION_SCRIPT.md), and
-[investment thesis](deliverables/INVESTMENT_THESIS.md).
+Start with [the editable slide deck](submission/energy_transition_pitch.pptx),
+[PDF deck](submission/energy_transition_pitch.pdf),
+[presentation script](submission/PRESENTATION_SCRIPT.md), and
+[investment thesis](submission/INVESTMENT_THESIS.md).
 The recommendation is **overweight clean energy / underweight coal**, with the
 coal underweight focused on U.S. domestic thermal exposure and a three-year horizon.
 It is an industry judgment; valuations and security-return forecasts are not estimated.
 
-[Country review](deliverables/COUNTRY_REVIEW.md) covers all 213 geographies,
+[Country review](submission/COUNTRY_REVIEW.md) covers all 213 geographies,
 with six-panel figures for the 16 material coal/clean markets, including all
-eight existing focus markets. [Project audit](deliverables/PROJECT_AUDIT.md)
+eight existing focus markets. [Project audit](submission/PROJECT_AUDIT.md)
 documents corrections to historical research drafts. Numerical claims trace
-to [evidence tables](deliverables/tables/claim_evidence.csv).
+to [evidence tables](submission/tables/claim_evidence.csv).
 
 ```bash
 python3 -m venv .venv
@@ -32,14 +32,14 @@ python3 -m venv .venv
 Optional PDF export requires LibreOffice:
 
 ```bash
-libreoffice --headless --convert-to pdf --outdir deliverables deliverables/energy_transition_pitch.pptx
+libreoffice --headless --convert-to pdf --outdir submission submission/energy_transition_pitch.pptx
 ```
 
-Start with [the investment committee brief](deliverables/EXECUTIVE_SUMMARY.md)
-or [the full investment thesis](deliverables/INVESTMENT_THESIS.md).
+Start with [the investment committee brief](submission/EXECUTIVE_SUMMARY.md)
+or [the full investment thesis](submission/INVESTMENT_THESIS.md).
 
-The deck contains eight slides total, with a 6:15 speaking plan. Detailed
-country research remains separate. The presenter guide and cue cards support rehearsal. [Submission checklist](deliverables/SUBMISSION_CHECKLIST.md)
+The deck contains eight main slides with a 6:15 speaking plan, plus five evidence appendix slides. The full script and dashboard walkthrough are in submission/. Detailed
+country research remains separate. The presenter guide and cue cards support rehearsal. [Submission checklist](submission/SUBMISSION_CHECKLIST.md)
 lists the remaining team recording, YouTube upload, source-provenance and
 repository-publication steps. The group video remains to be recorded and published.
 
@@ -146,20 +146,20 @@ python3 dashboard/scripts/export_dashboard_data.py
 
 * **Data layer**: complete — 0 pipeline errors; see
   `reports/data_quality_report.md`.
-* **Research and pitch**: current submission materials are in `deliverables/`;
+* **Research and pitch**: current submission materials are in `submission/`;
   older `reports/research_findings.md` and `investment_research_framework.md`
   are marked historical and superseded for submission.
 * **Dashboard**: country diagnostics expanded; research trends use fixed
   membership and explicit sample labels. Independent EI years are retained;
   Data & evidence provides coverage, claim calculations and downloads.
   Typecheck/build pass; 92 Vitest and 62 pytest tests pass.
-  See `deliverables/DASHBOARD_AUDIT.md` for data and browser checks.
+  See `submission/DASHBOARD_AUDIT.md` for data and browser checks.
 
 The Data & evidence tab includes a searchable country directory with source/year
 filters and per-country CSV downloads. The final pitch remains eight main
 slides; slide 4 covers global 2025 divergence and slide 6 contains the allocation
 cards. Team names and submission URLs are configured in
-`deliverables/submission.json`. See `deliverables/SUBMISSION_STATUS.md` for
+`submission/submission.json`. See `submission/SUBMISSION_STATUS.md` for
 remaining group/account actions. Build a code/deliverable ZIP with:
 
 ```bash

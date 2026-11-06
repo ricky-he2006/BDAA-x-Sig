@@ -93,7 +93,7 @@ export function ResearchPanel() {
       <div className="note" style={{ marginTop: 8 }}>
         Research charts use fixed 2020–2025 membership within each source, not full-world totals.
         The submitted industry recommendation and evidence are in
-        <code> deliverables/INVESTMENT_THESIS.md</code>. Main pitch history uses a broader
+        <code> submission/INVESTMENT_THESIS.md</code>. Main pitch history uses a broader
         fixed 2020–2024 panel. Missing coverage and source revision status are separate limits.
       </div>
     </div>

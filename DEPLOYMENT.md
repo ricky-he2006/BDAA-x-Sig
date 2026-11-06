@@ -42,7 +42,7 @@ The three original CSVs are committed at the root and copied unchanged into
 data/raw, where MANIFEST.json records their hashes. The processed tables and
 browser exports are also committed, so deployment does not need to regenerate
 them. Source attribution and the unresolved original EI vintage are documented
-in deliverables/SOURCES.md and data/provenance/energy_institute.json. No license
+in submission/SOURCES.md and data/provenance/energy_institute.json. No license
 for the third-party datasets is asserted by this repository.
 
 To rebuild research and refresh dashboard exports:
@@ -61,10 +61,10 @@ npm run build --prefix dashboard
 ```
 
 Presentation PDF export additionally requires LibreOffice. Browser acceptance
-checks additionally require Playwright and Chromium; see deliverables/VERIFICATION.md.
+checks additionally require Playwright and Chromium; see submission/VERIFICATION.md.
 Rebuild the PDF after rebuilding the PowerPoint before running verify_pitch.
 The submission/ folder is a presentation handoff copy; refresh it from the
-canonical deliverables/ files when changing the presentation.
+canonical submission/ files when changing the presentation.
 
 GitHub Actions validates source/data tests, dashboard data, deck chart parity,
 and the dashboard build, then saves the static-site build as a workflow artifact.

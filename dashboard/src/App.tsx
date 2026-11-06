@@ -8,7 +8,6 @@ import { CountryPanel } from "./components/CountryPanel";
 import { StatePanel } from "./components/StatePanel";
 import { ResearchPanel } from "./components/ResearchPanel";
 import { DataPanel } from "./components/DataPanel";
-import { USLegend } from "./components/USLegend";
 import { YEARS } from "./data/types";
 
 function Shell() {
@@ -43,9 +42,9 @@ function Shell() {
             <ResearchPanel />
           </div>}
           {view === "data" && <div className="side full"><DataPanel /></div>}
-          {(view === "world" || view === "us") && (
+          {view === "world" && (
             <div className="stage-legend">
-              {view === "world" ? <Legend year={year} yearLast={year === lastYear} /> : <USLegend />}
+              <Legend year={year} yearLast={year === lastYear} />
             </div>
           )}
         </div>

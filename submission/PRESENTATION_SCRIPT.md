@@ -1,6 +1,6 @@
 # Presentation script
 
-Eight slides only · 782 spoken words · planned delivery 6:15. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
+Eight main slides plus five evidence appendix slides · 782 main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.
 
 ## 1. Invest in clean growth. Stay selective on coal.
 
@@ -81,3 +81,51 @@ Our conclusion is to overweight clean energy and underweight coal over three yea
 We would track generation additions, U.S. coal consumption and the economics of the investments available. The position should change when the evidence changes. For now, our recommendation is to participate in clean-power expansion and keep the coal underweight focused.
 
 *Delivery cue: Finish with the allocation and horizon. Pause after the final sentence.*
+
+# Evidence appendix narration — slides 9–13
+
+Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 13-slide presentation, rehearse and measure the combined runtime.
+
+## 9. Three sources, three distinct measurement roles
+
+**Appendix A01 · additional narration · suggested speaker A**
+
+Both core sources matter: Ember tests system growth; EIA tests the U.S. thermal-coal call. EI isolates coal within fossil generation. Normalize geography keys before country/year matching; exclude regional aggregates. The broader Ember/EI geography intersection is 107, not the fixed historical panel. EI's original local edition/download date remains unverified; its publisher catalogue is documented. EI lists Ember as a partner, so this is triangulation rather than three fully independent sources.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 10. Preserve missingness. Prevent false comparisons.
+
+**Appendix A02 · additional narration · suggested speaker A**
+
+Ember coverage shrinks from 213 geographies in 2020 to 196 in 2024 and 91 in 2025. A naive annual sum could confuse missing countries with decline. Fixed membership prevents that error but does not remove selection bias. Missing prices cannot be imputed as zero. The pipeline retains flags and source values; its checks cover grain uniqueness, missing versus zero, sector separation and accounting. Show the actual audit outputs if asked; do not claim every reported cross-source number matches.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 11. Faster clean growth survives a different baseline
+
+**Appendix A03 · additional narration · suggested speaker B**
+
+We use descriptive accounting because the question asks whether generation expanded together, not to estimate a causal policy effect. Aggregate share is summed clean TWh divided by summed total TWh, not an unweighted country mean. Clean additions divided by demand additions is only meaningful with positive demand growth; it does not prove causal substitution. No confidence interval is fitted to these supplied snapshot totals. Uncertainty comes from revisions, definitions, coverage and the forward-looking allocation judgment.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 12. Classify pathways, then make the coal call specific
+
+**Appendix A04 · additional narration · suggested speaker C**
+
+The contribution is a decision framework that separates clean expansion from coal displacement, uses both core sources, and treats the strongest counterexample as a monitoring rule. The sixteen markets are a selected material population, not worldwide frequencies. Threshold sensitivity has not been established; do not call the labels universal. Generation and consumption support an industry outlook, while valuation and project economics are still needed before choosing securities.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## 13. Trace the recommendation back to the observations
+
+**Appendix A05 · additional narration · suggested speaker D**
+
+Use the dashboard during questions or as a separate demonstration so the timed main pitch stays focused. The year slider changes map/snapshot values; charts retain their historical series. Research's six-year matched sample differs from the main 196-country historical panel. State maps describe consumption locations, not mines. Downloads make observations inspectable; they do not settle causality or prove stock outperformance. The detailed walkthrough explains how each view supports, qualifies or challenges the recommendation.
+
+*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
+
+## Transition to the live dashboard
+
+We’ve shown the recommendation and the methods behind it. Now we’ll use the dashboard to trace those claims to the observations, compare country pathways, and examine the U.S. rebound that challenges our coal view. The detailed demonstration is in DASHBOARD_WALKTHROUGH.md.

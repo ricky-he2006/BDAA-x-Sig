@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "deliverables/previews"
+OUT = ROOT / "submission/previews"
 OUT.mkdir(parents=True, exist_ok=True)
 url = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:5173"
 origin = f"{urlsplit(url).scheme}://{urlsplit(url).netloc}"

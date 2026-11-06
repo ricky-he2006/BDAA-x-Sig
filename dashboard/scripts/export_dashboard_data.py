@@ -205,12 +205,12 @@ def export_evidence(payloads):
     # Fail if promised evidence is missing; stale dashboards must not silently
     # ship links to absent thesis calculations.
     paths = {
-        "claim_evidence.csv": ROOT / "deliverables/tables/claim_evidence.csv",
-        "matched_2020_2024.csv": ROOT / "deliverables/tables/matched_2020_2024.csv",
-        "matched_2020_2025.csv": ROOT / "deliverables/tables/matched_2020_2025.csv",
-        "country_pathways.csv": ROOT / "deliverables/tables/material_country_pathways.csv",
-        "thesis.md": ROOT / "deliverables/INVESTMENT_THESIS.md",
-        "sources.md": ROOT / "deliverables/SOURCES.md",
+        "claim_evidence.csv": ROOT / "submission/tables/claim_evidence.csv",
+        "matched_2020_2024.csv": ROOT / "submission/tables/matched_2020_2024.csv",
+        "matched_2020_2025.csv": ROOT / "submission/tables/matched_2020_2025.csv",
+        "country_pathways.csv": ROOT / "submission/tables/material_country_pathways.csv",
+        "thesis.md": ROOT / "submission/INVESTMENT_THESIS.md",
+        "sources.md": ROOT / "submission/SOURCES.md",
         "data_dictionary.md": ROOT / "reports/data_dictionary.md",
         "data_quality.md": ROOT / "reports/data_quality_report.md",
         "ei_provenance.json": ROOT / "data/provenance/energy_institute.json",

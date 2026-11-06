@@ -39,6 +39,14 @@ const SECTOR_PILLS: { key: UsSectorKey; label: string }[] = [
 export function USMap() {
   const { data, year, usSector, setUsSector, selectedState, selectState, dark } = useApp();
   const [hover, setHover] = useState<{ x: number; y: number; code: string | null } | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [center, setCenter] = useState({ x: 487.5, y: 305 });
+  const drag = useRef<{ x: number; y: number; cx: number; cy: number; moved: boolean } | null>(null);
+  const suppressClick = useRef(false);
+  const changeZoom = (factor: number) => {
+    setZoom(z => Math.min(4, Math.max(0.75, z * factor)));
+    setHover(null);
+  };
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const paths = useMemo(() => {
@@ -91,10 +99,38 @@ export function USMap() {
         </div>
         <div className="note">Coal consumption · {year} · {sectorLabel}. Fill: consumption (short tons). Outline: change vs {year - 1}; blue decreases, red increases.</div>
       </div>
+      <div className="pillrow" role="group" aria-label="U.S. map zoom controls" style={{ padding: "0 14px 8px" }}>
+        <button className="pill" aria-label="Zoom out U.S. map" disabled={zoom <= 0.75} onClick={() => changeZoom(1 / 1.25)}>−</button>
+        <span aria-live="polite">{Math.round(zoom * 100)}%</span>
+        <button className="pill" aria-label="Zoom in U.S. map" disabled={zoom >= 4} onClick={() => changeZoom(1.25)}>+</button>
+        <button className="pill" onClick={() => { setZoom(1); setCenter({ x: 487.5, y: 305 }); setHover(null); }}>Reset map</button>
+        <span className="note">Drag to move the map.</span>
+      </div>
       <div className="usmap-wrap" style={{ flex: 1, padding: "0 14px 14px" }}>
         <svg
           ref={svgRef}
-          viewBox="0 0 975 610"
+          viewBox={`${center.x - 487.5 / zoom} ${center.y - 305 / zoom} ${975 / zoom} ${610 / zoom}`}
+          style={{ touchAction: "none", cursor: "grab" }}
+          onPointerDown={ev => {
+            if (ev.button !== 0) return;
+            drag.current = { x: ev.clientX, y: ev.clientY, cx: center.x, cy: center.y, moved: false };
+            suppressClick.current = false;
+          }}
+          onPointerMove={ev => {
+            const start = drag.current;
+            if (!start || !svgRef.current) return;
+            const dx = ev.clientX - start.x, dy = ev.clientY - start.y;
+            if (Math.hypot(dx, dy) < 4 && !start.moved) return;
+            start.moved = true;
+            suppressClick.current = true;
+            svgRef.current.setPointerCapture(ev.pointerId);
+            const bounds = svgRef.current.getBoundingClientRect();
+            const scale = Math.min(bounds.width / 975, bounds.height / 610) * zoom;
+            setCenter({ x: start.cx - dx / scale, y: start.cy - dy / scale });
+            setHover(null);
+          }}
+          onPointerUp={() => { drag.current = null; }}
+          onPointerCancel={() => { drag.current = null; }}
           className="usmap"
           role="img"
           aria-label={`US coal consumption, ${year}, ${sectorLabel}`}
@@ -117,7 +153,7 @@ export function USMap() {
                   setHover({ x: ev.clientX, y: ev.clientY, code: p.code })
                 }
                 onMouseLeave={() => setHover(null)}
-                onClick={() => selectState(selectedState === p.code ? null : p.code)}
+                onClick={() => { if (!suppressClick.current) selectState(selectedState === p.code ? null : p.code); }}
               />
             );
           })}

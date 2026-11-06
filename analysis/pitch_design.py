@@ -20,7 +20,7 @@ from pptx.enum.text import MSO_AUTO_SIZE
 from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "deliverables"
+OUT = ROOT / "submission"
 ASSETS = OUT / "pitch_figures"
 NAVY, PAPER, WHITE = "122A40", "F7F9FC", "FFFFFF"
 BLUE, ORANGE, MUTED, GRID = "2665B5", "B75C12", "53677A", "DDE5ED"
@@ -262,16 +262,28 @@ def build_pitch(m, submission):
         s.notes_slide.notes_text_frame.text = f"Slide {i} | Speaker {d['speaker']} | {d['time']}\n\n{d['script']}\n\nDelivery cue (not spoken): {d['cue']}\n\nEvidence: {d['source']}"
         elapsed = end
 
+    from analysis.pitch_appendix import add_appendix
+    appendix_count = add_appendix(p, m)
     p.save(OUT / "energy_transition_pitch.pptx")
     words = sum(len(re.findall(r"\b[\w’'-]+\b", d["script"])) for d in story)
-    manifest = {"main_slides": 8, "appendix_slides": 0, "planned_seconds": elapsed,
+    manifest = {"main_slides": 8, "appendix_slides": appendix_count, "planned_seconds": elapsed,
                 "spoken_words": words, "team_names_configured": bool(submission.get("members")),
-                "design": "decision-led eight-slide pitch; no country appendix"}
+                "design": "eight-slide pitch with five judge-facing evidence appendix slides"}
     (OUT / "presentation_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    script = ["# Presentation script", "", f"Eight slides only · {words} spoken words · planned delivery 6:15. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.", ""]
+    script = ["# Presentation script", "", f"Eight main slides plus five evidence appendix slides · {words} main-pitch spoken words · planned main-pitch delivery 6:15. Appendix narration adds time and is excluded from that plan. Speaker labels A–D are suggestions; adjust for your group. Delivery cues are not spoken.", ""]
     for i, d in enumerate(story, 1):
         script += [f"## {i}. {d['title'].replace(chr(10), ' ')}", "", f"**Speaker {d['speaker']} · {d['time']} · {d['seconds']} seconds**", "",
                    d["script"], "", f"*Delivery cue: {d['cue']}*", ""]
+    script += ["# Evidence appendix narration — slides 9–13", "",
+               "Use these sections during questions or a separate evidence review. They are additional narration, outside the main pitch’s 6:15 plan. For a full 13-slide presentation, rehearse and measure the combined runtime.", ""]
+    for j, slide in enumerate(list(p.slides)[8:], 9):
+        title = slide.shapes[2].text
+        narration = slide.notes_slide.notes_text_frame.text
+        script += [f"## {j}. {title.replace(chr(10), ' ')}", "",
+                   f"**Appendix A{j - 8:02d} · additional narration · suggested speaker {['A', 'A', 'B', 'C', 'D'][j - 9]}**", "",
+                   narration, "", "*Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*", ""]
+    script += ["## Transition to the live dashboard", "",
+               "We’ve shown the recommendation and the methods behind it. Now we’ll use the dashboard to trace those claims to the observations, compare country pathways, and examine the U.S. rebound that challenges our coal view. The detailed demonstration is in DASHBOARD_WALKTHROUGH.md.", ""]
     (OUT / "PRESENTATION_SCRIPT.md").write_text("\n".join(script))
     cues = ["# Speaker cue cards", "", "Use these after rehearsing the full script. Explain the argument; do not read the slide text aloud.", ""]
     for i, d in enumerate(story, 1):
@@ -279,13 +291,13 @@ def build_pitch(m, submission):
     (OUT / "SPEAKER_CUE_CARDS.md").write_text("\n".join(cues))
     guide = f"""# Presenter guide and rehearsal
 
-The deck has **eight slides total** and no country appendix. Detailed country
+The deck has **eight main slides and five evidence appendix slides**. Use the appendix for judging questions or a separate evidence review. Detailed country
 research remains in the dashboard and COUNTRY_REVIEW.md. Present the investment
 argument; use the repository for follow-up questions.
 
 ## Timing and handoffs
 
-The script has **{words} spoken words** and a **6:15** plan, about {words / 6.25:.0f}
+The eight-slide main script has **{words} spoken words** and a **6:15** plan. Appendix narration for slides 9–13 is included separately in PRESENTATION_SCRIPT.md and adds time. The main pitch runs at about {words / 6.25:.0f}
 words per minute. Reserve 10–15 seconds for speaker handoffs. Rehearse aloud and
 measure the actual recording; keep it below the seven-minute cap.
 
@@ -373,5 +385,5 @@ is performed by the deck generator.
     (OUT / "REHEARSAL.md").write_text(guide)
     (OUT / "PITCH_SLIDE_MAP.md").write_text("# Slide evidence map\n\n" + "\n".join(
         f"- **Slide {i}: {d['title'].replace(chr(10), ' ')}** — {d['source']}" for i, d in enumerate(story, 1)) + "\n")
-    print(f"Designed {len(p.slides)} slides; {words} spoken words; {elapsed}s plan; no appendix")
+    print(f"Designed {len(p.slides)} slides; {words} spoken words; {elapsed}s main-pitch plan; {appendix_count} appendix slides")
     return manifest

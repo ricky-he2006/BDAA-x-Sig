@@ -20,7 +20,7 @@ def test_provenance_does_not_invent_a_local_download_date():
 
 def test_latest_country_comparison_uses_coal_not_all_fossil(pipeline_outputs):
     cy = pipeline_outputs["processed"]["analysis_country_year.csv"].set_index(["iso3", "year"])
-    table = pd.read_csv(ROOT / "deliverables/tables/2025_watch_evidence.csv")
+    table = pd.read_csv(ROOT / "submission/tables/2025_watch_evidence.csv")
     for iso in ["CHN", "IND", "USA"]:
         row = table[(table.source == "EI") & (table.geography == iso)].iloc[0]
         expected = cy.loc[(iso, 2025), "ei_coal_generation_twh"] - cy.loc[(iso, 2024), "ei_coal_generation_twh"]

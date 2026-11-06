@@ -21,11 +21,11 @@ with sync_playwright() as p:
   expect(page.get_by_role('dialog')).to_have_count(0);expect(button).to_be_focused()
  # Dark theme and small-screen dialog remain usable.
  page.get_by_role('button',name='Toggle theme').click()
- page.get_by_role('button',name=names[0],exact=True).click();page.screenshot(path='deliverables/previews/chart_expanded_dark.png')
+ page.get_by_role('button',name=names[0],exact=True).click();page.screenshot(path='submission/previews/chart_expanded_dark.png')
  page.keyboard.press('Escape');page.set_viewport_size({'width':390,'height':844})
  page.get_by_role('button',name=names[0],exact=True).click()
  dialog=page.get_by_role('dialog');box=dialog.bounding_box();assert box['x']>=0 and box['width']<=390
- page.screenshot(path='deliverables/previews/chart_expanded_mobile.png');page.keyboard.press('Escape')
+ page.screenshot(path='submission/previews/chart_expanded_mobile.png');page.keyboard.press('Escape')
  page.set_viewport_size({'width':1600,'height':1000})
  for tab in ['United States', 'Research']:
   page.get_by_role('tab', name=tab, exact=True).click()
@@ -36,4 +36,4 @@ with sync_playwright() as p:
   expect(page.get_by_role('dialog')).to_have_count(0)
  assert not errors,errors
  result={'expanded_country_charts':len(names),'escape_and_close':True,'focus_restored':True,'dark_theme':True,'mobile':True,'us_and_research':True,'page_errors':errors}
- Path('deliverables/previews/chart_expansion_check.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result));b.close()
+ Path('submission/previews/chart_expansion_check.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result));b.close()

@@ -1,9 +1,9 @@
 # Research Findings — Coal vs. Clean Electricity, 2020–2025
 
 > **Historical research draft — superseded for submission.** Use
-> [the audited evidence and corrections](../deliverables/PROJECT_AUDIT.md),
-> [claim lineage](../deliverables/tables/claim_evidence.csv), and
-> [investment thesis](../deliverables/INVESTMENT_THESIS.md).
+> [the audited evidence and corrections](../submission/PROJECT_AUDIT.md),
+> [claim lineage](../submission/tables/claim_evidence.csv), and
+> [investment thesis](../submission/INVESTMENT_THESIS.md).
 > This draft contains inconsistent fuel/panel labels and unsupported causal
 > interpretations identified in that audit; do not quote it as the final analysis.
 

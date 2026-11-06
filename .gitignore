@@ -15,7 +15,7 @@ dashboard/dist/
 !.env.example
 *.pem
 *.key
-deliverables/*.zip
+submission/*.zip
 
 # Vercel production output when building from repository root
 /dist/

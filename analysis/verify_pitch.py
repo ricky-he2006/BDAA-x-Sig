@@ -12,7 +12,7 @@ import pandas as pd
 from pptx import Presentation
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "deliverables"
+OUT = ROOT / "submission"
 
 
 def verify():
@@ -41,7 +41,9 @@ def verify():
                        m["matched_2025_clean_vs_demand_additions_pct"], abs_tol=1e-8), "2025 addition ratio mismatch")
     deck = Presentation(OUT / "energy_transition_pitch.pptx")
     pdf = fitz.open(OUT / "energy_transition_pitch.pdf")
-    check(len(deck.slides) == len(pdf) == 8, "PPTX/PDF must each have eight slides")
+    manifest = json.loads((OUT / "presentation_manifest.json").read_text())
+    expected = manifest["main_slides"] + manifest["appendix_slides"]
+    check(len(deck.slides) == len(pdf) == expected, "PPTX/PDF slide counts must match the presentation manifest")
     images = {2: ["generation_index"], 4: ["clean_additions_2025", "coal_changes_2025"], 5: ["us_coal_consumption"]}
     image_count = 0
     for i, slide in enumerate(deck.slides, 1):

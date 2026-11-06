@@ -2,11 +2,11 @@
 
 > **Historical research framework.** The assignment requires an explicit
 > industry allocation judgment. The completed, scoped recommendation is in
-> [deliverables/INVESTMENT_THESIS.md](../deliverables/INVESTMENT_THESIS.md).
+> [submission/INVESTMENT_THESIS.md](../submission/INVESTMENT_THESIS.md).
 > Missing valuation data limits security selection and return claims; it does
 > not prevent a clearly labelled industry outlook judgment. Unsupported
 > grid/causality claims below are addressed in the
-> [project audit](../deliverables/PROJECT_AUDIT.md).
+> [project audit](../submission/PROJECT_AUDIT.md).
 
 **Status:** framework + evidence matrix only. **No rating
 (Outperform/Neutral/Underperform) is assigned anywhere in this document,

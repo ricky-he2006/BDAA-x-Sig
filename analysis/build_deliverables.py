@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "deliverables"
+OUT = ROOT / "submission"
 FIG = OUT / "figures"
 TABLES = OUT / "tables"
 COUNTRIES = OUT / "countries"

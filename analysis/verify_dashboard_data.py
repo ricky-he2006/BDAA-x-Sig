@@ -116,7 +116,7 @@ def audit() -> dict:
               "ember_records": sum(r["ember_available"] for r in country["records"]),
               "ei_only_records_restored": sum(not r["ember_available"] for r in country["records"]),
               "coverage": country["coverage"], "world_records": len(country["ei_world"])}
-    (ROOT / "deliverables/dashboard_data_audit.json").write_text(json.dumps(result, indent=2) + "\n")
+    (ROOT / "submission/dashboard_data_audit.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
 
 

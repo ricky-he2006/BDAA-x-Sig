@@ -1,7 +1,7 @@
 """Write the investment memo from the same audited metrics as the pitch."""
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parents[1] / "deliverables"
+OUT = Path(__file__).resolve().parents[1] / "submission"
 
 
 def build_memo(m):

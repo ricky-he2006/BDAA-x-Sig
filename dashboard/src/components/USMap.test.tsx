@@ -111,4 +111,23 @@ describe("USMap", () => {
       expect(screen.getByText(/Coal consumption · 2024 · All base sectors/)).toBeTruthy(),
     );
   });
+  it("zooms within bounds and resets the national view without selecting a state", async () => {
+    const { container } = render(<AppProvider><Probe><USMap /></Probe></AppProvider>);
+    const plus = await screen.findByRole("button", { name: "Zoom in U.S. map" });
+    const minus = screen.getByRole("button", { name: "Zoom out U.S. map" });
+    const svg = container.querySelector("svg")!;
+    expect(svg.getAttribute("viewBox")).toBe("0 0 975 610");
+    fireEvent.click(plus);
+    expect(Number(svg.getAttribute("viewBox")!.split(" ")[2])).toBeLessThan(975);
+    for (let i = 0; i < 20; i++) fireEvent.click(plus);
+    expect(plus).toBeDisabled();
+    expect(screen.getByText("400%")).toBeInTheDocument();
+    for (let i = 0; i < 20; i++) fireEvent.click(minus);
+    expect(minus).toBeDisabled();
+    expect(screen.getByText("75%")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Reset map" }));
+    expect(svg.getAttribute("viewBox")).toBe("0 0 975 610");
+    expect(screen.getByTestId("probe")).toHaveTextContent(/^none\|all/);
+  });
+
 });

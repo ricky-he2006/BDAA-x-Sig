@@ -27,4 +27,4 @@ The thresholds are analyst rules, not forecasts. Generation growth alone cannot 
 
 **Committee takeaway:** participate selectively in clean-generation growth; keep the coal call geographically precise and open to reversal.
 
-[Full thesis and evidence map](INVESTMENT_THESIS.md) · [Claim calculations](../deliverables/tables/claim_evidence.csv) · [Sources and provenance](../deliverables/SOURCES.md)
+[Full thesis and evidence map](INVESTMENT_THESIS.md) · [Claim calculations](tables/claim_evidence.csv) · [Sources and provenance](SOURCES.md)

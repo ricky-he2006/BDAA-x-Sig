@@ -3,6 +3,8 @@
 Start with **energy_transition_pitch.pptx** (editable deck) or its PDF export,
 then EXECUTIVE_SUMMARY.md, INVESTMENT_THESIS.md and PRESENTER_GUIDE.md.
 PRESENTATION_SCRIPT.md and SPEAKER_CUE_CARDS.md support delivery.
+[DASHBOARD_WALKTHROUGH.md](DASHBOARD_WALKTHROUGH.md) provides the full post-slide
+dashboard demonstration: exact clicks, chart sequence, speaking script and question references.
 The deck contains eight slides total, with a 6:15 speaking plan. Detailed country
 research stays in separate reference materials.
 

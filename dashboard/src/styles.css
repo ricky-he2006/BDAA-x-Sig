@@ -662,3 +662,5 @@ table.tbl tr.clickable {
 .chart-toggle > span { flex-shrink: 0; }
 .chart-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .card-head > .chart-expand { flex-shrink: 0; margin-left: 8px; }
+
+.chart-takeaway { margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--text); }

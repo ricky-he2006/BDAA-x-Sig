@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import * as echarts from "echarts";
+import { chartTakeaway } from "../viz/chartTakeaway";
 import { INK } from "../viz/palette";
 import { useApp } from "../state/AppState";
 
@@ -29,6 +30,8 @@ export function ChartCard({
   const headingId = useId();
   const boxRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<echarts.ECharts | null>(null);
+
+  const takeaway = useMemo(() => chartTakeaway(option), [option]);
 
   const textColor = dark ? INK.dark.secondary : INK.light.secondary;
 
@@ -105,6 +108,7 @@ export function ChartCard({
           instance lives for the card's whole lifetime - unmounting it would
           leave cards that start collapsed with a blank chart when expanded. */}
       <div className="card-body">
+        {takeaway && <p className="chart-takeaway">{takeaway}</p>}
         <div
           ref={boxRef}
           className="chart"
@@ -130,6 +134,7 @@ export function ChartCard({
             <button className="chart-expand" autoFocus aria-label={`Close ${title}`}
               onClick={() => dialogRef.current?.close()}>✕ Close</button>
           </div>
+          {takeaway && <p className="chart-takeaway">{takeaway}</p>}
           <div ref={largeBoxRef} className="chart-dialog-canvas" role="img" aria-label={`${title}, expanded`} />
           {note && <div className="note chart-dialog-note">{note}</div>}
         </div>

@@ -43,7 +43,7 @@ describe("ResearchPanel", () => {
     );
     await waitFor(() => expect(screen.getByText("Matched-sample coal-fired generation")).toBeInTheDocument());
     // 980 + 5500 = 6480; Germany's 80 must not enter the comparison.
-    expect(screen.getByText(/6,480/)).toBeInTheDocument();
+    expect(screen.getByText(/6,480 TWh in 2024/)).toBeInTheDocument();
     expect(screen.queryByText(/6,560/)).not.toBeInTheDocument();
     expect(screen.getByText(/Fixed 2-country sample/)).toBeInTheDocument();
   });

@@ -64,6 +64,7 @@ dashboard/public/textures/LICENSE.txt
 dashboard/public/textures/earth-blue-marble.jpg
 dashboard/public/textures/earth-topology.png
 dashboard/scripts/check_browser.py
+dashboard/scripts/check_chart_expansion.py
 dashboard/scripts/check_palette.mjs
 dashboard/scripts/export_dashboard_data.py
 dashboard/src/App.tsx
@@ -100,6 +101,8 @@ dashboard/src/styles.css
 dashboard/src/test/fixtures.ts
 dashboard/src/test/setup.ts
 dashboard/src/vendor.d.ts
+dashboard/src/viz/chartTakeaway.test.ts
+dashboard/src/viz/chartTakeaway.ts
 dashboard/src/viz/countryDiagnostics.test.ts
 dashboard/src/viz/countryDiagnostics.ts
 dashboard/src/viz/countryDirectory.test.ts
@@ -118,11 +121,13 @@ dashboard/src/viz/stateValue.ts
 dashboard/tsconfig.app.json
 dashboard/tsconfig.json
 dashboard/tsconfig.node.json
+dashboard/vercel.json
 dashboard/vite.config.ts
 data/provenance/energy_institute.json
 data/raw/MANIFEST.json
 deliverables/COUNTRY_REVIEW.md
 deliverables/DASHBOARD_AUDIT.md
+deliverables/DASHBOARD_WALKTHROUGH.md
 deliverables/EXECUTIVE_SUMMARY.md
 deliverables/GRAPH_AND_SUBMISSION_AUDIT.md
 deliverables/INVESTMENT_THESIS.md

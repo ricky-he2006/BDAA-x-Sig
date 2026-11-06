@@ -23,7 +23,7 @@ afterAll(() => vi.unstubAllGlobals());
 describe("ResearchPanel investment themes", () => {
   it("compares coal and clean using the same complete countries", async () => {
     render(<AppProvider><ResearchPanel /></AppProvider>);
-    await waitFor(() => expect(screen.getByText(/Fixed 2-country sample/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/Fixed 2-country sample,/)).toBeInTheDocument());
     expect(screen.getAllByText("6,480")).toHaveLength(2);
     expect(screen.queryByText("6,560")).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Blue: explore clean-energy investment" })).toBeInTheDocument();

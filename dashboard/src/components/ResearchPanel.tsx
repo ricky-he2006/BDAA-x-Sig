@@ -1,3 +1,4 @@
+import { GrowthSection } from "./GrowthSection";
 import { useApp } from "../state/AppState";
 import { YEARS } from "../data/types";
 import { fmt, fmtSignedPct } from "../viz/format";
@@ -25,7 +26,8 @@ export function ResearchPanel() {
     <div className="card"><div className="card-head"><h3 style={{ color: dark ? "#e66767" : "#c53030" }}>Red: explore coal investment</h3></div>
       <div className="card-body">Look for countries producing and using a lot of coal. Compare production, coal energy use and coal-fired electricity to identify large coal markets. Check whether activity is growing before making the investment case.</div></div>
     <p className="note">Colors show industry activity. They identify markets to investigate; they do not measure company returns or valuation. A country can be strong in both themes.</p>
-    <p className="note">Fixed {countries.length}-country sample, {first}–{last}; not full-world totals. Both series use the same countries with reported generation in every year. Explore 2025 separately on the map because coverage varies.</p>
+    <GrowthSection />
+    <p className="note">Fixed {countries.length}-country sample, {first}–{last}; not full-world totals. Both series use the same countries with reported generation in every year. The 2025 growth section above uses its own fixed six-year sample.</p>
     <div className="card"><div className="card-head"><h3>What changed from {first} to {last}?</h3></div>
       <div className="card-body"><table className="tbl"><thead><tr><th>Electricity source</th><th>{first} (TWh)</th><th>{last} (TWh)</th><th>Change</th></tr></thead>
         <tbody>{[["Clean energy", clean], ["Coal", coal]].map(([label, values]) => {

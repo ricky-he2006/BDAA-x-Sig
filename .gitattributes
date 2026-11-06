@@ -1,0 +1,6 @@
+# Preserve source and derived CSV bytes for SHA-256 reproducibility.
+*.csv -text
+*.png binary
+*.jpg binary
+*.pdf binary
+*.pptx binary

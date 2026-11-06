@@ -1,0 +1,14 @@
+{
+  "Statistical Review of World Energy Narrow format.csv": {
+    "bytes": 21056005,
+    "sha256": "0250f86d242cbf032a65ab119ef97db8c5eadc1adeacee35d706d9908146a25f"
+  },
+  "country_year_electricity_2020_2025.csv": {
+    "bytes": 188407,
+    "sha256": "97a3bdb61fee446ef0965a3e1eb7c5db4654e542049d189c8e83c48abca55621"
+  },
+  "eia_coal_consumption_quality_2020_2025.csv": {
+    "bytes": 403894,
+    "sha256": "21dfb0489997be1e012c8b036c96ef32fb67441d9771d3c76c2fc38745c5fcca"
+  }
+}

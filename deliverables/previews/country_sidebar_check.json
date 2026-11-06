@@ -1,0 +1,10 @@
+{
+  "cases": [
+    "AFG 2024 Ember-only",
+    "IDN 2025 EI-only snapshot with Ember history",
+    "AFG 2025 historical-only",
+    "USA 2024 both sources"
+  ],
+  "page_errors": [],
+  "passed": true
+}

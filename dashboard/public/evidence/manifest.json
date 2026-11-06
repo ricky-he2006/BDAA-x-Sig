@@ -1,0 +1,72 @@
+[
+  {
+    "file": "claim_evidence.csv",
+    "bytes": 1770,
+    "sha256": "23f8abd20fc4edddebf6aa09bd7bc26968cb7a7855888639d692737d12a18db7"
+  },
+  {
+    "file": "country_directory.csv",
+    "bytes": 13403,
+    "sha256": "16b6f15d0ca788bd71db2599972a1df0cd639950e727b34c8ad74168c6d6b511"
+  },
+  {
+    "file": "country_pathways.csv",
+    "bytes": 10943,
+    "sha256": "1dafb82f5c882f65bd4294467cdf53aba5b538b2714d07ca8f63d4e462eb0164"
+  },
+  {
+    "file": "country_year.csv",
+    "bytes": 237077,
+    "sha256": "63ebe517f557bb51d5fb8d09b2eb3b515474884d0b354c6e944ace90f1efba45"
+  },
+  {
+    "file": "data_dictionary.md",
+    "bytes": 7944,
+    "sha256": "715c1883d40c6c27f6e4add8754e3ff65839867bc728775e4547cd1c07809cd5"
+  },
+  {
+    "file": "data_quality.md",
+    "bytes": 10531,
+    "sha256": "25d3a080c930af8ae0354054d4fe3ea289a7fbb3697c2d32b5569cefee299881"
+  },
+  {
+    "file": "ei_provenance.json",
+    "bytes": 1201,
+    "sha256": "3ec37f7596dfb0f5177f47e326405f06b6c1ae453092634dde1b015768c4f512"
+  },
+  {
+    "file": "ei_world.csv",
+    "bytes": 514,
+    "sha256": "2646e81129beea963d8fc39fbd53cdf34304bd288837d68f39dae20fe379cace"
+  },
+  {
+    "file": "matched_2020_2024.csv",
+    "bytes": 823,
+    "sha256": "79bd500d20675e4eb5ba2070b04cd5da6d138fb70a36fb3e78cc3630a912c891"
+  },
+  {
+    "file": "matched_2020_2025.csv",
+    "bytes": 948,
+    "sha256": "6638250fd9a40a7783953b61264655e0da8a35faa2047d85b84724cf3d87b1ca"
+  },
+  {
+    "file": "sources.md",
+    "bytes": 4967,
+    "sha256": "1ca4cbbe292c48747fe8efddbd7492ac9f40b9237ecde865b48ae26793592322"
+  },
+  {
+    "file": "thesis.md",
+    "bytes": 12089,
+    "sha256": "122a7bcec4803d1959c0d73095a1a98feeeb8f54875705b88b6b287f546dda25"
+  },
+  {
+    "file": "us_aggregates.csv",
+    "bytes": 12473,
+    "sha256": "1692725599a66b0e62a6e49e20786161785e3a8a5cfb435e9505747a9e7d8e70"
+  },
+  {
+    "file": "us_state_year.csv",
+    "bytes": 81843,
+    "sha256": "31d16095f58bc6e6d3efb18a134f443458f128b7f1693865f963e9f47f8db0e0"
+  }
+]

@@ -1,0 +1,12 @@
+claim_id,claim,table,calculation,caveat
+E01,Clean generation rose 25.4% in 2020–2024,matched_2020_2024.csv,clean_2024 / clean_2020 - 1,Fixed 196-country panel; not complete world
+E02,All-fossil generation rose 10.3% in 2020–2024,matched_2020_2024.csv,fossil_2024 / fossil_2020 - 1,"All fossil, not coal"
+E03,World coal generation rose 11.2% in 2020–2024,ei_world_totals.csv,coal_2024 / coal_2020 - 1,EI Total World row; local snapshot
+E04,U.S. power coal consumption fell 14.4% in 2020–2024,us_electric_power_coal.csv,consumption_2024 / consumption_2020 - 1,National sector 98 only
+E05,U.S. power coal consumption rose 11.3% in 2025,us_electric_power_coal.csv,consumption_2025 / consumption_2024 - 1,Supplied snapshot; external vintage differs
+E06,2025 clean additions were 109.9% of demand additions,matched_2020_2025.csv,delta_clean / delta_demand,"91-country fixed panel; descriptive, not causal"
+E07,16 material markets have divergent pathways,material_country_pathways.csv,>20 TWh clean and coal at both endpoints; ±5% change,"Selected population, not all-country frequencies"
+E08,"China, India and Indonesia grew both clean and coal through 2024",country_review_all.csv,Positive clean and coal endpoint changes,Cross-source side-by-side comparison
+E09,"Germany's clean, coal and demand all fell through 2024",country_review_all.csv,Negative endpoint changes,Does not identify causes
+E10,2021–2024 clean grew 18.8% versus 4.2% for all fossil,baseline_sensitivity.csv,2024 / 2021 - 1 on fixed panel,Sensitivity to pandemic-affected 2020 base; not annual forecasts
+E11,2025 coal generation fell in China and India but rose in the U.S.,2025_watch_evidence.csv,2025 coal TWh minus 2024 coal TWh,EI country observations; separate from the Ember matched panel

@@ -1,0 +1,16 @@
+{
+  "publisher": "Energy Institute",
+  "dataset": "Statistical Review of World Energy, consolidated narrow format",
+  "local_file": "Statistical Review of World Energy Narrow format.csv",
+  "local_sha256": "0250f86d242cbf032a65ab119ef97db8c5eadc1adeacee35d706d9908146a25f",
+  "local_edition_verified": null,
+  "original_download_date": null,
+  "original_download_url": null,
+  "official_catalogue_url": "https://www.energyinst.org/statistical-review/resources-and-data-downloads",
+  "official_current_edition_verified": "2026, 75th edition",
+  "official_edition_evidence_url": "https://www.energyinst.org/__data/assets/pdf_file/0004/1822009/Statistical-Review-of-World-Energy-2026-Summary-version.pdf",
+  "official_catalogue_accessed_on": "2026-11-06",
+  "local_data_years": "1965–2025",
+  "verification_status": "Publisher and current catalogue edition verified; original local download edition/date not independently certified",
+  "verification_limit": "Direct catalogue requests returned HTTP 403; the web research tool could read the official catalogue and summary. No email was submitted and no original download receipt was found. A catalogue access date is not the original download date."
+}

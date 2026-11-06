@@ -1,0 +1,31 @@
+{
+  "countries_reviewed": 213,
+  "core_markets": [
+    "USA",
+    "CHN",
+    "IND",
+    "IDN",
+    "DEU",
+    "JPN",
+    "AUS",
+    "RUS"
+  ],
+  "material_countries": 16,
+  "panel24_n": 196,
+  "panel25_n": 91,
+  "panel25_share_observed_2024_generation_pct": 93.52184832851958,
+  "clean_growth_2020_2024_pct": 25.38754934758454,
+  "fossil_growth_2020_2024_pct": 10.279636866048204,
+  "clean_share_2020_pct": 37.76238947636042,
+  "clean_share_2024_pct": 40.82376047537058,
+  "ws_growth_2020_2024_pct": 90.66426330743838,
+  "ei_world_coal_growth_2020_2024_pct": 11.235144945117082,
+  "ei_world_coal_2025_yoy_pct": -0.5557882997399122,
+  "us_coal_2020_2024_pct": -14.356306518265194,
+  "us_coal_2025_yoy_pct": 11.289048222662124,
+  "matched_2025_clean_vs_demand_additions_pct": 109.91753280375822,
+  "matched_2025_fossil_yoy_pct": -0.574062497195782,
+  "ci_flags": 0,
+  "clean_growth_2021_2024_pct": 18.817732779593534,
+  "fossil_growth_2021_2024_pct": 4.192091648865359
+}

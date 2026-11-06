@@ -1,0 +1,31 @@
+{
+  "tested_url": "http://127.0.0.1:5173",
+  "countries_checked": [
+    "United States",
+    "China",
+    "India",
+    "Indonesia",
+    "Germany",
+    "Japan",
+    "Australia",
+    "Russia"
+  ],
+  "research_tabs_checked": 5,
+  "page_errors": [],
+  "http_errors": [],
+  "external_asset_requests": [],
+  "completed": true,
+  "rotation_and_reset": true,
+  "globe_layer_year_combinations": 48,
+  "indonesia_2025_sources_independent": true,
+  "theme_preserves_globe_instance": true,
+  "actual_globe_click_opens_us_drilldown": true,
+  "us_sector_year_combinations": 48,
+  "state_click_and_puerto_rico_access": true,
+  "country_directory_filter_explore_and_csv": true,
+  "evidence_downloads_verified": 15,
+  "actual_csv_download_verified": true,
+  "narrow_screen_has_globe": true,
+  "narrow_screen_country_data_accessible": true,
+  "webgl_fallback_preserves_country_data": true
+}

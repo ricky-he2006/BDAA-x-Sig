@@ -1,0 +1,44 @@
+{
+  "name": "energy-atlas",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "d3-geo": "3.1.1",
+    "echarts": "6.1.0",
+    "globe.gl": "2.35.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.187.0",
+    "topojson-client": "3.1.0",
+    "us-atlas": "3.0.1",
+    "world-atlas": "2.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.0.1",
+    "@types/node": "22.20.5",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@types/three": "0.187.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "jsdom": "25.0.0",
+    "typescript": "5.5.4",
+    "vite": "8.3.6",
+    "vitest": "5.1.0"
+  },
+  "overrides": {
+    "three": "$three"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

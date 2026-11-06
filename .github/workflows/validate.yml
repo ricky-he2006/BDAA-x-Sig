@@ -1,0 +1,32 @@
+name: Validate code and data
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python -m analysis.verify_dashboard_data
+      - run: python -m analysis.verify_pitch
+      - run: npm ci --prefix dashboard
+      - run: npm test --prefix dashboard
+      - run: npm run build --prefix dashboard
+      - uses: actions/upload-artifact@v4
+        with:
+          name: energy-atlas-static-site
+          path: dashboard/dist

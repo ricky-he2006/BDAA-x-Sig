@@ -1,0 +1,46 @@
+{
+  "errors": [],
+  "source_field_comparisons": 33569,
+  "country_records": 1152,
+  "ember_records": 1138,
+  "ei_only_records_restored": 14,
+  "coverage": [
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 213,
+      "year": 2020
+    },
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 213,
+      "year": 2021
+    },
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 213,
+      "year": 2022
+    },
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 212,
+      "year": 2023
+    },
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 196,
+      "year": 2024
+    },
+    {
+      "ei_coal_countries": 31,
+      "ei_countries": 82,
+      "ember_countries": 91,
+      "year": 2025
+    }
+  ],
+  "world_records": 6
+}

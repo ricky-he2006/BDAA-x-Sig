@@ -1,0 +1,7 @@
+year,location_code,location_name,location_type,sector_code,sector_name,coal_consumption_short_tons,coal_receipts_short_tons,delivered_price_usd_per_short_ton,heat_content_btu_lb,ash_content_pct,sulfur_content_pct,consumption_million_short_tons,consumption_million_metric_tonnes
+2020,US,U.S. Total,us_total,98,Electric Power,435826849.13,433114928.0,36.13,8117.67270579315,8.43,1.28,435.82684912999997,395.37546681301825
+2021,US,U.S. Total,us_total,98,Electric Power,501434545.19,454684316.0,,8143.124133587415,8.34,1.3,501.43454519,454.8937675052084
+2022,US,U.S. Total,us_total,98,Electric Power,472833705.42,462984791.0,44.5,8079.280602718358,8.41,1.28,472.83370542,428.9475221146793
+2023,US,U.S. Total,us_total,98,Electric Power,387205304.74,425198173.0,46.96,8046.778441548655,8.16,1.23,387.20530474000003,351.2667437071777
+2024,US,U.S. Total,us_total,98,Electric Power,373258210.78,363248003.0,46.45,8079.10863361164,8.44,1.27,373.25821077999996,338.6141528993195
+2025,US,U.S. Total,us_total,98,Electric Power,415395510.19,389930320.0,45.56,8082.333054362602,8.31,1.28,415.39551019,376.8404679088825

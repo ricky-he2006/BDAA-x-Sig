@@ -1,0 +1,9 @@
+[project]
+name = "energy-transition"
+version = "0.1.0"
+description = "Coal vs. Clean Energy - data cleaning, validation and research foundation"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

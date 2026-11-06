@@ -1,0 +1,227 @@
+{
+  "audit_cross_dataset": {
+    "errors": 0,
+    "info": 8,
+    "warnings": 1
+  },
+  "audit_eia": {
+    "errors": 0,
+    "info": 7,
+    "warnings": 19
+  },
+  "audit_ember": {
+    "errors": 0,
+    "info": 21,
+    "warnings": 216
+  },
+  "audit_energy_institute": {
+    "errors": 0,
+    "info": 18,
+    "warnings": 12
+  },
+  "audit_processed": {
+    "errors": 0,
+    "info": 4,
+    "warnings": 0
+  },
+  "cmp_clean_bridge": {
+    "median_rel_diff": 0.3499476521294201,
+    "n": 69
+  },
+  "cmp_generation": {
+    "median_rel_diff": 0.014735321154791425,
+    "n": 78
+  },
+  "cmp_renewable": {
+    "median_rel_diff": 0.5604515538200059,
+    "n": 68
+  },
+  "cmp_wind_solar": {
+    "median_rel_diff": 0.015947137360915655,
+    "n": 64
+  },
+  "geo_overlap": {
+    "common": 107,
+    "ei": 110,
+    "ember": 213,
+    "ember_only": [
+      "abw",
+      "afg",
+      "arm",
+      "asm",
+      "atg",
+      "bdi",
+      "ben",
+      "bfa",
+      "bhs",
+      "bih",
+      "blz",
+      "bmu",
+      "brb",
+      "btn",
+      "bwa",
+      "caf",
+      "civ",
+      "cmr",
+      "cok",
+      "com",
+      "cpv",
+      "cri",
+      "cym",
+      "dji",
+      "dma",
+      "dom",
+      "eri",
+      "eth",
+      "fji",
+      "flk",
+      "fro",
+      "geo",
+      "gha",
+      "gib",
+      "gin",
+      "glp",
+      "gmb",
+      "gnb",
+      "grd",
+      "grl",
+      "gtm",
+      "guf",
+      "gum",
+      "hnd",
+      "hti",
+      "jam",
+      "jor",
+      "ken",
+      "kgz",
+      "khm",
+      "kir",
+      "kna",
+      "kosovo",
+      "lao",
+      "lbn",
+      "lbr",
+      "lca",
+      "lso",
+      "mac",
+      "mda",
+      "mdv",
+      "mli",
+      "mlt",
+      "mne",
+      "mrt",
+      "msr",
+      "mtq",
+      "mus",
+      "mwi",
+      "nam",
+      "ner",
+      "nic",
+      "niu",
+      "npl",
+      "nru",
+      "pan",
+      "pri",
+      "prk",
+      "pry",
+      "pse",
+      "pyf",
+      "reu",
+      "rwa",
+      "sen",
+      "shn",
+      "slb",
+      "sle",
+      "slv",
+      "som",
+      "spm",
+      "stp",
+      "sur",
+      "swz",
+      "syc",
+      "tca",
+      "tgo",
+      "tjk",
+      "tls",
+      "ton",
+      "uga",
+      "ury",
+      "vct",
+      "vgb",
+      "vir",
+      "vut",
+      "wsm"
+    ]
+  },
+  "manifest": {
+    "Statistical Review of World Energy Narrow format.csv": {
+      "bytes": 21056005,
+      "sha256": "0250f86d242cbf032a65ab119ef97db8c5eadc1adeacee35d706d9908146a25f"
+    },
+    "country_year_electricity_2020_2025.csv": {
+      "bytes": 188407,
+      "sha256": "97a3bdb61fee446ef0965a3e1eb7c5db4654e542049d189c8e83c48abca55621"
+    },
+    "eia_coal_consumption_quality_2020_2025.csv": {
+      "bytes": 403894,
+      "sha256": "21dfb0489997be1e012c8b036c96ef32fb67441d9771d3c76c2fc38745c5fcca"
+    }
+  },
+  "pipeline_version": "1.0.0",
+  "row_counts": {
+    "analysis_country_year.csv": 1138,
+    "coverage_calendar.csv": 2287,
+    "eia": {
+      "cleaned": 1750,
+      "raw": 1750
+    },
+    "eia_us_aggregates.csv": 144,
+    "ember": {
+      "cleaned": 1138,
+      "raw": 1138
+    },
+    "energy_institute": {
+      "cleaned": 299320,
+      "raw": 299320
+    },
+    "us_state_year_sector.csv": 831
+  },
+  "us_coal_measures": [
+    {
+      "ei_us_coal_production_mt": 485.7378538,
+      "ei_us_coal_tes_ej": 9.202253342,
+      "eia_us_electric_power_consumption_mt": 395375466.81301826,
+      "year": 2020
+    },
+    {
+      "ei_us_coal_production_mt": 523.8368207,
+      "ei_us_coal_tes_ej": 10.57281971,
+      "eia_us_electric_power_consumption_mt": 454893767.50520843,
+      "year": 2021
+    },
+    {
+      "ei_us_coal_production_mt": 539.0085813,
+      "ei_us_coal_tes_ej": 9.910711288,
+      "eia_us_electric_power_consumption_mt": 428947522.11467934,
+      "year": 2022
+    },
+    {
+      "ei_us_coal_production_mt": 524.3110415,
+      "ei_us_coal_tes_ej": 8.189605713,
+      "eia_us_electric_power_consumption_mt": 351266743.7071777,
+      "year": 2023
+    },
+    {
+      "ei_us_coal_production_mt": 464.9687401,
+      "ei_us_coal_tes_ej": 7.930435181,
+      "eia_us_electric_power_consumption_mt": 338614152.89931947,
+      "year": 2024
+    },
+    {
+      "ei_us_coal_production_mt": 483.5634908,
+      "ei_us_coal_tes_ej": 8.73008728,
+      "eia_us_electric_power_consumption_mt": 376840467.9088825,
+      "year": 2025
+    }
+  ]
+}

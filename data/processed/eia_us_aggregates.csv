@@ -1,0 +1,145 @@
+year,location_code,location_name,location_type,sector_code,sector_name,coal_consumption_short_tons,coal_receipts_short_tons,delivered_price_usd_per_short_ton,heat_content_btu_lb,ash_content_pct,sulfur_content_pct
+2020,90,Pacific,pacific_region,94,Independent Power Producers,4367162.0,4250923.0,,7333.4935791590715,7.7,0.38
+2020,90,Pacific,pacific_region,98,Electric Power,5908623.0,5123930.0,,7243.553736345558,7.48,0.35
+2020,ENC,East North Central,census_region,94,Independent Power Producers,36079279.0,35712107.0,36.37,9074.465823295423,10.06,2.61
+2020,ENC,East North Central,census_region,98,Electric Power,89752455.13,90172095.0,38.7,8809.03150707619,8.15,1.98
+2020,ESC,East South Central,census_region,94,Independent Power Producers,2537345.0,2537345.0,,4416.295637348278,13.76,0.5
+2020,ESC,East South Central,census_region,98,Electric Power,43561494.0,42562418.0,,8740.544810325748,8.17,1.9
+2020,MAT,Middle Atlantic,census_region,94,Independent Power Producers,14158480.0,12013733.0,33.36,8193.640058685827,18.59,2.41
+2020,MAT,Middle Atlantic,census_region,98,Electric Power,14158480.0,12050910.0,33.49,8193.640058685827,18.55,2.41
+2020,MTN,Mountain,census_region,94,Independent Power Producers,6841849.0,6581722.0,,7255.634566092496,9.68,0.63
+2020,MTN,Mountain,census_region,98,Electric Power,65656047.0,67007002.0,,7985.858385493803,10.15,0.52
+2020,NEW,New England,census_region,94,Independent Power Producers,61700.0,58042.0,,9713.846962072948,6.07,0.59
+2020,NEW,New England,census_region,98,Electric Power,119245.0,146567.0,,10498.928926517297,7.21,2.02
+2020,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,3476488.0,3525648.0,,7159.675804543853,8.36,0.4
+2020,PCC,Pacific Contiguous,pacific_region,98,Electric Power,4461778.0,4050833.0,,7214.318988203497,7.87,0.38
+2020,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,890674.0,725275.0,,8012.040681991619,4.92,0.27
+2020,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,1446845.0,1073097.0,,7333.665548265789,6.08,0.24
+2020,SAT,South Atlantic,census_region,94,Independent Power Producers,6341315.0,5745846.0,46.42,10480.571224375151,11.14,2.92
+2020,SAT,South Atlantic,census_region,98,Electric Power,53093538.0,49551888.0,56.94,10232.720749317834,9.43,2.38
+2020,US,U.S. Total,us_total,94,Independent Power Producers,108839645.0,105627015.0,31.92,7884.439604806864,10.64,1.72
+2020,US,U.S. Total,us_total,98,Electric Power,435826849.13,433114928.0,36.13,8117.67270579315,8.43,1.28
+2020,WNC,West North Central,census_region,94,Independent Power Producers,0.0,0.0,0.0,,0.0,0.0
+2020,WNC,West North Central,census_region,98,Electric Power,91593716.0,93801036.0,25.67,7093.639667564141,5.84,0.38
+2020,WSC,West South Central,census_region,94,Independent Power Producers,38452515.0,38727297.0,24.88,6626.313620057976,8.6,0.49
+2020,WSC,West South Central,census_region,98,Electric Power,71983251.0,72699082.0,29.73,6794.800352364936,7.68,0.46
+2021,90,Pacific,pacific_region,94,Independent Power Producers,2958161.0,2370035.0,,7431.945892755126,7.5,0.35
+2021,90,Pacific,pacific_region,98,Electric Power,3514487.0,2723089.0,,7258.472056353343,7.4,0.32
+2021,ENC,East North Central,census_region,94,Independent Power Producers,43991883.0,40088486.0,,8809.07449935287,9.85,2.46
+2021,ENC,East North Central,census_region,98,Electric Power,108614232.19,94828658.0,,8647.509523591309,8.05,1.91
+2021,ESC,East South Central,census_region,94,Independent Power Producers,3049761.0,3049761.0,,4466.510616509934,13.89,0.52
+2021,ESC,East South Central,census_region,98,Electric Power,52082778.0,47625792.0,,8739.47000340876,8.08,1.83
+2021,MAT,Middle Atlantic,census_region,94,Independent Power Producers,16765996.0,14901684.0,,8539.297963189008,17.65,2.64
+2021,MAT,Middle Atlantic,census_region,98,Electric Power,16765996.0,14908596.0,,8539.297963189008,17.65,2.64
+2021,MTN,Mountain,census_region,94,Independent Power Producers,8304341.0,8033908.0,,7289.942402882737,9.83,0.61
+2021,MTN,Mountain,census_region,98,Electric Power,69581148.0,64823094.0,,8048.713093999233,9.83,0.51
+2021,NEW,New England,census_region,94,Independent Power Producers,350147.0,87272.0,,9485.901911118239,7.88,1.28
+2021,NEW,New England,census_region,98,Electric Power,350147.0,87272.0,,9485.901911118239,7.88,1.28
+2021,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,2119522.0,1772844.0,,7193.682695397338,8.15,0.38
+2021,PCC,Pacific Contiguous,pacific_region,98,Electric Power,2119522.0,1772844.0,,7193.682695397338,8.15,0.38
+2021,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,838639.0,597191.0,,8034.095719928203,5.88,0.26
+2021,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,1394965.0,950245.0,,7356.967362226079,6.09,0.22
+2021,SAT,South Atlantic,census_region,94,Independent Power Producers,8406252.0,7998630.0,,10546.521376801502,10.41,3.11
+2021,SAT,South Atlantic,census_region,98,Electric Power,61523095.0,53534884.0,,10202.02426376867,9.61,2.5
+2021,US,U.S. Total,us_total,94,Independent Power Producers,126586814.0,116479798.0,,7940.3725567668935,10.47,1.79
+2021,US,U.S. Total,us_total,98,Electric Power,501434545.19,454684316.0,,8143.124133587415,8.34,1.3
+2021,WNC,West North Central,census_region,94,Independent Power Producers,0.0,0.0,,,0.0,0.0
+2021,WNC,West North Central,census_region,98,Electric Power,101973495.0,95307016.0,,7153.7858626387615,5.85,0.37
+2021,WSC,West South Central,census_region,94,Independent Power Producers,42760273.0,39950022.0,,6696.0900851088045,8.09,0.5
+2021,WSC,West South Central,census_region,98,Electric Power,87029167.0,80845915.0,,6889.89926837999,7.24,0.44
+2022,90,Pacific,pacific_region,94,Independent Power Producers,2969489.0,2689950.0,,7419.8650630081875,8.2,0.37
+2022,90,Pacific,pacific_region,98,Electric Power,3544000.0,3058379.0,,7249.701631910725,8.14,0.34
+2022,ENC,East North Central,census_region,94,Independent Power Producers,41468252.0,39490295.0,37.64,8806.62393958214,9.81,2.45
+2022,ENC,East North Central,census_region,98,Electric Power,101588403.42,97654431.0,45.67,8688.524155543551,8.09,1.92
+2022,ESC,East South Central,census_region,94,Independent Power Producers,3209122.0,3209122.0,,4479.881214557258,14.83,0.57
+2022,ESC,East South Central,census_region,98,Electric Power,50510240.0,51514655.0,,8583.193077678778,8.3,1.8
+2022,MAT,Middle Atlantic,census_region,94,Independent Power Producers,14989566.0,13439439.0,59.83,7857.2254936687405,19.93,2.33
+2022,MAT,Middle Atlantic,census_region,98,Electric Power,14989566.0,13439439.0,59.83,7857.2254936687405,19.93,2.33
+2022,MTN,Mountain,census_region,94,Independent Power Producers,9072831.0,8736634.0,31.14,7264.104044598358,9.74,0.65
+2022,MTN,Mountain,census_region,98,Electric Power,68184888.0,65200402.0,39.5,7977.689852924699,9.8,0.52
+2022,NEW,New England,census_region,94,Independent Power Producers,211917.0,240955.0,,10413.288311371733,7.5,2.42
+2022,NEW,New England,census_region,98,Electric Power,211917.0,240955.0,,10413.288311371733,7.5,2.42
+2022,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,2404535.0,2433840.0,,7291.017209799725,8.28,0.39
+2022,PCC,Pacific Contiguous,pacific_region,98,Electric Power,2404535.0,2433840.0,,7291.017209799725,8.28,0.39
+2022,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,564954.0,256110.0,,7968.231552055208,7.58,0.21
+2022,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,1139465.0,624539.0,,7162.556287081379,7.62,0.17
+2022,SAT,South Atlantic,census_region,94,Independent Power Producers,7923796.0,7665932.0,68.84,10459.89193929231,11.14,3.17
+2022,SAT,South Atlantic,census_region,98,Electric Power,53138341.0,53396340.0,74.19,10162.256407840132,9.8,2.46
+2022,US,U.S. Total,us_total,94,Independent Power Producers,121244729.0,116864423.0,40.16,7841.877250894159,10.55,1.69
+2022,US,U.S. Total,us_total,98,Electric Power,472833705.42,462984791.0,44.5,8079.280602718358,8.41,1.28
+2022,WNC,West North Central,census_region,94,Independent Power Producers,0.0,,,,,
+2022,WNC,West North Central,census_region,98,Electric Power,98522361.0,96876203.0,30.17,7134.869260899782,5.86,0.35
+2022,WSC,West South Central,census_region,94,Independent Power Producers,41399756.0,41392096.0,31.93,6773.218229471827,7.88,0.48
+2022,WSC,West South Central,census_region,98,Electric Power,82143989.0,81603987.0,35.76,6955.892413083023,7.3,0.44
+2023,90,Pacific,pacific_region,94,Independent Power Producers,2970691.0,2598987.0,,7352.410180898051,7.71,0.38
+2023,90,Pacific,pacific_region,98,Electric Power,3516907.0,2941133.0,,7203.871864970379,7.62,0.35
+2023,ENC,East North Central,census_region,94,Independent Power Producers,27957231.0,32298422.0,48.28,8910.192334103054,10.49,2.38
+2023,ENC,East North Central,census_region,98,Electric Power,74272105.74,84917352.0,51.87,8763.244732412522,8.22,1.89
+2023,ESC,East South Central,census_region,94,Independent Power Producers,2925597.0,2925597.0,,4397.164074225901,14.63,0.48
+2023,ESC,East South Central,census_region,98,Electric Power,43991109.0,47373151.0,,8644.500064223743,8.34,1.81
+2023,MAT,Middle Atlantic,census_region,94,Independent Power Producers,9846962.0,8442677.0,35.91,6641.704855109237,27.07,2.13
+2023,MAT,Middle Atlantic,census_region,98,Electric Power,9846962.0,8442677.0,35.91,6641.704855109237,27.07,2.13
+2023,MTN,Mountain,census_region,94,Independent Power Producers,8821806.0,8588675.0,,7281.171978440119,9.4,0.65
+2023,MTN,Mountain,census_region,98,Electric Power,58751829.0,60535482.0,,7824.2074251788845,8.79,0.49
+2023,NEW,New England,census_region,94,Independent Power Producers,135794.0,120157.0,,9917.587361257098,7.58,2.2
+2023,NEW,New England,census_region,98,Electric Power,135794.0,120157.0,,9917.587361257098,7.58,2.2
+2023,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,2795016.0,2598987.0,,7401.163422652604,7.71,0.38
+2023,PCC,Pacific Contiguous,pacific_region,98,Electric Power,2795016.0,2598987.0,,7401.163422652604,7.71,0.38
+2023,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,175675.0,,,6576.657540493153,,
+2023,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,721891.0,342146.0,67.4,6440.028085205702,6.8,0.12
+2023,SAT,South Atlantic,census_region,94,Independent Power Producers,4903720.0,5005787.0,64.36,10264.277080400587,11.46,3.19
+2023,SAT,South Atlantic,census_region,98,Electric Power,46950069.0,52063348.0,84.02,10181.044032749074,9.66,2.38
+2023,US,U.S. Total,us_total,94,Independent Power Producers,94590724.0,98989756.0,40.63,7569.005270809372,10.78,1.52
+2023,US,U.S. Total,us_total,98,Electric Power,387205304.74,425198173.0,46.96,8046.778441548655,8.16,1.23
+2023,WNC,West North Central,census_region,94,Independent Power Producers,0.0,,,,,
+2023,WNC,West North Central,census_region,98,Electric Power,82331833.0,92828803.0,30.37,7106.752311951388,5.76,0.35
+2023,WSC,West South Central,census_region,94,Independent Power Producers,37028923.0,39009454.0,33.69,6773.992090452058,7.9,0.48
+2023,WSC,West South Central,census_region,98,Electric Power,67408696.0,75976070.0,35.6,6968.274188766719,6.88,0.41
+2024,90,Pacific,pacific_region,94,Independent Power Producers,2108662.0,1629372.0,,7243.166805855441,8.2,0.38
+2024,90,Pacific,pacific_region,98,Electric Power,2706291.0,2015313.0,,7045.44532540642,8.14,0.34
+2024,ENC,East North Central,census_region,94,Independent Power Producers,27459855.0,27796019.0,43.61,8836.331602767674,10.98,2.53
+2024,ENC,East North Central,census_region,98,Electric Power,75248381.78,73680543.0,48.88,8704.517282468327,8.46,1.92
+2024,ESC,East South Central,census_region,94,Independent Power Producers,2081901.0,1867414.0,,4674.722212468752,14.14,0.57
+2024,ESC,East South Central,census_region,98,Electric Power,45599080.0,43222063.0,,8653.227496389683,8.1,1.88
+2024,MAT,Middle Atlantic,census_region,94,Independent Power Producers,9466446.0,7682694.0,33.8,6781.902669361086,29.21,2.17
+2024,MAT,Middle Atlantic,census_region,98,Electric Power,9466446.0,7682694.0,33.8,6781.902669361086,29.21,2.17
+2024,MTN,Mountain,census_region,94,Independent Power Producers,7793540.0,7576207.0,35.28,7259.976786037127,9.84,0.66
+2024,MTN,Mountain,census_region,98,Electric Power,52210126.0,55176224.0,48.26,7855.9787176450345,9.23,0.52
+2024,NEW,New England,census_region,94,Independent Power Producers,140287.0,42036.0,,10601.121568184468,5.13,0.97
+2024,NEW,New England,census_region,98,Electric Power,140287.0,42036.0,,10601.121568184468,5.13,0.97
+2024,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,1953640.0,1629372.0,,7302.324178566433,8.2,0.38
+2024,PCC,Pacific Contiguous,pacific_region,98,Electric Power,1953640.0,1629372.0,,7302.324178566433,8.2,0.38
+2024,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,155022.0,,,6497.465766849514,,
+2024,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,752651.0,385941.0,64.84,6378.678106384055,7.8,0.14
+2024,SAT,South Atlantic,census_region,94,Independent Power Producers,3956712.0,3446980.0,59.28,10226.830807412742,11.09,3.13
+2024,SAT,South Atlantic,census_region,98,Electric Power,47893740.0,44291836.0,81.91,10160.493724496273,9.72,2.36
+2024,US,U.S. Total,us_total,94,Independent Power Producers,86923782.0,85655938.0,38.37,7590.802355085878,11.14,1.54
+2024,US,U.S. Total,us_total,98,Electric Power,373258210.78,363248003.0,46.45,8079.1086336116405,8.44,1.27
+2024,WNC,West North Central,census_region,94,Independent Power Producers,0.0,,,,,
+2024,WNC,West North Central,census_region,98,Electric Power,76954350.0,76572878.0,29.78,7074.422119888405,6.14,0.38
+2024,WSC,West South Central,census_region,94,Independent Power Producers,33916379.0,35615216.0,33.69,6764.834735519325,7.94,0.48
+2024,WSC,West South Central,census_region,98,Electric Power,63039509.0,60564416.0,34.35,6980.870925833812,7.05,0.44
+2025,90,Pacific,pacific_region,94,Independent Power Producers,2331090.0,1690255.0,,7234.826304179618,8.15,0.4
+2025,90,Pacific,pacific_region,98,Electric Power,2946610.0,2098949.0,,7053.097950655372,8.02,0.38
+2025,ENC,East North Central,census_region,94,Independent Power Producers,31337989.0,30346297.0,40.97,8889.85698723365,10.15,2.52
+2025,ENC,East North Central,census_region,98,Electric Power,87170315.19,79108756.0,46.43,8657.053809014158,8.01,1.85
+2025,ESC,East South Central,census_region,94,Independent Power Producers,2728570.0,2728570.0,,4457.654207513957,14.33,0.6
+2025,ESC,East South Central,census_region,98,Electric Power,48872922.0,47055358.0,,8628.807883235726,7.79,1.85
+2025,MAT,Middle Atlantic,census_region,94,Independent Power Producers,11881255.0,11644112.0,42.3,7031.945750529058,26.34,2.27
+2025,MAT,Middle Atlantic,census_region,98,Electric Power,11881255.0,11644112.0,42.3,7031.945750529058,26.34,2.27
+2025,MTN,Mountain,census_region,94,Independent Power Producers,7531619.0,7262424.0,,7332.676725902161,9.36,0.63
+2025,MTN,Mountain,census_region,98,Electric Power,52061708.0,49349530.0,,7910.234970814564,9.47,0.52
+2025,NEW,New England,census_region,94,Independent Power Producers,150401.0,47961.0,,10586.934116880233,4.94,0.95
+2025,NEW,New England,census_region,98,Electric Power,150401.0,47961.0,,10586.934116880233,4.94,0.95
+2025,PCC,Pacific Contiguous,pacific_region,94,Independent Power Producers,2159330.0,1690255.0,,7293.682730953854,8.15,0.4
+2025,PCC,Pacific Contiguous,pacific_region,98,Electric Power,2159330.0,1690255.0,,7293.682730953854,8.15,0.4
+2025,PCN,Pacific Noncontiguous,pacific_region,94,Independent Power Producers,171760.0,,,6494.800245695385,,
+2025,PCN,Pacific Noncontiguous,pacific_region,98,Electric Power,787280.0,408694.0,63.19,6393.123511348367,7.36,0.3
+2025,SAT,South Atlantic,census_region,94,Independent Power Producers,3339154.0,3451465.0,67.82,10542.222149133553,9.46,2.98
+2025,SAT,South Atlantic,census_region,98,Electric Power,52159304.0,50306004.0,81.09,10138.739632496445,9.57,2.32
+2025,US,U.S. Total,us_total,94,Independent Power Producers,96331346.0,91448958.0,38.28,7607.7843043742805,11.41,1.64
+2025,US,U.S. Total,us_total,98,Electric Power,415395510.19,389930320.0,45.56,8082.333054362602,8.31,1.28
+2025,WNC,West North Central,census_region,94,Independent Power Producers,0.0,,,,,
+2025,WNC,West North Central,census_region,98,Electric Power,89512002.0,84056823.0,30.72,7152.281132954978,5.79,0.37
+2025,WSC,West South Central,census_region,94,Independent Power Producers,37031268.0,34277874.0,32.06,6742.392767092626,8.37,0.52
+2025,WSC,West South Central,census_region,98,Electric Power,70640993.0,66262827.0,33.22,6996.219168608393,6.9,0.41

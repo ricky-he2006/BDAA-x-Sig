@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+dashboard/node_modules/
+dashboard/dist/
+*.tsbuildinfo
+.DS_Store
+
+# Local assistant settings, credentials and generated archives
+.claude/
+.codex/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+deliverables/*.zip

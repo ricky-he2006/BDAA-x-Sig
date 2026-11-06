@@ -6,6 +6,7 @@ import { useApp } from "../state/AppState";
 
 export interface ChartCardProps {
   title: string;
+  analysis?: string;
   tag?: string;
   option: echarts.EChartsOption;
   height?: number;
@@ -19,7 +20,7 @@ export interface ChartCardProps {
  * node and re-sized via ResizeObserver.
  */
 export function ChartCard({
-  title, tag, option, height = 210, defaultCollapsed = false, note,
+  title, tag, option, height = 210, defaultCollapsed = false, note, analysis,
 }: ChartCardProps) {
   const { dark } = useApp();
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
@@ -31,7 +32,7 @@ export function ChartCard({
   const boxRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<echarts.ECharts | null>(null);
 
-  const takeaway = useMemo(() => chartTakeaway(option), [option]);
+  const takeaway = useMemo(() => analysis ?? chartTakeaway(option), [analysis, option]);
 
   const textColor = dark ? INK.dark.secondary : INK.light.secondary;
 

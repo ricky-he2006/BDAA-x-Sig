@@ -103,6 +103,8 @@ dashboard/src/test/setup.ts
 dashboard/src/vendor.d.ts
 dashboard/src/viz/chartTakeaway.test.ts
 dashboard/src/viz/chartTakeaway.ts
+dashboard/src/viz/countryAnalysis.test.ts
+dashboard/src/viz/countryAnalysis.ts
 dashboard/src/viz/countryDiagnostics.test.ts
 dashboard/src/viz/countryDiagnostics.ts
 dashboard/src/viz/countryDirectory.test.ts

@@ -1,3 +1,4 @@
+import { countryAnalysis, peerAnalysis } from "../viz/countryAnalysis";
 import { Fragment, useMemo, useState } from "react";
 import type { EChartsOption } from "echarts";
 import { useApp } from "../state/AppState";
@@ -281,42 +282,42 @@ export function CountryPanel() {
       <div className="note" style={{ marginBottom: 12 }}>
         {COUNTRY_QUESTIONS[iso] ?? "Compare clean and fossil additions with demand and trade. A change in generation share alone does not establish a change in fuel volumes."}
       </div>
-      <CountryChart title="What met the change in demand?" tag="Ember · TWh" option={additionsOpt}
+      <CountryChart analysis={countryAnalysis(records, name, "additions")} title="What met the change in demand?" tag="Ember · TWh" option={additionsOpt}
         note="Annual changes: clean + fossil + net imports ≈ demand. This is an accounting identity, not causal attribution. Missing years stay blank." />
       <CountryChart
-        title="Clean electricity share"
+        analysis={countryAnalysis(records, name, "share")} title="Clean electricity share"
         tag="Ember"
         option={cleanShareOpt}
         note={`Share of total generation from renewables + nuclear, ${YEARS[0]}–${lastYear}.`}
       />
       <CountryChart
-        title="Demand vs clean & fossil generation"
+        analysis={countryAnalysis(records, name, "mix")} title="Demand vs clean & fossil generation"
         tag="Ember"
         option={mixOpt}
         note="Dashed line = demand; solid = clean and fossil generation (TWh)."
       />
       <CountryChart
-        title="Coal-fired generation"
+        analysis={countryAnalysis(records, name, "coal")} title="Coal-fired generation"
         tag="Energy Institute"
         option={coalOpt}
         note={isReportedNumber(cur?.coal_share) ? `Coal share of generation, ${year}: ${fmtPct(cur.coal_share)}.` : "Reported coal-fired generation, TWh."}
         defaultCollapsed
       />
       <CountryChart
-        title="Carbon intensity of power"
+        analysis={countryAnalysis(records, name, "intensity")} title="Carbon intensity of power"
         tag="Ember"
         option={ciOpt}
         note="gCO₂e per kWh of electricity. Lower is cleaner."
         defaultCollapsed
       />
-      {hasGas && <CountryChart title={hasCoal ? "Coal versus gas generation" : "Gas-fired generation"} tag="EI · TWh" option={fuelOpt} defaultCollapsed
+      {hasGas && <CountryChart analysis={countryAnalysis(records, name, "fuel")} title={hasCoal ? "Coal versus gas generation" : "Gas-fired generation"} tag="EI · TWh" option={fuelOpt} defaultCollapsed
         note="Reported EI fuel generation. Coal is only part of all-fossil generation; EI and Ember totals can have different definitions." />}
-      {canCompareEmissions && <CountryChart title="Emissions versus emissions intensity" tag="Ember · 2020 = 100" option={emissionsOpt} defaultCollapsed
+      {canCompareEmissions && <CountryChart analysis={countryAnalysis(records, name, "emissions")} title="Emissions versus emissions intensity" tag="Ember · 2020 = 100" option={emissionsOpt} defaultCollapsed
         note="Cleaner electricity per kWh can coexist with rising total power emissions. Each series uses its own reported 2020 base." />}
-      <CountryChart title={canCompareProduction ? "Coal production versus coal generation" : "Coal production"}
+      <CountryChart analysis={countryAnalysis(records, name, "production")} title={canCompareProduction ? "Coal production versus coal generation" : "Coal production"}
         tag={canCompareProduction ? "EI · 2020 = 100" : "EI · Mt"} option={canCompareProduction ? productionOpt : productionOnlyOpt} defaultCollapsed
         note={canCompareProduction ? "Different measures normalized to their own 2020 values. Divergence does not establish exports, stock changes or non-power demand." : "Reported coal production in million metric tonnes."} />
-      <CountryChart title="Electricity trade exposure" tag="Ember · % of demand" option={importsOpt} defaultCollapsed
+      <CountryChart analysis={countryAnalysis(records, name, "trade")} title="Electricity trade exposure" tag="Ember · % of demand" option={importsOpt} defaultCollapsed
         note="Net imports divided by demand; negative values mean net exports. No value is shown for zero or missing demand." />
 
       {tableRows.length > 0 && <details className="card" style={{ marginBottom: 12 }}>
@@ -347,7 +348,7 @@ export function CountryPanel() {
                 <option key={k} value={k}>{v}</option>
               ))}
             </select>
-            {peerIso && <CountryChart title={`Clean share: ${name} vs comparison`} tag="Ember" option={cmpOpt} height={200} />}
+            {peerIso && <CountryChart analysis={peerAnalysis(records, data.countryByIso.get(peerIso) ?? new Map(), name, data.countryNames.get(peerIso) ?? peerIso)} title={`Clean share: ${name} vs comparison`} tag="Ember" option={cmpOpt} height={200} />}
             {peerIso && comparisonRows.length > 0 && (
               <div className="kv" style={{ marginTop: 8 }}>
                 {comparisonRows.map(r => <Fragment key={r.label}><span className="k">{r.label}</span>

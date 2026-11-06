@@ -18,7 +18,7 @@ origin = f"{urlsplit(url).scheme}://{urlsplit(url).netloc}"
 names = ["United States", "China", "India", "Indonesia", "Germany", "Japan", "Australia", "Russia"]
 sectors = [("All sectors", {1, 2, 3, 8, 9, 10}), ("Electric power", {1, 2, 3}),
            ("Electric utility", {1}), ("IPP non-CHP", {2}), ("IPP CHP", {3}),
-           ("Commercial & inst.", {8}), ("Coke plants", {9}), ("Other industrial", {10})]
+           ("Commercial & inst.", {8}), ("Coke plants (steelmaking)", {9}), ("Other industrial", {10})]
 result = {"tested_url": url, "countries_checked": [], "research_tabs_checked": 0, "page_errors": [],
           "http_errors": [], "external_asset_requests": [], "completed": False}
 

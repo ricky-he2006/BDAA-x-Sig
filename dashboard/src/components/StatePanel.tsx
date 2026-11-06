@@ -87,7 +87,7 @@ function StateDetail({ state }: { state: string }) {
     series: [
       { name: "Electric power (1+2+3)", type: "line", data: powerSeries, symbolSize: 4, lineStyle: { width: 2, color: entityColor("coal", dark ? "dark" : "light") }, itemStyle: { color: entityColor("coal", dark ? "dark" : "light") } },
       { name: "Commercial & inst. (8)", type: "line", data: commercialSeries, symbolSize: 4, lineStyle: { width: 2, color: entityColor("gas", dark ? "dark" : "light") }, itemStyle: { color: entityColor("gas", dark ? "dark" : "light") } },
-      { name: "Coke plants (9)", type: "line", data: cokeSeries, symbolSize: 4, lineStyle: { width: 2, color: entityColor("nuclear", dark ? "dark" : "light") }, itemStyle: { color: entityColor("nuclear", dark ? "dark" : "light") } },
+      { name: "Coke plants (steelmaking)", type: "line", data: cokeSeries, symbolSize: 4, lineStyle: { width: 2, color: entityColor("nuclear", dark ? "dark" : "light") }, itemStyle: { color: entityColor("nuclear", dark ? "dark" : "light") } },
       { name: "Other industrial (10)", type: "line", data: otherIndSeries, symbolSize: 4, lineStyle: { width: 2, color: entityColor("renewable", dark ? "dark" : "light") }, itemStyle: { color: entityColor("renewable", dark ? "dark" : "light") } },
     ],
   };

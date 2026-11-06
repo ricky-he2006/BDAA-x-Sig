@@ -32,7 +32,7 @@ const SECTOR_PILLS: { key: UsSectorKey; label: string }[] = [
   { key: 2, label: "IPP non-CHP" },
   { key: 3, label: "IPP CHP" },
   { key: 8, label: "Commercial & inst." },
-  { key: 9, label: "Coke plants" },
+  { key: 9, label: "Coke plants (steelmaking)" },
   { key: 10, label: "Other industrial" },
 ];
 
@@ -67,7 +67,7 @@ export function USMap() {
       ? "All base sectors (1+2+3+8+9+10)"
       : usSector === "power"
         ? "Electric power (1+2+3)"
-        : data.sectors[usSector] ?? String(usSector);
+        : usSector === 9 ? "Coke plants (steelmaking)" : data.sectors[usSector] ?? String(usSector);
 
   return (
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column" }}>

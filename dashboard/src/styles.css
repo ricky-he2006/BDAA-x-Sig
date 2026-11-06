@@ -622,3 +622,43 @@ table.tbl tr.clickable {
     bottom: auto;
   }
 }
+
+/* Native top-layer dialog keeps expanded charts above the globe and sidebar. */
+.chart-expand {
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  background: var(--panel);
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.chart-expand:hover { border-color: var(--accent); color: var(--accent); }
+.chart-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.chart-dialog {
+  width: min(1400px, calc(100vw - 32px));
+  height: calc(100dvh - 48px);
+  max-width: none;
+  max-height: none;
+  padding: 24px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 16px 80px rgba(0, 0, 0, .35);
+}
+.chart-dialog::backdrop { background: rgba(0, 0, 0, .65); }
+.chart-dialog-layout { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.chart-dialog-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.chart-dialog-head h2 { margin: 0; font-size: 22px; }
+.chart-dialog-head button { flex-shrink: 0; }
+.chart-dialog-canvas { flex: 1; width: 100%; min-height: 120px; }
+.chart-dialog-note { margin-top: 16px; max-height: 25%; overflow: auto; }
+@media (max-width: 600px) {
+  .chart-dialog { width: calc(100vw - 16px); height: calc(100dvh - 16px); padding: 14px; }
+  .chart-dialog-head h2 { font-size: 18px; }
+}
+
+.chart-toggle { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.chart-toggle > span { flex-shrink: 0; }
+.chart-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.card-head > .chart-expand { flex-shrink: 0; margin-left: 8px; }

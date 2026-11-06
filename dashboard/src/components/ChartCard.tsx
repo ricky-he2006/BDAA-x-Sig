@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import * as echarts from "echarts";
 import { INK } from "../viz/palette";
 import { useApp } from "../state/AppState";
@@ -22,6 +22,11 @@ export function ChartCard({
 }: ChartCardProps) {
   const { dark } = useApp();
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
+  const [expanded, setExpanded] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const largeBoxRef = useRef<HTMLDivElement | null>(null);
+  const largeChartRef = useRef<echarts.ECharts | null>(null);
+  const headingId = useId();
   const boxRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<echarts.ECharts | null>(null);
 
@@ -63,19 +68,38 @@ export function ChartCard({
     if (!collapsed) requestAnimationFrame(() => chartRef.current?.resize());
   }, [collapsed]);
 
+  useEffect(() => {
+    if (!expanded) return;
+    const dialog = dialogRef.current;
+    const el = largeBoxRef.current;
+    if (!dialog || !el) return;
+    dialog.showModal();
+    const chart = echarts.init(el);
+    largeChartRef.current = chart;
+    const observer = new ResizeObserver(() => chart.resize());
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      chart.dispose();
+      largeChartRef.current = null;
+      if (dialog.open) dialog.close();
+    };
+  }, [expanded]);
+
+  useEffect(() => {
+    largeChartRef.current?.setOption(wrapped, true);
+  }, [expanded, wrapped]);
+
   return (
     <div className={`card${collapsed ? " hidden-body" : ""}`}>
-      <div
-        className={`card-head${collapsed ? " collapsed" : ""} clickable`}
-        onClick={() => setCollapsed((c) => !c)}
-        role="button"
-        aria-expanded={!collapsed}
-      >
-        <h3>{title}</h3>
-        <span>
-          {tag && <span className="tag">{tag}</span>}{" "}
-          <span className="chev">▾</span>
-        </span>
+      <div className={`card-head${collapsed ? " collapsed" : ""}`}>
+        <button className="chart-toggle" onClick={() => setCollapsed(c => !c)} aria-expanded={!collapsed}>
+          <h3>{title}</h3>
+          <span>{tag && <span className="tag">{tag}</span>} <span className="chev">▾</span></span>
+        </button>
+        <button className="chart-expand" aria-label={`Expand ${title}`} onClick={() => setExpanded(true)}>
+          ⤢ <span>Expand</span>
+        </button>
       </div>
       {/* Body stays mounted while collapsed (hidden by CSS): the echarts
           instance lives for the card's whole lifetime - unmounting it would
@@ -90,6 +114,26 @@ export function ChartCard({
         />
         {note && <div className="note">{note}</div>}
       </div>
+      {expanded && <dialog ref={dialogRef} className="chart-dialog" aria-labelledby={headingId}
+        onClose={() => setExpanded(false)}
+        onClick={event => {
+          if (event.target === event.currentTarget) {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
+              event.currentTarget.close();
+            }
+          }
+        }}>
+        <div className="chart-dialog-layout">
+          <div className="chart-dialog-head">
+            <div><h2 id={headingId}>{title}</h2>{tag && <div className="note">{tag}</div>}</div>
+            <button className="chart-expand" autoFocus aria-label={`Close ${title}`}
+              onClick={() => dialogRef.current?.close()}>✕ Close</button>
+          </div>
+          <div ref={largeBoxRef} className="chart-dialog-canvas" role="img" aria-label={`${title}, expanded`} />
+          {note && <div className="note chart-dialog-note">{note}</div>}
+        </div>
+      </dialog>}
     </div>
   );
 }

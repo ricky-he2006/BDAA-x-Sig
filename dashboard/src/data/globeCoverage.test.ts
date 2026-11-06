@@ -354,6 +354,12 @@ describe("globe and legend share industry percentage growth colors", () => {
     }
   });
   it("shows clean growth in both U.S. and China but different coal directions in 2025", () => {
+    const clean = globeColors(bundle, 2025, "clean_share", false);
+    const coal = globeColors(bundle, 2025, "coal_gen", false);
+    expect(clean.growthColor).not.toBe(coal.growthColor);
+    expect(clean.declineColor).not.toBe(coal.declineColor);
+    expect(clean.outlineColor(clean.bound)).toBe(clean.growthColor);
+    expect(coal.outlineColor(coal.bound)).toBe(coal.growthColor);
     expect(layerChangePct(bundle, "USA", 2025, "clean_share")).toBeGreaterThan(0);
     expect(layerChangePct(bundle, "CHN", 2025, "clean_share")).toBeGreaterThan(0);
     expect(layerChangePct(bundle, "USA", 2025, "coal_share")).toBeCloseTo(12.7974, 3);

@@ -11,22 +11,23 @@ function Harness() {
   return <><button onClick={() => setLayer("coal_gen")}>Show coal</button><Legend year={2024} yearLast={false} /></>;
 }
 describe("globe legend interpretation", () => {
-  it("distinguishes fill, annual coal direction, missing data and investment judgment", async () => {
+  it("explains fill, theme-matched percentage growth and missing data", async () => {
     render(<AppProvider><Harness /></AppProvider>);
-    expect(await screen.findByText(/Purple = decrease/)).toBeInTheDocument();
+    expect(await screen.findByText(/Purple = decrease · orange = increase/)).toBeInTheDocument();
     expect(screen.getByLabelText("What the country fill tells us")).toBeVisible();
     expect(screen.getByLabelText("What the country fill tells us")).toHaveTextContent("larger share of electricity");
     expect(screen.getByLabelText("What the country outline tells us")).toHaveTextContent("clean electricity generation grew");
-    fireEvent.click(screen.getByText("How to explain the investment theme"));
-    expect(screen.getByText(/Blue fill highlights clean-energy markets/)).toBeVisible();
-    expect(screen.getByText(/Borders match the selected theme:/)).toBeVisible();
     expect(screen.getByText(/Gray border = growth unavailable/)).toBeInTheDocument();
-    expect(screen.getByText(/Fill shows industry activity, not an investment return forecast/)).toBeVisible();
+    expect(screen.queryByText("How to explain the investment theme")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Hide key" }));
+    expect(screen.getByRole("button", { name: "Show key" })).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getByLabelText("What the country fill tells us")).not.toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Show key" }));
+    expect(screen.getByLabelText("What the country fill tells us")).toBeVisible();
     fireEvent.click(screen.getByText("Show coal"));
-    expect(screen.getByText(/Red fill highlights coal markets/)).toBeVisible();
     expect(screen.getByLabelText("What the country fill tells us")).toHaveTextContent("does not measure coal mining");
-    expect(screen.queryByText(/Blue fill highlights/)).not.toBeInTheDocument();
-    expect(screen.getByLabelText("What the country outline tells us")).toHaveTextContent("coal-fired generation grew");
+    expect(screen.getByLabelText("What the country outline tells us")).toHaveTextContent("Teal border: coal-fired generation grew. Gold border: it fell.");
+    expect(screen.getByText(/Gold = decrease · teal = increase/)).toBeVisible();
     expect(screen.getByText(/growth, border color/)).toHaveTextContent("% vs 2023");
   });
 });

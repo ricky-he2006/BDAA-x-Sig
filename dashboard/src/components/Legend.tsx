@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useId, useMemo, useState } from "react";
 import { useApp } from "../state/AppState";
 import { LAYERS } from "../data/types";
 import { globeColors, MISSING_OUTLINE } from "../viz/globeColors";
@@ -7,6 +7,8 @@ import { fmt } from "../viz/format";
 
 export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) {
   const { data, layer, dark } = useApp();
+  const [visible, setVisible] = useState(true);
+  const keyId = useId();
 
   const colors = useMemo(() => data ? globeColors(data, year, layer, dark) : null,
     [data, year, layer, dark]);
@@ -25,6 +27,11 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
 
   return (
     <div>
+      <button className="iconbtn" aria-expanded={visible} aria-controls={keyId}
+        onClick={() => setVisible(value => !value)} style={{ marginBottom: visible ? 8 : 0 }}>
+        {visible ? "Hide key" : "Show key"}
+      </button>
+      <div id={keyId} hidden={!visible}>
       <div className="ltitle">{meta.label} {meta.unit && `(${meta.unit})`}</div>
       <div className="lsub">{meta.source}</div>
       {fill ? (
@@ -57,9 +64,9 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
           </div>
         </>
       )}
-      {colors.changeCount > 0 && <div className="lsub">Purple = decrease · green = increase · neutral = little or no change.</div>}
+      {colors.changeCount > 0 && <div className="lsub">{colors.declineLabel} = decrease · {colors.growthLabel.toLowerCase()} = increase · neutral = little or no change.</div>}
       {colors.changeCount > 0 && <p className="lsub" aria-label="What the country outline tells us">
-        Green border: {changeMeta.label.toLowerCase()} grew. Purple border: it fell.
+        {colors.growthLabel} border: {changeMeta.label.toLowerCase()} grew. {colors.declineLabel} border: it fell.
         Stronger color means a larger percentage change, not a larger market.
         {layer === "clean_share" || layer === "coal_share" ? " Borders show generation growth, not percentage-point changes in share." : ""}
       </p>}
@@ -78,14 +85,8 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
         <span>Fill: not reported / no data — never rendered as 0</span>
       </div>
       <div className="lsub">Scale follows this year/layer; use values for comparisons across years.</div>
-      <details style={{ marginTop: 8 }}>
-        <summary>How to explain the investment theme</summary>
-        <p className="lsub">{LAYERS[layer].sequential === "blue"
-          ? "Blue fill highlights clean-energy markets. Darker blue means more clean electricity or a higher clean share, depending on the selected measure. Explore growing clean output as evidence for a clean-energy investment case."
-          : "Red fill highlights coal markets. Darker red means more coal activity for the selected measure. Compare coal production and energy use to find countries with large coal industries, then check growth trends to support the investment case."}</p>
-        <p className="lsub">Fill shows industry activity, not an investment return forecast. A country can have large clean and coal industries at the same time.</p>
-        <p className="lsub">Borders match the selected theme: clean growth in clean views; coal growth in coal views. Green means growth and purple means decline. Gray means the percentage change cannot be calculated.</p>
-      </details>
+
+      </div>
     </div>
   );
 }

@@ -87,3 +87,21 @@ export function layerDomain(
 export function isClamped(v: number, [min, max]: [number, number]): boolean {
   return v <= min || v >= max;
 }
+
+/** Share layers use output growth, not a percent change in the share itself. */
+export function changeLayer(layer: LayerKey): LayerKey {
+  return layer === "clean_share" ? "clean_gen" : layer === "coal_share" ? "coal_gen" : layer;
+}
+
+/** Annual relative change. A zero/missing baseline cannot define a growth rate. */
+export function layerChangePct(bundle: DataBundle, iso: string, year: number, layer: LayerKey): number | null {
+  const py = prevYear(year);
+  if (py == null) return null;
+  const rows = bundle.countryByIso.get(iso);
+  const metric = changeLayer(layer);
+  const current = layerValue(metric, rows?.get(year));
+  const previous = layerValue(metric, rows?.get(py));
+  if (current == null || previous == null || !Number.isFinite(current) || !Number.isFinite(previous) || previous <= 0) return null;
+  const result = (current / previous - 1) * 100;
+  return Number.isFinite(result) ? result : null;
+}

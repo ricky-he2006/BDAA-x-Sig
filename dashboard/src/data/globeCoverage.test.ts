@@ -26,7 +26,7 @@ import statesTopo from "us-atlas/states-albers-10m.json";
 import { FIPS_TO_STATE } from "./geo";
 import { buildBundle } from "./loader";
 import type { DataBundle } from "./loader";
-import { coalChangeTWh, layerDomain, layerValue } from "../viz/layerValue";
+import { coalChangeTWh, layerChangePct, changeLayer, layerDomain, layerValue } from "../viz/layerValue";
 import { globeColors, MISSING_OUTLINE } from "../viz/globeColors";
 import { DIVERGING } from "../viz/palette";
 import { stateValue } from "../viz/stateValue";
@@ -324,52 +324,39 @@ describe("globe geometry sanity", () => {
 });
 
 
-describe("globe and legend share actual country color mappings", () => {
-  it("checks every country/year in both themes against reported source values", () => {
-    let checked = 0;
-    for (const dark of [false, true]) for (const year of YEARS) {
-      const colors = globeColors(bundle, year, "clean_share", dark);
-      const palette = DIVERGING[dark ? "dark" : "light"];
-      const deltas: number[] = [];
-      for (const [iso, rows] of bundle.countryByIso) {
-        const now = rows.get(year)?.ei.coal_gen;
-        const before = year > YEARS[0] ? rows.get(year - 1)?.ei.coal_gen : null;
-        const expected = now == null || before == null ? null : now - before;
-        expect(coalChangeTWh(bundle, iso, year), `${iso} ${year}`).toBe(expected);
-        const color = colors.outlineColor(expected);
-        if (expected == null) expect(color).toBe(MISSING_OUTLINE);
-        else {
-          deltas.push(expected);
-          const index = palette.indexOf(color);
-          expect(index).toBeGreaterThanOrEqual(0);
-          if (expected < 0) expect(index).toBeLessThanOrEqual(6);
-          if (expected > 0) expect(index).toBeGreaterThanOrEqual(6);
-          if (expected === 0) expect(index).toBe(6);
-          expect(color).toBe(colors.stroke.color(expected));
+describe("globe and legend share industry percentage growth colors", () => {
+  it("checks all countries and years with separate colors for clean and coal growth", () => {
+    for (const layer of ["clean_share", "coal_gen", "coal_prod", "coal_tes"] as LayerKey[]) {
+      for (const dark of [false, true]) for (const year of YEARS) {
+        const colors = globeColors(bundle, year, layer, dark);
+        const deltas: number[] = [];
+        for (const [iso, rows] of bundle.countryByIso) {
+          const current = layerValue(changeLayer(layer), rows.get(year));
+          const previous = year > YEARS[0] ? layerValue(changeLayer(layer), rows.get(year - 1)) : null;
+          const expected = current == null || previous == null || previous <= 0 ? null : (current / previous - 1) * 100;
+          expect(layerChangePct(bundle, iso, year, layer)).toBe(expected);
+          const color = colors.outlineColor(expected);
+          if (expected == null) expect(color).toBe(MISSING_OUTLINE);
+          else {
+            deltas.push(expected);
+            const index = colors.stroke.steps.indexOf(color);
+            if (expected < 0) expect(index).toBeLessThanOrEqual(6);
+            if (expected > 0) expect(index).toBeGreaterThanOrEqual(6);
+            if (expected === 0) expect(index).toBe(6);
+          }
+          const value = layerValue(layer, rows.get(year));
+          expect(colors.fillColor(value)).toBe(value == null ? dark ? "#212120" : "#e7e6e1" : colors.fill!.color(value));
         }
-        const share = rows.get(year)?.ember.clean_share;
-        expect(colors.fillColor(share)).toBe(share == null ? dark ? "#212120" : "#e7e6e1" : colors.fill!.color(share));
-        checked++;
+        expect(colors.bound).toBe(Math.max(0, ...deltas.map(Math.abs)));
+        expect(colors.changeCount).toBe(deltas.length);
+        expect(colors.outlineColor(null)).not.toBe(colors.outlineColor(0));
       }
-      expect(colors.bound).toBe(Math.max(0, ...deltas.map(Math.abs)));
-      if (colors.bound > 0) {
-        expect(colors.outlineColor(-colors.bound)).toBe(palette[0]);
-        expect(colors.outlineColor(colors.bound)).toBe(palette[12]);
-      }
-      expect(colors.outlineColor(0)).toBe(palette[6]);
-      expect(colors.outlineColor(null)).not.toBe(colors.outlineColor(0));
     }
-    expect(checked).toBeGreaterThan(2000);
   });
-  it("shows the observed U.S. increase and China decrease on opposite arms in 2025", () => {
-    for (const dark of [false, true]) {
-      const colors = globeColors(bundle, 2025, "clean_share", dark);
-      const us = coalChangeTWh(bundle, "USA", 2025)!;
-      const china = coalChangeTWh(bundle, "CHN", 2025)!;
-      expect(us).toBeGreaterThan(0);
-      expect(china).toBeLessThan(0);
-      expect(colors.stroke.steps.indexOf(colors.outlineColor(us))).toBeGreaterThan(6);
-      expect(colors.stroke.steps.indexOf(colors.outlineColor(china))).toBeLessThan(6);
-    }
+  it("shows clean growth in both U.S. and China but different coal directions in 2025", () => {
+    expect(layerChangePct(bundle, "USA", 2025, "clean_share")).toBeGreaterThan(0);
+    expect(layerChangePct(bundle, "CHN", 2025, "clean_share")).toBeGreaterThan(0);
+    expect(layerChangePct(bundle, "USA", 2025, "coal_share")).toBeCloseTo(12.7974, 3);
+    expect(layerChangePct(bundle, "CHN", 2025, "coal_share")).toBeLessThan(0);
   });
 });

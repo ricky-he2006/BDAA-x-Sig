@@ -11,7 +11,7 @@ import type {
 import { useApp, prevYear } from "../state/AppState";
 import { LAYERS } from "../data/types";
 import { globeColors } from "../viz/globeColors";
-import { layerValue, coalChangeTWh } from "../viz/layerValue";
+import { layerValue, layerChangePct, changeLayer } from "../viz/layerValue";
 import { fmt, fmtSigned, NA } from "../viz/format";
 
 // Topology is static: resolve feature ids to dataset iso3 once data loads.
@@ -85,14 +85,14 @@ export function Globe() {
 
   const isoList = useMemo(() => (data ? Array.from(data.countryByIso.keys()) : []), [data]);
 
-  // Per-country value + coal delta for the current year.
+  // Per-country value + selected industry percentage change for the current year.
   const stats = useMemo(() => {
     if (!data) return new Map<string, { v: number | null; d: number | null }>();
     const m = new Map<string, { v: number | null; d: number | null }>();
     for (const iso of isoList) {
       m.set(iso, {
         v: layerValue(layer, data.countryByIso.get(iso)?.get(year)),
-        d: coalChangeTWh(data, iso, year),
+        d: layerChangePct(data, iso, year, layer),
       });
     }
     return m;
@@ -256,7 +256,7 @@ export function Globe() {
     <div style={{ position: "absolute", inset: 0 }}>
       <div ref={elRef} style={{ width: "100%", height: "100%" }} />
       <div className="hud">
-        <div className="k">{LAYERS[layer].label} · {year}{py ? ` (outlines: Δ vs ${py})` : " (no previous year)"}</div>
+        <div className="k">{LAYERS[layer].label} · {year}{py ? ` (borders: % change vs ${py})` : " (no previous year)"}</div>
         <div>Drag to rotate; scroll to zoom. Click a country to open its panel, or the U.S. to drill down.</div>
       </div>
       <div className="globe-controls" aria-label="Globe controls">
@@ -275,10 +275,10 @@ export function Globe() {
               </div>
               {py ? (
                 <div>
-                  Coal gen vs {py}: {fmtSigned(hoverStats.d)} TWh
+                  {LAYERS[changeLayer(layer)].label} vs {py}: {hoverStats.d == null ? NA : `${fmtSigned(hoverStats.d)}%`}
                 </div>
               ) : (
-                <div>Coal gen vs {year - 1}: {NA}</div>
+                <div>{LAYERS[changeLayer(layer)].label} vs {year - 1}: {NA}</div>
               )}
               {hoverStats.v == null && <div className="muted">Not reported this year</div>}
             </>

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useApp } from "../state/AppState";
 import { LAYERS } from "../data/types";
 import { globeColors, MISSING_OUTLINE } from "../viz/globeColors";
+import { changeLayer } from "../viz/layerValue";
 import { fmt } from "../viz/format";
 
 export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) {
@@ -12,6 +13,7 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
   if (!colors) return null;
   const { domain, bound, fill, stroke } = colors;
   const meta = LAYERS[layer];
+  const changeMeta = LAYERS[changeLayer(layer)];
   const fillMeaning: Partial<Record<typeof layer, string>> = {
     clean_share: "Darker blue = a larger share of electricity comes from renewables and nuclear. This shows a cleaner electricity mix, not necessarily a larger market or faster growth.",
     clean_gen: "Darker blue = more electricity generated from renewables and nuclear. This highlights larger clean-energy markets; check the growth charts for momentum.",
@@ -42,32 +44,32 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
         {fillMeaning[layer] ?? `Darker fill = a higher ${meta.label.toLowerCase()} value.`} Lighter shades mean lower values.
       </p>
 
-      {bound > 0 && (
+      {colors.changeCount > 0 && (
         <>
           <div className="lsub" style={{ marginTop: 8 }}>
-            Coal generation change, outline color (Δ TWh vs {year - 1}) · Energy Institute
+            {changeMeta.label} growth, border color (% vs {year - 1}) · {changeMeta.source}
           </div>
           <div className="legend-bar" style={{ background: stroke.cssGradient }} />
           <div className="legend-scale">
-            <span>−{fmt(bound)}</span>
+            <span>−{fmt(bound)}%</span>
             <span>0</span>
-            <span>+{fmt(bound)}</span>
+            <span>+{fmt(bound)}%</span>
           </div>
         </>
       )}
-      {bound > 0 && <div className="lsub">Blue = decrease · red = increase · near-neutral = little or no change.</div>}
-      {bound > 0 && <p className="lsub" aria-label="What the country outline tells us">
-        Blue border: coal-fired electricity fell — evidence of a move away from coal that year.
-        Red border: coal-fired electricity rose — evidence coal is still growing or rebounding.
-        Stronger color means a bigger change in TWh. Check several years to see whether the pattern lasts.
+      {colors.changeCount > 0 && <div className="lsub">Purple = decrease · green = increase · neutral = little or no change.</div>}
+      {colors.changeCount > 0 && <p className="lsub" aria-label="What the country outline tells us">
+        Green border: {changeMeta.label.toLowerCase()} grew. Purple border: it fell.
+        Stronger color means a larger percentage change, not a larger market.
+        {layer === "clean_share" || layer === "coal_share" ? " Borders show generation growth, not percentage-point changes in share." : ""}
       </p>}
       <div className="legend-nodata">
         <span style={{ width: 18, borderTop: `3px solid ${MISSING_OUTLINE}`, display: "inline-block" }} />
-        <span>Gray outline = coal change unavailable; both years are required.</span>
+        <span>Gray border = growth unavailable; both years and a positive previous-year value are required.</span>
       </div>
       {yearLast && (
         <div className="lsub" style={{ marginTop: 8 }}>
-          2025 coverage differs by source. Outlines require coal data in both years; no missing year is treated as zero.
+          2025 coverage differs by source. Borders use the selected industry’s data in both years; no missing year is treated as zero.
         </div>
       )}
 
@@ -82,7 +84,7 @@ export function Legend({ year, yearLast }: { year: number; yearLast: boolean }) 
           ? "Blue fill highlights clean-energy markets. Darker blue means more clean electricity or a higher clean share, depending on the selected measure. Explore growing clean output as evidence for a clean-energy investment case."
           : "Red fill highlights coal markets. Darker red means more coal activity for the selected measure. Compare coal production and energy use to find countries with large coal industries, then check growth trends to support the investment case."}</p>
         <p className="lsub">Fill shows industry activity, not an investment return forecast. A country can have large clean and coal industries at the same time.</p>
-        <p className="lsub">Outlines are separate: blue means coal generation fell and red means it rose versus the previous year. Gray means the change is unavailable.</p>
+        <p className="lsub">Borders match the selected theme: clean growth in clean views; coal growth in coal views. Green means growth and purple means decline. Gray means the percentage change cannot be calculated.</p>
       </details>
     </div>
   );

@@ -14,6 +14,9 @@ describe("globe legend interpretation", () => {
   it("distinguishes fill, annual coal direction, missing data and investment judgment", async () => {
     render(<AppProvider><Harness /></AppProvider>);
     expect(await screen.findByText(/Blue = decrease/)).toBeInTheDocument();
+    expect(screen.getByLabelText("What the country fill tells us")).toBeVisible();
+    expect(screen.getByLabelText("What the country fill tells us")).toHaveTextContent("larger share of electricity");
+    expect(screen.getByLabelText("What the country outline tells us")).toHaveTextContent("coal is still growing or rebounding");
     fireEvent.click(screen.getByText("How to explain the investment theme"));
     expect(screen.getByText(/Blue fill highlights clean-energy markets/)).toBeVisible();
     expect(screen.getByText(/Outlines are separate:/)).toBeVisible();
@@ -21,6 +24,7 @@ describe("globe legend interpretation", () => {
     expect(screen.getByText(/Fill shows industry activity, not an investment return forecast/)).toBeVisible();
     fireEvent.click(screen.getByText("Show coal"));
     expect(screen.getByText(/Red fill highlights coal markets/)).toBeVisible();
+    expect(screen.getByLabelText("What the country fill tells us")).toHaveTextContent("does not measure coal mining");
     expect(screen.queryByText(/Blue fill highlights/)).not.toBeInTheDocument();
   });
 });

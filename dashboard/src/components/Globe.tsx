@@ -33,6 +33,11 @@ const TEXTURE = {
   bump: "/textures/earth-topology.png",
 };
 
+interface BorderDatum {
+  iso3: string | null;
+  points: number[][];
+}
+
 interface PolyDatum {
   iso3: string | null;
   name: string;
@@ -74,6 +79,15 @@ export function Globe() {
     [isoByIndex],
   );
 
+  // Polygon strokes are WebGL hairlines. Render boundary rings with wide paths so
+  // width is visible on screens that ignore native line widths.
+  const borders = useMemo<BorderDatum[]>(() => geoData.flatMap(country => {
+    const geometry = country.geometry;
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates]
+      : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
+    return polygons.flatMap(rings => rings.map(points => ({ iso3: country.iso3, points })));
+  }), [geoData]);
+
   const isoList = useMemo(() => (data ? Array.from(data.countryByIso.keys()) : []), [data]);
 
   // Per-country value + coal delta for the current year.
@@ -107,7 +121,7 @@ export function Globe() {
   }, [layer, domain, bound, dark]);
 
   const nodata = dark ? "#212120" : "#e7e6e1";
-  const strokeNone = dark ? "#2c2c2a" : "#d5d4cd";
+  const strokeNone = "#85847f";
 
   // Accessor callbacks must accept `object` (three-globe's ObjAccessor) under
   // strictFunctionTypes; the datum is narrowed back to PolyDatum after the cast.
@@ -134,6 +148,12 @@ export function Globe() {
     if (d.iso3 === hoverIsoRef.current) return 0.03;
     return 0.01;
   };
+
+  const borderPoints = (obj: object) => {
+    const border = obj as BorderDatum;
+    return border.points.map(point => [point[0], point[1], altitude(obj) + 0.001]);
+  };
+  const borderWidth = (obj: object) => (obj as BorderDatum).iso3 === selectedIso ? 5 : 3;
 
   // Create the globe once.
   useEffect(() => {
@@ -162,7 +182,15 @@ export function Globe() {
       .polygonsData(geoData)
       .polygonCapColor(capColor)
       .polygonSideColor(() => "rgba(0,0,0,0.25)")
-      .polygonStrokeColor(strokeColor)
+      .polygonStrokeColor(() => "rgba(0,0,0,0)")
+      .pathsData(borders)
+      .pathPoints(borderPoints)
+      .pathPointLng(point => point[0])
+      .pathPointLat(point => point[1])
+      .pathPointAlt(point => point[2])
+      .pathColor(strokeColor)
+      .pathStroke(borderWidth)
+      .pathResolution(1)
       .polygonAltitude(altitude)
       .polygonCapColor(capColor) // re-assert after other accessors
       .onPolygonClick((polygon, evt) => {
@@ -241,7 +269,9 @@ export function Globe() {
     const g = globeRef.current;
     if (!g) return;
     g.polygonCapColor(capColor)
-      .polygonStrokeColor(strokeColor)
+      .pathColor(strokeColor)
+      .pathPoints(borderPoints)
+      .pathStroke(borderWidth)
       .polygonAltitude(altitude);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stats, scales, selectedIso, hover, layer, year]);

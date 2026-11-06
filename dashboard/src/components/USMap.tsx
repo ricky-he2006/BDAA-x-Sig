@@ -3,7 +3,7 @@ import { geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import type { FeatureCollection, GeometryCollection } from "geojson";
 import statesTopo from "us-atlas/states-albers-10m.json";
-import { useApp, type UsSectorKey } from "../state/AppState";
+import { useApp } from "../state/AppState";
 import { FIPS_TO_STATE } from "../data/geo";
 import { ORANGE_SEQUENTIAL, divergingScale, sequentialScale } from "../viz/palette";
 import { stateValue, stateDelta, stateScaleStats } from "../viz/stateValue";
@@ -25,19 +25,9 @@ const STATE_DATA: StateDatum[] = FC.features.map((f) => ({
   name: (f.properties as { name?: string } | null)?.name ?? "Unknown",
 }));
 
-const SECTOR_PILLS: { key: UsSectorKey; label: string }[] = [
-  { key: "all", label: "All sectors" },
-  { key: "power", label: "Electric power" },
-  { key: 1, label: "Electric utility" },
-  { key: 2, label: "IPP non-CHP" },
-  { key: 3, label: "IPP CHP" },
-  { key: 8, label: "Commercial & inst." },
-  { key: 9, label: "Coke plants (steelmaking)" },
-  { key: 10, label: "Other industrial" },
-];
-
 export function USMap() {
-  const { data, year, usSector, setUsSector, selectedState, selectState, dark } = useApp();
+  const { data, year, selectedState, selectState, dark } = useApp();
+  const usSector = "power" as const;
   const [hover, setHover] = useState<{ x: number; y: number; code: string | null } | null>(null);
   const [zoom, setZoom] = useState(1);
   const [center, setCenter] = useState({ x: 487.5, y: 305 });
@@ -70,33 +60,17 @@ export function USMap() {
   const hoverDelta = hover?.code ? stateDelta(data, hover.code, year, usSector) : null;
   const hoverName = hover?.code ? data.stateNames.get(hover.code) : null;
 
-  const sectorLabel =
-    usSector === "all"
-      ? "All base sectors (1+2+3+8+9+10)"
-      : usSector === "power"
-        ? "Electric power (1+2+3)"
-        : usSector === 9 ? "Coke plants (steelmaking)" : data.sectors[usSector] ?? String(usSector);
+  const sectorLabel = "Electric power (1+2+3)";
 
   return (
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column" }}>
       <div style={{ padding: "10px 14px", zIndex: 6 }}>
         <select aria-label="Select state or territory" value={selectedState ?? ""}
           onChange={e => selectState(e.target.value || null)} style={{ marginBottom: 8, maxWidth: "100%" }}>
-          <option value="">National overview — select a state or territory</option>
+          <option value="">All states — select a state or territory</option>
           {Object.values(FIPS_TO_STATE).map(code => ({ code, name: data.stateNames.get(code) ?? STATE_DATA.find(s => s.code === code)?.name ?? code }))
             .sort((a, b) => a.name.localeCompare(b.name)).map(s => <option key={s.code} value={s.code}>{s.name}</option>)}
         </select>
-        <div className="pillrow" style={{ marginBottom: 0 }}>
-          {SECTOR_PILLS.map((p) => (
-            <button
-              key={String(p.key)}
-              className={`pill${usSector === p.key ? " active" : ""}`}
-              onClick={() => setUsSector(p.key)}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
         <div className="note">Coal consumption · {year} · {sectorLabel}. Fill: consumption (short tons). Outline: change vs {year - 1}; blue decreases, red increases.</div>
       </div>
       <div className="pillrow" role="group" aria-label="U.S. map zoom controls" style={{ padding: "0 14px 8px" }}>

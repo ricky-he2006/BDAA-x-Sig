@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import { AppProvider, useApp } from "./state/AppState";
 import { TopBar } from "./components/TopBar";
 import { Globe } from "./components/Globe";
-import { USMap } from "./components/USMap";
-import { USLegend } from "./components/USLegend";
+import { USView } from "./components/USView";
 import { Legend } from "./components/Legend";
 import { CountryPanel } from "./components/CountryPanel";
-import { StatePanel } from "./components/StatePanel";
 import { ResearchPanel } from "./components/ResearchPanel";
 import { DataPanel } from "./components/DataPanel";
 import { YEARS } from "./data/types";
@@ -36,10 +34,9 @@ function Shell() {
     <div className="app">
       <TopBar />
       <div className="main">
-        <div className={`stage${view === "research" || view === "data" ? " stage-full" : ""}`}>
+        <div className={`stage${view === "research" || view === "data" || view === "us" ? " stage-full" : ""}`}>
           {view === "world" && <Globe />}
-          {view === "us" && <USMap />}
-          {view === "us" && <USLegend />}
+          {view === "us" && <USView />}
           {view === "research" && <div className="side full">
             <ResearchPanel />
           </div>}
@@ -51,7 +48,6 @@ function Shell() {
           )}
         </div>
         {view === "world" && <CountryPanel />}
-        {view === "us" && <StatePanel />}
       </div>
     </div>
   );

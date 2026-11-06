@@ -78,25 +78,29 @@ with sync_playwright() as p:
         page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
         page.wait_for_timeout(100)
         page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
-        expect(page.get_by_role("img", name="US coal consumption", exact=False)).to_be_visible()
+        expect(page.get_by_role("heading", name="Coal & clean electricity", exact=True)).to_be_visible()
         result["actual_globe_click_opens_us_drilldown"] = True
+        page.get_by_role("button", name="Share · %", exact=True).click()
+        expect(page.get_by_role("button", name="Share · %", exact=True)).to_have_attribute("aria-pressed", "true")
+        page.get_by_role("button", name="Generation · TWh", exact=True).click()
+        page.get_by_text("Explore the state coal-demand map", exact=True).click()
         rows = page.request.get(origin + "/data/us_state_year.json").json()["records"]
         for year in range(2020, 2026):
             page.get_by_role("slider", name="Year").fill(str(year))
-            for name, wanted in sectors:
-                page.get_by_role("button", name=name, exact=True).click()
-                states = page.locator("path.state").evaluate_all("els => els.map(e => ({code: e.dataset.state, missing: e.classList.contains('nodata')}))")
-                assert len(states) == 51
-                for st in states:
-                    reported = any(r["state"] == st["code"] and r["year"] == year and r["sector"] in wanted and r["consumption"] is not None for r in rows)
-                    assert st["missing"] == (not reported), f"Map missingness: {st['code']} {year} {name}"
-                expect(page.get_by_label("U.S. coal legend")).to_contain_text("short tons")
-        result["us_sector_year_combinations"] = len(sectors) * 6
-        page.get_by_role("button", name="All sectors", exact=True).click()
+            states = page.locator("path.state").evaluate_all("els => els.map(e => ({code: e.dataset.state, missing: e.classList.contains('nodata')}))")
+            assert len(states) == 51
+            for st in states:
+                reported = any(r["state"] == st["code"] and r["year"] == year and r["sector"] in {1, 2, 3} and r["consumption"] is not None for r in rows)
+                assert st["missing"] == (not reported), f"Map missingness: {st['code']} {year}"
+        key = page.get_by_label("U.S. map key", exact=True)
+        key.locator("summary").click()
+        expect(key).to_contain_text("short tons")
+        key.locator("summary").click()
+        result["us_power_year_combinations"] = 6
         page.locator("path[data-state='TX']").click()
-        expect(page.locator("aside .panel-title")).to_have_text("Texas")
+        expect(page.get_by_role("region", name="Selected coal-demand market")).to_contain_text("Texas")
         page.get_by_label("Select state or territory").select_option("PR")
-        expect(page.locator("aside .panel-title")).to_contain_text("Puerto")
+        expect(page.get_by_role("region", name="Selected coal-demand market")).to_contain_text("Puerto")
         result["state_click_and_puerto_rico_access"] = True
         page.get_by_label("Select state or territory").select_option("")
         page.screenshot(path=str(OUT / "us_dashboard.png"))

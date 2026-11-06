@@ -160,11 +160,11 @@ All four orange filters show levels in the selected year. Generation measures co
 
 *Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
 
-## 18. Select the coal user, then inspect its history.
+## 18. U.S. coal & clean: national first, then states.
 
 **Appendix A10 · additional narration · suggested speaker B**
 
-In the U.S. map the sector filter changes which coal users are included. Darker orange means more coal consumed in short tons. Red outlines mean consumption rose from the prior year; blue outlines mean it fell, for the selected scope. This differs from the world map, whose outlines measure coal generation in TWh. Start with Electric power for the domestic thermal thesis, then inspect states and their sector histories. Electric power includes utilities and two independent-power-producer categories. Coke plants are a steelmaking exposure that our thermal-power underweight does not automatically cover. The national chart separately uses EIA sector 98; do not add it to the base sectors. States identify consumption locations, not mines or producer revenue exposure. The large U.S. legend is hidden; read the scope note and hover values. Zoom in for smaller states, then reset the map.
+The United States now starts with the same national coal-versus-clean comparison as the globe. Choose generation in TWh or generation share in percent. Clean electricity is blue and comes from Ember; coal electricity is red and comes from EI. Next, the state table ranks reported power-sector coal consumption and shows annual change. In the supplied 2025 data, Texas, Missouri and Indiana are the largest markets and all three grew. Within a selective coal allocation, prioritize understanding suppliers serving those markets, while checking persistence of the demand trend. The optional map uses orange fill for consumption levels and red or blue outlines for annual consumption increases or decreases. Expand Map key for scales and missingness. State data covers power coal consumption only; no state clean-generation values are invented. States identify coal customers, not mines, supplier contracts or investment returns. The separate national EIA consumption check uses sector 98 and remains available in an optional disclosure.
 
 *Delivery cue: point to each evidence card as you explain it. Keep source definitions and limitations visible.*
 

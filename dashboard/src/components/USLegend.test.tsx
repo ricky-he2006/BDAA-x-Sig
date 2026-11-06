@@ -1,42 +1,31 @@
 import { beforeAll, afterAll, describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { AppProvider, useApp } from "../state/AppState";
 import { USLegend } from "./USLegend";
 import { fetchStub } from "../test/fixtures";
-
 beforeAll(() => vi.stubGlobal("fetch", fetchStub()));
 afterAll(() => vi.unstubAllGlobals());
-function SectorPick() {
-  const { setUsSector } = useApp();
-  return <button onClick={() => setUsSector("power")}>Use power</button>;
-}
-describe("U.S. map legend uses state-sector consumption", () => {
-  it("matches the selected map scope and never shows a world clean-share legend", async () => {
-    render(<AppProvider><SectorPick /><USLegend /></AppProvider>);
-    await waitFor(() => expect(screen.getByText("Coal consumption (short tons)")).toBeInTheDocument());
-    expect(screen.getByText("48,000,000")).toBeInTheDocument();
-    expect(screen.queryByText(/Clean electricity share/)).not.toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Use power" }));
+function ChangeYear() { const { setYear } = useApp(); return <button onClick={() => setYear(2025)}>Use 2025</button>; }
+describe("U.S. power-sector map key", () => {
+  it("uses only power-sector consumption, matching the simplified map", async () => {
+    render(<AppProvider><USLegend /></AppProvider>);
+    await screen.findByText("Coal consumption (short tons)");
     expect(screen.getByText("45,000,000")).toBeInTheDocument();
     expect(screen.queryByText("48,000,000")).not.toBeInTheDocument();
+    expect(screen.getByText(/EIA · Electric power/)).toBeInTheDocument();
   });
-  it("starts collapsed, expands for the current selection, and collapses again", async () => {
-    render(<AppProvider><SectorPick /><USLegend /></AppProvider>);
+  it("expands, updates its year and scale, and collapses", async () => {
+    render(<AppProvider><ChangeYear /><USLegend /></AppProvider>);
     const summary = await screen.findByText("Map key");
     const details = summary.closest("details")!;
     const content = screen.getByText("Coal consumption (short tons)");
-    expect(details).not.toHaveAttribute("open");
     expect(content).not.toBeVisible();
     fireEvent.click(summary);
-    expect(details).toHaveAttribute("open");
     expect(content).toBeVisible();
-    expect(screen.getByText(/Darker orange = more coal consumed/)).toBeVisible();
-    fireEvent.click(screen.getByRole("button", { name: "Use power" }));
-    expect(screen.getByText(/EIA · Electric power/)).toBeVisible();
-    expect(screen.getByText("45,000,000")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Use 2025" }));
+    expect(details).toHaveTextContent("2025");
+    expect(details).toHaveTextContent("42,000,000");
     fireEvent.click(summary);
-    expect(details).not.toHaveAttribute("open");
     expect(content).not.toBeVisible();
   });
-
 });

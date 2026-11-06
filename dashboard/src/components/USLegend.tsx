@@ -4,12 +4,12 @@ import { ORANGE_SEQUENTIAL, divergingScale, sequentialScale } from "../viz/palet
 import { fmt } from "../viz/format";
 
 export function USLegend() {
-  const { data, year, usSector, dark } = useApp();
+  const { data, year, dark } = useApp();
   if (!data) return null;
-  const { domain, bound, reported } = stateScaleStats(data, year, usSector);
+  const { domain, bound, reported } = stateScaleStats(data, year, "power");
   const fill = domain ? sequentialScale(ORANGE_SEQUENTIAL, ...domain) : null;
   const stroke = divergingScale(dark ? "dark" : "light", bound || 1);
-  const label = usSector === "all" ? "All reported base sectors" : usSector === "power" ? "Electric power (1+2+3)" : usSector === 9 ? "Coke plants (steelmaking)" : data.sectors[usSector];
+  const label = "Electric power (1+2+3)";
   return <details className="stage-legend us-map-key" aria-label="U.S. map key">
     <summary>
       <span className="us-key-title">Map key</span>

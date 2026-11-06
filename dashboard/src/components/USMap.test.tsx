@@ -78,7 +78,7 @@ describe("USMap", () => {
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/^TX\|all/));
   });
 
-  it("switches sector without re-summing aggregates (power = 1+2+3 only)", async () => {
+  it("uses power sectors only and draws changes only when both years exist", async () => {
     const { container } = render(
       <AppProvider>
         <Probe>
@@ -89,9 +89,8 @@ describe("USMap", () => {
       </AppProvider>,
     );
     await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/none\|all/));
-    const powerPill = screen.getByRole("button", { name: "Electric power" });
-    fireEvent.click(powerPill);
-    await waitFor(() => expect(screen.getByTestId("probe")).toHaveTextContent(/none\|power/));
+    expect(screen.queryByRole("button", { name: "All sectors" })).not.toBeInTheDocument();
+    expect(screen.getByLabelText("US coal consumption, 2024, Electric power (1+2+3)")).toBeInTheDocument();
     // Outline (Δ vs previous year) is drawn only where BOTH years are reported:
     // TX has 2023 and 2024; OH and AK do not. Exactly one state gets a stroke.
     const strokes = container.querySelectorAll("path.state[stroke]");
@@ -110,7 +109,7 @@ describe("USMap", () => {
       </AppProvider>,
     );
     await waitFor(() =>
-      expect(screen.getByText(/Coal consumption · 2024 · All base sectors/)).toBeTruthy(),
+      expect(screen.getByText(/Coal consumption · 2024 · Electric power/)).toBeTruthy(),
     );
   });
   it("zooms within bounds and resets the national view without selecting a state", async () => {

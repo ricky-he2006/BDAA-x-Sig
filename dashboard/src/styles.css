@@ -702,3 +702,37 @@ table.tbl tr.clickable {
   .us-map-key { z-index: 7; }
   .us-key-content { max-height: min(20vh, 160px); }
 }
+
+/* National comparison first; state coal demand stays a focused drilldown. */
+.us-transition { height: 100%; overflow-y: auto; box-sizing: border-box; padding: 26px; }
+.us-transition-head h2 { margin: 0 0 8px; font-size: clamp(24px, 3vw, 36px); }
+.us-transition-head > p:last-child { color: var(--ink-2); line-height: 1.6; }
+.us-eyebrow { color: var(--ink-3); font-size: 11px; letter-spacing: .08em; }
+.us-energy-snapshot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.us-energy-stat { padding: 18px; margin: 0; border-top: 3px solid #2a78d6; }
+.us-energy-stat.coal { border-top-color: #c53030; }
+.us-energy-stat h3 { font-size: 14px; margin: 0 0 10px; }
+.us-energy-value { font-size: clamp(24px, 3vw, 34px); font-weight: 700; color: #2a78d6; }
+.us-energy-stat.coal .us-energy-value { color: #c53030; }
+.dark .us-energy-stat.coal .us-energy-value { color: #e66767; }
+.us-investment-bridge { padding: 16px 20px; border-left: 3px solid #2a78d6; background: var(--panel); margin: 22px 0; }
+.us-investment-bridge h3 { margin: 0 0 8px; }
+.us-investment-bridge p, .us-state-markets p { line-height: 1.65; }
+.us-state-markets > h3 { font-size: 22px; }
+.us-market-takeaway { padding: 14px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius); }
+.us-market-table { overflow-x: auto; }
+.us-market-link { border: 0; background: none; color: var(--ink); cursor: pointer; font: inherit; text-align: left; text-decoration: underline; text-underline-offset: 3px; padding: 6px 0; }
+.us-market-link[aria-pressed="true"] { font-weight: 700; }
+.us-state-map-details, .us-national-coal-check { border: 1px solid var(--panel-border); border-radius: var(--radius); margin: 16px 0; background: var(--panel); }
+.us-state-map-details > summary, .us-national-coal-check > summary { padding: 16px; cursor: pointer; font-weight: 600; }
+.us-national-coal-check > p, .us-national-coal-check > .card { margin: 0 16px 16px; }
+.us-state-map-stage { height: 560px; position: relative; overflow: hidden; }
+.us-state-detail { margin: 16px 0; }
+.us-state-detail .kv { margin: 0; }
+.us-state-detail dd { margin: 0; }
+@media (max-width: 600px) {
+  .us-transition { padding: 16px; }
+  .us-energy-snapshot { gap: 8px; }
+  .us-energy-stat { padding: 12px; }
+  .us-state-map-stage { height: 480px; }
+}

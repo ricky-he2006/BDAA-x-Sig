@@ -72,6 +72,7 @@ dashboard/scripts/check_palette.mjs
 dashboard/scripts/export_dashboard_data.py
 dashboard/src/App.tsx
 dashboard/src/components/ChartCard.tsx
+dashboard/src/components/CoalCleanCharts.tsx
 dashboard/src/components/CountryChart.tsx
 dashboard/src/components/CountryDirectory.test.tsx
 dashboard/src/components/CountryDirectory.tsx
@@ -80,6 +81,9 @@ dashboard/src/components/CountryPanel.tsx
 dashboard/src/components/DataPanel.test.tsx
 dashboard/src/components/DataPanel.tsx
 dashboard/src/components/Globe.tsx
+dashboard/src/components/GrowthSection.test.tsx
+dashboard/src/components/GrowthSection.tsx
+dashboard/src/components/Legend.test.tsx
 dashboard/src/components/Legend.tsx
 dashboard/src/components/ResearchPanel.test.tsx
 dashboard/src/components/ResearchPanel.tsx
@@ -91,6 +95,8 @@ dashboard/src/components/USLegend.test.tsx
 dashboard/src/components/USLegend.tsx
 dashboard/src/components/USMap.test.tsx
 dashboard/src/components/USMap.tsx
+dashboard/src/components/USView.test.tsx
+dashboard/src/components/USView.tsx
 dashboard/src/data/geo.test.ts
 dashboard/src/data/geo.ts
 dashboard/src/data/globeCoverage.test.ts
@@ -115,6 +121,7 @@ dashboard/src/viz/countryDirectory.ts
 dashboard/src/viz/format.test.ts
 dashboard/src/viz/format.ts
 dashboard/src/viz/globeColors.ts
+dashboard/src/viz/growthComparison.ts
 dashboard/src/viz/layerValue.test.ts
 dashboard/src/viz/layerValue.ts
 dashboard/src/viz/palette.test.ts
@@ -124,6 +131,7 @@ dashboard/src/viz/researchMetrics.ts
 dashboard/src/viz/series.ts
 dashboard/src/viz/stateValue.test.ts
 dashboard/src/viz/stateValue.ts
+dashboard/src/viz/usTransition.ts
 dashboard/tsconfig.app.json
 dashboard/tsconfig.json
 dashboard/tsconfig.node.json

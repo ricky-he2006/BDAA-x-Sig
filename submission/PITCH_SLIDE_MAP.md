@@ -20,4 +20,4 @@
 - **Slide 15 / A07: Trace the recommendation back to the observations** — see slide source footer and PRESENTATION_SCRIPT.md.
 - **Slide 16 / A08: Blue fill means a higher selected value.** — see slide source footer and PRESENTATION_SCRIPT.md.
 - **Slide 17 / A09: Orange fill shows coal scale or dependence.** — see slide source footer and PRESENTATION_SCRIPT.md.
-- **Slide 18 / A10: Select the coal user, then inspect its history.** — see slide source footer and PRESENTATION_SCRIPT.md.
+- **Slide 18 / A10: U.S. coal & clean: national first, then states.** — see slide source footer and PRESENTATION_SCRIPT.md.

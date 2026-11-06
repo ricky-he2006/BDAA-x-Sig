@@ -1,6 +1,6 @@
 # Dashboard walkthrough after the PowerPoint
 
-Present all eight slides first, then use this walkthrough to demonstrate the evidence. Allow approximately 8–10 minutes for the dashboard in addition to the slide presentation. If the assessed recording has a shorter limit, use the dashboard as a separate demonstration or during questions.
+Present the eight main slides first, then use this walkthrough to demonstrate the evidence. Allow approximately 8–10 minutes for the dashboard in addition to the slide presentation. If the assessed recording has a shorter limit, use the dashboard as a separate demonstration or during questions.
 
 Route: Data & evidence → Research: Clean & renewables → Research: Coal → World: China → World: Germany → United States → Data & evidence → final recommendation slide.
 
@@ -13,8 +13,8 @@ The dashboard lets judges trace a slide claim to its source, units, time window 
 | 2: clean growth and fossil resilience coexist | Data & evidence → Numbers supporting the presentation | E01/E02: clean +25.4%, fossil +10.3%, 2020–2024, fixed 196 countries. Supports clean expansion without assuming fossil output already declined. |
 | 3: coal outcomes depend on geography | World → China / Germany → demand/mix and coal charts | China: clean +50.9%, coal +18.4%. Germany: clean −7.9%, coal −21.4%, demand −4.6%. Compare both output and demand before interpreting coal declines. |
 | 4: latest-year signal | Data & evidence for E06; Research → Clean & renewables / Coal for context | Clean additions equal 109.9% of demand additions in the fixed 91-country 2025 panel. Research uses its labelled six-year sample; do not substitute it for the slide’s 196-country historical panel. |
-| 5: the strongest counterargument | United States → US electric power coal, 2020–2025 | E04/E05: national sector 98 consumption fell 14.4% through 2024, then rose 11.3% in 2025. The rebound lowers conviction and motivates the persistence trigger. |
-| 6: distinguish industry outlook from security selection | United States → U.S. delivered coal price | $46.45 to $45.56 per short ton in 2024–2025. Delivered fuel cost does not establish mine margins; company valuations and project economics remain additional research requirements. |
+| 5: the strongest counterargument | United States → Check the national coal-consumption evidence · EIA | E04/E05: national sector 98 consumption fell 14.4% through 2024, then rose 11.3% in 2025. The rebound lowers conviction and motivates the persistence trigger. |
+| 6: connect country and sector exposure | United States → Priority coal-demand markets | Rank power-sector coal demand and inspect annual growth. Suppliers serving large, growing markets are a research priority; customer geography does not establish company returns. |
 | 7: review conditions | National history, country trends and source coverage | Monitor comparable releases against the stated reversal rules. These rules are analyst judgments, not model probabilities. |
 | Evidence appendix: reproducibility | Data & evidence → coverage, country directory and supporting downloads | Check definitions, claim references and observations. Hashes pin snapshots; they do not certify the original EI download edition/date. |
 
@@ -62,7 +62,7 @@ Use the three dashboard reading-guide slides before the live demonstration. Expl
 
 **World outlines:** red = coal generation rose versus the prior year; blue = fell. This metric stays the same when the fill filter changes. A red outline is a prompt to investigate coal-demand persistence, not an automatic coal long. A blue outline is not an automatic short. High clean share and increasing coal can coexist.
 
-**U.S. filters:** All sectors uses reported base sectors 1+2+3+8+9+10; Electric power uses 1+2+3. Electric utility (1), IPP non-CHP (2), IPP CHP (3), Commercial & inst. (8), Coke plants (9) and Other industrial (10) isolate different users. Darker orange means more short tons consumed. U.S. outlines measure consumption change within the selected scope, rather than world-map generation change. Use Electric power first for the domestic thermal thesis; steelmaking requires separate evidence. Read the scope note and hover values; the large U.S. legend is hidden.
+**U.S. filters:** **Generation · TWh** and **Share · %** compare U.S. clean electricity (blue, Ember) with coal electricity (red, EI). Below, **Priority coal-demand markets** ranks reported EIA power consumption from sectors 1+2+3 and shows annual change. Open **Explore the state coal-demand map** for orange consumption fill, red/blue annual consumption outlines, zoom and the expandable Map key. State clean-generation observations are unavailable in the supplied files. The optional national EIA consumption chart uses sector 98 separately.
 
 **Before an allocation:** verify the numerical value and multiple-year history, identify the relevant sector and business model, and examine valuation, contracts, realized prices, costs and financing. Colors show operational conditions, not expected investment returns. Missing values remain missing; scales change with the selected year and filter.
 
@@ -200,55 +200,39 @@ Click **Close**. Transition:
 
 > These two examples explain why we keep the coal recommendation specific to the market. Now we’ll examine our strongest underweight case: U.S. domestic thermal coal.
 
-## 7. United States: show the historical decline and latest rebound — 60 seconds
+## 7. United States: coal versus clean nationally — 60 seconds
 
-Click **United States** in the top navigation. If a state is selected, click the **✕** beside its name to restore the national overview.
-
-Find **US electric power coal, 2020–2025** and click **Expand**. Point to:
-
-- 2020: approximately **435.8 million short tons**.
-- 2024: approximately **373.3 million short tons**.
-- 2025: approximately **415.4 million short tons**.
+Click **United States**. Set the year to **2024**. Start with **Generation · TWh**, showing the two snapshot cards and the national historical chart. Clean is blue, coal is red. Switch to **Share · %** to distinguish output from generation mix.
 
 Say:
 
-> U.S. power-sector coal consumption fell 14.4% between 2020 and 2024. That supports our concern about domestic thermal-coal demand.
->
-> But consumption rebounded 11.3% in 2025. It remained below 2020, while recovering materially from 2024.
->
-> This is the main challenge to our recommendation. We need to monitor whether the recovery persists.
+> The same coal-versus-clean comparison works nationally for the United States. Clean comes from Ember and coal from EI, so source totals can differ. The chart lets us inspect whether clean expansion coincides with falling coal, rather than assuming it does.
 
-Click **Close**.
+Set the year to **2025** and inspect the latest coal observation. Scroll to **Check the national coal-consumption evidence · EIA** and expand it. Point to the consumption chart:
 
-## 8. Show how the U.S. pattern differs by state — 45 seconds
+> A second measure confirms the rebound direction. EIA national power-sector consumption fell 14.4% through 2024, then rose 11.3% in 2025. Consumption in short tons and generation in TWh stay separate. The rebound lowers conviction in our thermal-coal underweight.
 
-Set the year to **2025**. Click **Electric power** above the map. Use the sector label and hover values to explain the selection.
+Collapse the EIA check after explaining it.
 
-Say:
+## 8. State markets: make the coal allocation more specific — 60 seconds
 
-> The map now focuses on electric-power coal consumption. Fill color shows consumption levels. The outlines show the change from the previous year: blue for decreases and red for increases.
-
-Hover over **Indiana** to show its reported values, then click it. In the state panel, find **Consumption by sector** and click **Expand**. Point to the electric-power series, especially 2024 and 2025.
+At **Priority coal-demand markets · 2025**, point to the ranked table. Texas consumes 48.8 million short tons, Missouri 26.7 million and Indiana 25.2 million. Annual changes are +4.2%, +16.7% and +21.5%, respectively. These are reported power-sector base-row sums, not national sector-98 totals.
 
 Say:
 
-> This lets us inspect how an individual state contributes to the broader pattern. We can also distinguish coal used for electricity from coal used by industrial sectors.
+> Within a selective coal allocation, suppliers serving Texas, Missouri and Indiana warrant closer attention: these are the largest reported power-demand markets and all three grew in 2025. Texas provides scale; Missouri and Indiana show stronger recent demand growth. Our data supports market priorities, not company-specific returns or position sizes.
 
-Describe Indiana’s displayed change using the tooltip or chart values. Click **Close**, then **✕** beside the state name.
+Click **1. Texas** to open its consumption and history. Explain the selected-year value and the longer trajectory. A large market with declining consumption should be described differently from a growing market. Missing observations stay blank.
 
-The state example illustrates geographic variation; it does not establish the cause of the national rebound. State charts retain their labelled sector scopes when the map filter changes. The national chart uses EIA aggregate sector 98; state figures use reported base sectors. Do not claim an exact reconciliation between them.
+## 9. Optional state map and key — 30–45 seconds
 
-## 9. Briefly show the price evidence — 30 seconds
-
-In the national overview, find **U.S. delivered coal price** and click **Expand**. Point to 2024 and 2025.
+Open **Explore the state coal-demand map**. Use +/− and drag to inspect states. Expand **Map key**: darker orange means more coal consumed, while red outlines show rising annual power-sector consumption and blue outlines show falling consumption. Collapse it to clear the map. The map is fixed to electric-power sectors 1+2+3; industrial, quality and price controls have been removed.
 
 Say:
 
-> The dashboard also separates consumption from delivered fuel prices. The reported delivered price fell from $46.45 per short ton in 2024 to $45.56 in 2025, while consumption increased.
->
-> This is the price paid for delivered coal. Assessing producer profitability still requires company costs, contracts, and realized selling prices.
+> State geography shows coal customers, not mines or supplier revenues. We have no state clean-generation dataset, so we do not invent a state coal-versus-clean comparison. The national view supplies that comparison, while the state view identifies the remaining coal-demand markets.
 
-Click **Close**. Missing 2021 price data remains blank; do not describe the gap as zero.
+Click a state or use the state/territory selector to inspect its power-demand history. The national EIA consumption measure and state base-sector sums retain their separate scopes.
 
 ## 10. Finish with evidence access and the recommendation — 45–60 seconds
 
